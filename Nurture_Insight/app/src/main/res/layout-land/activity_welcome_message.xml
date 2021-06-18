@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".application_introduction.WelcomeMessage">
+
+        <ImageView
+            android:id="@+id/wm_imgView_background_1"
+            android:layout_width="wrap_content"
+            android:layout_height="392dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/background_1" />
+
+        <TextView
+            android:id="@+id/wm_txtView_title_1"
+            android:layout_width="419dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/alegreya_sans_bold"
+            android:gravity="center"
+            android:text="@string/wm_title1"
+            android:textColor="@color/ni_blue"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wm_imgView_background_1" />
+
+        <TextView
+            android:id="@+id/wm_txtView_message_1"
+            android:layout_width="588dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/alegreya_sans"
+            android:gravity="center"
+            android:text="@string/wm_message1"
+            android:textColor="@color/ni_blue"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wm_txtView_title_1" />
+
+        <ImageView
+            android:id="@+id/wn_imgView_background_2"
+            android:layout_width="0dp"
+            android:layout_height="392dp"
+            android:layout_marginTop="36dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wm_txtView_message_1"
+            app:srcCompat="@drawable/background_2" />
+
+        <TextView
+            android:id="@+id/wm_txtView_title_2"
+            android:layout_width="588dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/alegreya_sans_bold"
+            android:gravity="center"
+            android:text="@string/wm_title2"
+            android:textColor="@color/ni_blue"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wn_imgView_background_2" />
+
+        <TextView
+            android:id="@+id/wm_txtView_message_2"
+            android:layout_width="588dp"
+            android:layout_height="143dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/alegreya_sans"
+            android:gravity="center"
+            android:text="@string/wm_message2"
+            android:textColor="@color/ni_blue"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wm_txtView_title_2" />
+
+        <ImageView
+            android:id="@+id/wn_imgView_background_3"
+            android:layout_width="0dp"
+            android:layout_height="392dp"
+            android:layout_marginTop="36dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wm_txtView_message_2"
+            app:srcCompat="@drawable/background_3" />
+
+        <TextView
+            android:id="@+id/wm_txtView_title_3"
+            android:layout_width="588dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/alegreya_sans_bold"
+            android:gravity="center"
+            android:text="@string/wm_title3"
+            android:textColor="@color/ni_blue"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.515"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wn_imgView_background_3" />
+
+        <TextView
+            android:id="@+id/wm_txtView_message_3"
+            android:layout_width="588dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/alegreya_sans"
+            android:gravity="center"
+            android:text="@string/wm_message3"
+            android:textColor="@color/ni_blue"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wm_txtView_title_3" />
+
+        <ImageView
+            android:id="@+id/wn_imgView_background_4"
+            android:layout_width="0dp"
+            android:layout_height="392dp"
+            android:layout_marginTop="36dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wm_txtView_message_3"
+            app:srcCompat="@drawable/background_4" />
+
+        <TextView
+            android:id="@+id/wm_txtView_title_4"
+            android:layout_width="588dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/alegreya_sans_bold"
+            android:gravity="center"
+            android:text="@string/wm_title4"
+            android:textColor="@color/ni_blue"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wn_imgView_background_4" />
+
+        <TextView
+            android:id="@+id/wm_txtView_message_4"
+            android:layout_width="588dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/alegreya_sans"
+            android:gravity="center"
+            android:text="@string/wm_message4"
+            android:textColor="@color/ni_blue"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wm_txtView_title_4" />
+
+        <Button
+            android:id="@+id/wm_button_getStarted"
+            android:layout_width="350dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_style"
+            android:text="@string/wm_getStarted_button"
+            app:backgroundTint="@color/ni_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wm_txtView_message_4" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

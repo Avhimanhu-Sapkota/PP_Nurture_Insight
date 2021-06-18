@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_constraint_layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.141">
+
+
+        <ImageView
+            android:id="@+id/main_imgView_header_txt"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/background_1" />
+
+        <ImageView
+            android:id="@+id/main_icon_1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_button_sos"
+            app:srcCompat="@drawable/calm_down" />
+
+        <ImageView
+            android:id="@+id/main_icon_4"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/main_icon_3"
+            app:layout_constraintTop_toBottomOf="@+id/main_button_sos"
+            app:srcCompat="@drawable/chat_community" />
+
+        <ImageView
+            android:id="@+id/main_icon_3"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toEndOf="@+id/main_icon_2"
+            app:layout_constraintTop_toBottomOf="@+id/main_button_sos"
+            app:srcCompat="@drawable/live_in_present" />
+
+        <ImageView
+            android:id="@+id/main_icon_2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toEndOf="@+id/main_icon_1"
+            app:layout_constraintTop_toBottomOf="@+id/main_button_sos"
+            app:srcCompat="@drawable/breathing_control" />
+
+        <ImageView
+            android:id="@+id/main_icon_7"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toEndOf="@+id/main_icon_6"
+            app:layout_constraintTop_toBottomOf="@+id/main_icon_3"
+            app:srcCompat="@drawable/calm_down" />
+
+        <ImageView
+            android:id="@+id/main_icon_5"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_icon_1"
+            app:srcCompat="@drawable/uplifting_quotes" />
+
+        <ImageView
+            android:id="@+id/main_icon_8"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/main_icon_7"
+            app:layout_constraintTop_toBottomOf="@+id/main_icon_4"
+            app:srcCompat="@drawable/breathing_control" />
+
+        <ImageView
+            android:id="@+id/main_icon_6"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toEndOf="@+id/main_icon_5"
+            app:layout_constraintTop_toBottomOf="@+id/main_icon_2"
+            app:srcCompat="@drawable/affirmations" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="685dp"
+            android:src="@drawable/background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_icon_7" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

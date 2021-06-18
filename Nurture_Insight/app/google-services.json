@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "903543965539",
+    "project_id": "nurture-insight",
+    "storage_bucket": "nurture-insight.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:903543965539:android:916fcdacf5c610258bf556",
+        "android_client_info": {
+          "package_name": "com.example.nurture_insight"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "903543965539-nuos5ebgnuqfkgbk22qo8e6thkf0fa71.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nurture_insight",
+            "certificate_hash": "d4c1ef3c7b39862808f0be07a6de5fcfb179c6a8"
+          }
+        },
+        {
+          "client_id": "903543965539-qg10rct196cm577dssn5he4m757910af.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB18Y8xN3eOvT6teDcHKxgFKJOTyixj9ko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "903543965539-qg10rct196cm577dssn5he4m757910af.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

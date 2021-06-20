@@ -11,7 +11,7 @@
             android:id="@+id/main_constraint_layout_1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentTop = "true">
+            android:layout_alignParentTop="true">
 
                 <EditText
                     android:id="@+id/chat_editText_messageArea"
@@ -41,9 +41,48 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_above="@+id/chat_editText_messageArea"
+                    android:layout_below="@+id/chatFragment_message"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp" />
+
+                <TextView
+                    android:id="@+id/chatFragment_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/chat_savedAreaButton"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/alegreya_sans"
+                    android:gravity="center"
+                    android:text="@string/chat_MessageHint"
+                    android:textColor="@color/ni_blue"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/chat_savedAreaButton"
+                    android:layout_width="188dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="5dp"
+                    android:fontFamily="@font/alegreya_sans"
+                    android:text="@string/savedPosts"
+                    app:backgroundTint="@color/ni_blue" />
+
+                <Button
+                    android:id="@+id/chat_myPostsButton"
+                    android:layout_width="188dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toEndOf="@id/chat_savedAreaButton"
+                    android:fontFamily="@font/alegreya_sans"
+                    android:text="@string/myPosts"
+                    app:backgroundTint="@color/ni_blue" />
         </RelativeLayout>
 
 </androidx.core.widget.NestedScrollView>

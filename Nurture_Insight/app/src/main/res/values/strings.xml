@@ -59,6 +59,17 @@
     <string name="mood_question">How are you feeling today?</string>
     <string name="mood_message">"Your Mood has been recorded"</string>
     <string name="mood_tracker_msg">Your latest recorded Mood Levels of the past week on the scale of 5</string>
+    <string name="chat_editTxt_hint">What\'s in your mind? Write and Post…</string>
+    <string name="chat_dialog_title">Nurture Insight - Chat Community</string>
+    <string name="chat_dialog_message">Do you wish to continue anonymously?</string>
+    <string name="anonymous">Posted Anonymously</string>
+    <string name="chat_swipe_delete">Are you sure you want to delete this post?</string>
+    <string name="chat_swipe_save">Are you sure you want to save this post?</string>
+    <string name="chat_MessageHint">Tap on the post and swipe right to save the post or swipe left to delete the post.</string>
+    <string name="savedPosts">View Saved Posts</string>
+    <string name="myPosts">View My Posts</string>
+    <string name="chat_SavedMessageHint">Tap on the post and swipe left to remove the post from your saved area.</string>
+    <string name="chat_MyMessageHint">Tap on the post and swipe left to delete your post.</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -148,4 +159,5 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+
 </resources>

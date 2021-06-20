@@ -31,38 +31,65 @@
                 android:fontFamily="@font/alegreya_sans"
                 android:text="Chat Message"
                 android:textColor="@color/ni_blue"
-                android:textSize="15sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/chat_message_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/chat_message"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
                 android:fontFamily="@font/alegreya_sans"
                 android:text="Date"
+                android:layout_marginBottom="5dp"
                 android:textAlignment="textEnd"
-                android:textColor="@color/ni_midBlue"
-                android:textSize="10sp" />
+                android:textColor="@color/ni_blue"
+                android:layout_below="@+id/chat_username"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/chat_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/chat_message_date"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/alegreya_sans"
+                android:layout_below="@+id/chat_message"
                 android:text="Username"
                 android:textAlignment="textEnd"
-                android:textColor="@color/ni_midBlue"
-                android:textSize="12sp" />
-
-
+                android:textColor="@color/ni_blue"
+                android:textSize="14sp" />
 
         </RelativeLayout>
     </LinearLayout>
+
+    <!--<LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/chat_swipe_delete"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@color/ni_midBlue"
+            android:gravity="center"
+            android:text="@string/chat_swipe_delete"
+            android:fontFamily="@font/alegreya_sans"
+            android:textSize="15sp"
+            android:textColor="@color/ni_blue"/>
+
+        <TextView
+            android:id="@+id/chat_swipe_save"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@color/ni_midBlue"
+            android:gravity="center"
+            android:text="@string/chat_swipe_save"
+            android:fontFamily="@font/alegreya_sans"
+            android:textSize="15sp"
+            android:textColor="@color/ni_blue"/>
+
+    </LinearLayout>-->
 
 </androidx.cardview.widget.CardView>

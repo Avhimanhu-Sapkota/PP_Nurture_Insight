@@ -1,13 +1,11 @@
 package com.example.nurture_insight;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
@@ -15,7 +13,6 @@ import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.nurture_insight.Model.DataPoint;
 import com.example.nurture_insight.Model.Mood_Tracker;
 import com.example.nurture_insight.Prevalent.Prevalent;
 import com.github.mikephil.charting.charts.BarChart;
@@ -24,17 +21,13 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.formatter.IAxisValueFormatter;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.interfaces.datasets.IDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
@@ -43,7 +36,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Queue;
 
 public class HomeFragment extends Fragment {
 
@@ -219,8 +211,8 @@ public class HomeFragment extends Fragment {
 
                 if(snapshot.hasChildren()){
                     for(DataSnapshot myDataSnapshot: snapshot.getChildren()){
-                        DataPoint dataPoint = myDataSnapshot.getValue(DataPoint.class);
-                        String eachDateInString = dataPoint.getEachDate();
+                        Mood_Tracker dataPoint = myDataSnapshot.getValue(Mood_Tracker.class);
+                        String eachDateInString = dataPoint.getMoodDate();
                         String currentMood = dataPoint.getMoodType();
 
                         try {

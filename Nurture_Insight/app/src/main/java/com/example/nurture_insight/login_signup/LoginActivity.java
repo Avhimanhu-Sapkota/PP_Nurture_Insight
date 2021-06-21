@@ -16,7 +16,7 @@ import com.example.nurture_insight.MainActivity;
 import com.example.nurture_insight.Model.Users;
 import com.example.nurture_insight.Prevalent.Prevalent;
 import com.example.nurture_insight.R;
-import com.example.nurture_insight.SplashActivity;
+import com.example.nurture_insight.TherapistInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,9 +40,9 @@ public class LoginActivity extends AppCompatActivity {
 
         Paper.init(this);
 
-        phone = (EditText) findViewById(R.id.login_exitText_phoneNo);
-        password = (EditText) findViewById(R.id.login_editText_password);
-        loginButton = (Button) findViewById(R.id.login_button);
+        phone = (EditText) findViewById(R.id.therapistInfo_exitText_expertise);
+        password = (EditText) findViewById(R.id.therapistInfo_editText_password);
+        loginButton = (Button) findViewById(R.id.therapistInfo_button_saveInfo);
         goToSignUpMessage = (TextView) findViewById(R.id.login_message6);
         loading = new ProgressDialog(this);
 
@@ -63,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 loginUser();
             }
         });
@@ -115,8 +116,34 @@ public class LoginActivity extends AppCompatActivity {
                             loading.dismiss();
 
                             Prevalent.currentOnlineUser = userData;
-                            Intent signUpIntent= new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(signUpIntent);
+                            if(Prevalent.currentOnlineUser.getType().equals("therapist")){
+
+                                DatabaseReference newReference = FirebaseDatabase.getInstance().getReference().child("Therapist");
+
+                                newReference.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot therapistSnapshot) {
+                                        if(therapistSnapshot.child(inputPhone).exists()){
+                                            Intent signUpIntent= new Intent(LoginActivity.this, MainActivity.class);
+                                            startActivity(signUpIntent);
+                                        }
+                                        else{
+                                            Intent therapistIntent= new Intent(LoginActivity.this, TherapistInfo.class);
+                                            startActivity(therapistIntent);
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+                            }
+                            else{
+                                Intent signUpIntent= new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(signUpIntent);
+                            }
+
                         }
                         else{
                             loading.dismiss();
@@ -151,8 +178,34 @@ public class LoginActivity extends AppCompatActivity {
                         if (userData.getPassword().equals(inputPassword)){
                             loading.dismiss();
                             Prevalent.currentOnlineUser = userData;
-                            Intent signUpIntent= new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(signUpIntent);
+
+                            if(Prevalent.currentOnlineUser.getType().equals("therapist")){
+                                DatabaseReference newReference = FirebaseDatabase.getInstance().getReference().child("Therapist");
+
+                                newReference.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot therapistSnapshot) {
+                                        if(therapistSnapshot.child(inputPhone).exists()){
+                                            Intent signUpIntent= new Intent(LoginActivity.this, MainActivity.class);
+                                            startActivity(signUpIntent);
+                                        }
+                                        else{
+                                            Intent therapistIntent= new Intent(LoginActivity.this, TherapistInfo.class);
+                                            startActivity(therapistIntent);
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+                            }
+                            else{
+                                Intent signUpIntent= new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(signUpIntent);
+                            }
+
                         }
                         else{
                             loading.dismiss();

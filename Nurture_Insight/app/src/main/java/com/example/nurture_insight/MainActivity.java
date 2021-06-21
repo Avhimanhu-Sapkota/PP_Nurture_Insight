@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.nurture_insight.Prevalent.Prevalent;
 import com.luseen.spacenavigation.SpaceItem;
 import com.luseen.spacenavigation.SpaceNavigationView;
 import com.luseen.spacenavigation.SpaceOnClickListener;
@@ -33,7 +34,13 @@ public class MainActivity extends AppCompatActivity {
             public void onCentreButtonClick() {
                 navigationView.setCentreButtonSelectable(true);
 
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_fragmentLayout, new UserProfileFragment()).commit();
+                if(Prevalent.currentOnlineUser.getType().equals("therapist")){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_fragmentLayout, new TherapistProfileFragment()).commit();
+                }
+                else{
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_fragmentLayout, new UserProfileFragment()).commit();
+                }
+
             }
 
             @Override

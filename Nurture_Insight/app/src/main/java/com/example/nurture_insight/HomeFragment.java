@@ -12,6 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.nurture_insight.Model.Mood_Tracker;
 import com.example.nurture_insight.Prevalent.Prevalent;
@@ -39,7 +40,7 @@ import java.util.HashMap;
 
 public class HomeFragment extends Fragment {
 
-    ImageView happyMood, goodMood, mehMood, sadMood, awfulMood;
+    ImageView happyMood, goodMood, mehMood, sadMood, awfulMood, mainIcon4;
     String userMood;
     CardView moodCard, moodHistoryCard;
 
@@ -65,6 +66,19 @@ public class HomeFragment extends Fragment {
         awfulMood = (ImageView) rootView.findViewById(R.id.main_imgMood_awful);
         barChart = (BarChart) rootView.findViewById(R.id.main_mood_barChart);
         sosButton = (Button) rootView.findViewById(R.id.main_button_sos);
+        mainIcon4 = (ImageView) rootView.findViewById(R.id.main_icon_4);
+
+        mainIcon4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = null;
+                fragment = new BrowseTherapistFragment();
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_fragmentLayout, fragment );
+                transaction.commit();
+            }
+        });
 
         XAxis xAxis = barChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);

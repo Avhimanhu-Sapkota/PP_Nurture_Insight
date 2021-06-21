@@ -14,9 +14,6 @@ import androidx.annotation.Nullable;
 
 import com.example.nurture_insight.Prevalent.Prevalent;
 import com.example.nurture_insight.login_signup.LoginActivity;
-import com.example.nurture_insight.login_signup.SignUpActivity;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;

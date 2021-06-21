@@ -70,6 +70,21 @@
     <string name="myPosts">View My Posts</string>
     <string name="chat_SavedMessageHint">Tap on the post and swipe left to remove the post from your saved area.</string>
     <string name="chat_MyMessageHint">Tap on the post and swipe left to delete your post.</string>
+    <string name="therapistInfo_SpecialTitle">Your Expertise</string>
+    <string name="therapistInfo_degree">Latest Degree</string>
+    <string name="therapistInfo_Bio">Bio (or Other Details)</string>
+    <string name="therapistInfo_workAt">You currently work at …</string>
+    <string name="therapistInfo_saveButton">Save Info</string>
+    <string name="therapistInfo_Message">Please enter your details below to start off as a Therapist</string>
+    <string name="therapistInfo_error1">You must enter your expertise as a therapist!</string>
+    <string name="therapistInfo_error2">You must enter your latest degree!</string>
+    <string name="therapistInfo_error3">You must enter your other details!</string>
+    <string name="therapistInfo_title">Nurture Insight - Therapist Information</string>
+    <string name="browseTherapist_title">Nurture Insight\'s Professionals</string>
+    <string name="profile_Title">Nurture Insight - Profile</string>
+    <string name="profile_picChangeMessage">Do you want to change the profile picture?</string>
+    <string name="profileErrorMsg1">Sorry! The image has not been selected! Please Try again</string>
+    <string name="uploadImgMsg">Please Wait! We are uploading your Profile Picture. </string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -159,5 +174,7 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>

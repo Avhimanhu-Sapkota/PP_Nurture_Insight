@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardElevation="15dp">
+
+    <LinearLayout
+        android:id="@+id/eachTherapist_LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/ni_blue">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:background="@color/ni_lightBlue">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/eachTherapist_profileImage"
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/therapist_profile_picture"
+                app:civ_border_color="@color/ni_blue"
+                app:civ_border_width="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/eachTherapist_Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/eachTherapist_profileImage"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/alegreya_sans_bold"
+                android:text="Therapist Name"
+                android:gravity="center"
+                android:textColor="@color/ni_blue"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/eachTherapist_expertise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/alegreya_sans"
+                android:layout_below="@+id/eachTherapist_Name"
+                android:text="Expertise"
+                android:gravity="center"
+                android:textColor="@color/ni_blue"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/eachTherapist_worksAt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/alegreya_sans"
+                android:layout_below="@+id/eachTherapist_expertise"
+                android:gravity="center"
+                android:text="Therapist Workplace Information"
+                android:textColor="@color/ni_blue"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/eachTherapist_bio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/alegreya_sans"
+                android:layout_below="@+id/eachTherapist_worksAt"
+                android:gravity="center"
+                android:text="Therapist Bio will be displayed here....."
+                android:textColor="@color/ni_blue"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/eachTherapist_contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/alegreya_sans"
+                android:layout_below="@+id/eachTherapist_bio"
+                android:gravity="center"
+                android:text="Contact at:\n98XXXXXXXXXX\ntest@gmail.com"
+                android:textColor="@color/ni_blue"
+                android:textSize="17sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

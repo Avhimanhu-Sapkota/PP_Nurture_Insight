@@ -19,7 +19,7 @@
         android:id="@+id/signUp_message1"
         android:layout_width="267dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/alegreya_sans_bold"
         android:gravity="center"
         android:text="@string/login_message1"
@@ -48,7 +48,7 @@
         android:id="@+id/signUp_exitText_username"
         android:layout_width="312dp"
         android:layout_height="46dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/edit_text_style"
         android:ems="10"
         android:fontFamily="@font/alegreya_sans"
@@ -114,7 +114,7 @@
         android:id="@+id/signUp_message3"
         android:layout_width="319dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/alegreya_sans"
         android:gravity="center"
         android:text="@string/signUp_message3"
@@ -128,7 +128,7 @@
         android:id="@+id/signUp_button"
         android:layout_width="219dp"
         android:layout_height="45dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/button_style"
         android:text="@string/signUp_message4"
         app:backgroundTint="@color/ni_blue"
@@ -137,35 +137,9 @@
         app:layout_constraintTop_toBottomOf="@+id/signUp_message3" />
 
     <TextView
-        android:id="@+id/signUp_message4"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/alegreya_sans"
-        android:gravity="center"
-        android:text="@string/login_message5"
-        android:textColor="@color/ni_blue"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signUp_button" />
-
-    <ImageView
-        android:id="@+id/signUp_google_logo"
-        android:layout_width="44dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signUp_message4"
-        app:srcCompat="@drawable/google_logo" />
-
-    <TextView
         android:id="@+id/signUp_message5"
         android:layout_width="271dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
         android:fontFamily="@font/alegreya_sans"
         android:gravity="center"
         android:text="@string/signUp_message5"
@@ -174,7 +148,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signUp_google_logo"
-        app:layout_constraintVertical_bias="0.07" />
+        app:layout_constraintTop_toBottomOf="@+id/signUp_button"
+        app:layout_constraintVertical_bias="0.403" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

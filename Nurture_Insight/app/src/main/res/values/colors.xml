@@ -17,4 +17,9 @@
     <color name="light_blue_A200">#FF40C4FF</color>
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
+    <color name="ni_green">#0E7629</color>
+    <color name="ni_dark_red">#8F0000</color>
+    <color name="ni_purple">#5E17EB</color>
+    <color name="ni_tur_blue">#03AB8D</color>
+
 </resources>

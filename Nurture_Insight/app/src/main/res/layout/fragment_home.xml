@@ -20,11 +20,21 @@
         <ImageView
             android:id="@+id/main_imgView_header_txt"
             android:layout_width="389dp"
-            android:layout_height="58dp"
+            android:layout_height="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/header" />
+
+        <ImageView
+            android:id="@+id/main_imgView_background"
+            android:layout_width="0dp"
+            android:layout_height="155dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_imgView_header_txt"
+            app:srcCompat="@drawable/background_4" />
 
         <ImageView
             android:id="@+id/main_icon_1"
@@ -46,7 +56,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/main_icon_3"
             app:layout_constraintTop_toBottomOf="@+id/main_button_sos"
-            app:srcCompat="@drawable/chat_community" />
+            app:srcCompat="@drawable/browse_therapist" />
 
         <ImageView
             android:id="@+id/main_icon_3"
@@ -114,14 +124,15 @@
             android:id="@+id/main_button_sos"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/sos_button"
             android:text="@string/sos"
-            android:textColor="@color/ni_red"
-            app:backgroundTint="@color/white"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/ni_dark_red"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.512"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_imgView_header_txt"
+            app:layout_constraintTop_toBottomOf="@+id/main_imgView_background"
             app:strokeColor="@color/ni_red"
             app:strokeWidth="2dp" />
 
@@ -130,7 +141,7 @@
             android:layout_width="0dp"
             android:layout_height="180dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="20dp"
             app:cardCornerRadius="15dp"
             app:cardPreventCornerOverlap="false"
@@ -151,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
                 android:layout_marginLeft="2dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="40dp"
                 android:fontFamily="@font/alegreya_sans_bold"
                 android:gravity="center"
                 android:text="@string/mood_question"
@@ -171,35 +182,35 @@
 
                 <ImageView
                     android:id="@+id/main_imgMood_happy"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/happy_mood" />
 
                 <ImageView
                     android:id="@+id/main_imgMood_good"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="10dp"
                     android:src="@drawable/good_mood" />
 
                 <ImageView
                     android:id="@+id/main_imgMood_meh"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="10dp"
                     android:src="@drawable/meh_mood" />
 
                 <ImageView
                     android:id="@+id/main_imgMood_sad"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="10dp"
                     android:src="@drawable/sad_mood" />
 
                 <ImageView
                     android:id="@+id/main_imgMood_awful"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="10dp"
                     android:src="@drawable/awful_mood" />
             </LinearLayout>
@@ -210,7 +221,7 @@
             android:layout_width="0dp"
             android:layout_height="180dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="20dp"
             android:padding="10dp"
             app:cardCornerRadius="15dp"
@@ -218,6 +229,7 @@
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:backgroundTint="@color/ni_lightBlue"
             app:layout_constraintTop_toBottomOf="@+id/main_icon_7">
 
             <com.github.mikephil.charting.charts.BarChart
@@ -228,7 +240,32 @@
 
         </androidx.cardview.widget.CardView>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="230dp"
+            android:orientation="vertical"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_icon_7">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Nurture Insight Resources"
+                android:textColor="@color/ni_blue"
+                android:fontFamily="@font/alegreya_sans_bold"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewArticles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

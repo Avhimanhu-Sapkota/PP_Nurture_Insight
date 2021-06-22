@@ -19,7 +19,7 @@
         android:id="@+id/therapistInfo_message1"
         android:layout_width="267dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="68dp"
         android:fontFamily="@font/alegreya_sans_bold"
         android:gravity="center"
         android:text="@string/login_message1"
@@ -84,7 +84,7 @@
         android:id="@+id/login_message3"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="36dp"
         android:fontFamily="@font/alegreya_sans"
         android:gravity="center"
         android:text="@string/login_message3"
@@ -99,7 +99,7 @@
         android:id="@+id/therapistInfo_button_saveInfo"
         android:layout_width="219dp"
         android:layout_height="45dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/button_style"
         android:text="@string/login_message4"
         app:backgroundTint="@color/ni_blue"
@@ -108,34 +108,9 @@
         app:layout_constraintTop_toBottomOf="@+id/login_message3" />
 
     <TextView
-        android:id="@+id/login_message5"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="54dp"
-        android:fontFamily="@font/alegreya_sans"
-        android:gravity="center"
-        android:text="@string/login_message5"
-        android:textColor="@color/ni_blue"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/therapistInfo_button_saveInfo" />
-
-    <ImageView
-        android:id="@+id/login_google_logo"
-        android:layout_width="44dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_message5"
-        app:srcCompat="@drawable/google_logo" />
-
-    <TextView
         android:id="@+id/login_message6"
         android:layout_width="271dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:fontFamily="@font/alegreya_sans"
         android:gravity="center"
         android:text="@string/login_message6"
@@ -144,6 +119,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_google_logo"
-        app:layout_constraintVertical_bias="0.236" />
+        app:layout_constraintTop_toBottomOf="@+id/therapistInfo_button_saveInfo"
+        app:layout_constraintVertical_bias="0.443" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.nurture_insight;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +14,18 @@ import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nurture_insight.Model.Articles;
 import com.example.nurture_insight.Model.Mood_Tracker;
 import com.example.nurture_insight.Prevalent.Prevalent;
+import com.example.nurture_insight.instant_help.affirmations;
+import com.example.nurture_insight.instant_help.breathing_control;
+import com.example.nurture_insight.instant_help.calm_down_info_1;
+import com.example.nurture_insight.instant_help.live_in_present;
+import com.example.nurture_insight.instant_help.quotes;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -40,10 +50,13 @@ import java.util.HashMap;
 
 public class HomeFragment extends Fragment {
 
-    ImageView happyMood, goodMood, mehMood, sadMood, awfulMood, mainIcon4;
+    ImageView happyMood, goodMood, mehMood, sadMood, awfulMood;
+    ImageView mainIcon1, mainIcon2, mainIcon3, mainIcon4, mainIcon5, mainIcon6;
     String userMood;
     CardView moodCard, moodHistoryCard;
-
+    RecyclerView recyclerViewArticles;
+    ArrayList<Articles> articles;
+    ArticlesAdapter articlesAdapter;
     BarChart barChart;
     BarData barData;
     BarDataSet barDataSet;
@@ -67,6 +80,11 @@ public class HomeFragment extends Fragment {
         barChart = (BarChart) rootView.findViewById(R.id.main_mood_barChart);
         sosButton = (Button) rootView.findViewById(R.id.main_button_sos);
         mainIcon4 = (ImageView) rootView.findViewById(R.id.main_icon_4);
+        mainIcon1 = (ImageView) rootView.findViewById(R.id.main_icon_1);
+        mainIcon2 = (ImageView) rootView.findViewById(R.id.main_icon_2);
+        mainIcon3 = (ImageView) rootView.findViewById(R.id.main_icon_3);
+        mainIcon5 = (ImageView) rootView.findViewById(R.id.main_icon_5);
+        mainIcon6 = (ImageView) rootView.findViewById(R.id.main_icon_6);
 
         mainIcon4.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +95,62 @@ public class HomeFragment extends Fragment {
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.main_fragmentLayout, fragment );
                 transaction.commit();
+            }
+        });
+
+        mainIcon2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = null;
+                fragment = new breathing_control();
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_fragmentLayout, fragment );
+                transaction.commit();
+            }
+        });
+
+        mainIcon3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = null;
+                fragment = new live_in_present();
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_fragmentLayout, fragment );
+                transaction.commit();
+            }
+        });
+
+        mainIcon5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = null;
+                fragment = new quotes();
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_fragmentLayout, fragment );
+                transaction.commit();
+            }
+        });
+
+        mainIcon6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = null;
+                fragment = new affirmations();
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_fragmentLayout, fragment );
+                transaction.commit();
+            }
+        });
+
+        mainIcon1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), calm_down_info_1.class);
+                startActivity(intent);
             }
         });
 
@@ -131,6 +205,29 @@ public class HomeFragment extends Fragment {
                 recordUserMood(userMood);
             }
         });
+
+
+        recyclerViewArticles = (RecyclerView) rootView.findViewById(R.id.recyclerViewArticles);
+        Integer[] articlesToDisplay = {R.drawable.article1,
+                R.drawable.article2,
+                R.drawable.article3,
+                R.drawable.article4};
+
+
+        articles = new ArrayList<>();
+        for (int index=0; index<articlesToDisplay.length; index++){
+            Articles model = new Articles(articlesToDisplay[index]);
+            articles.add(model);
+        }
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(
+                getContext(), LinearLayoutManager.HORIZONTAL, false
+        );
+        recyclerViewArticles.setLayoutManager((layoutManager));
+        recyclerViewArticles.setItemAnimator(new DefaultItemAnimator());
+
+        articlesAdapter = new ArticlesAdapter(getContext(), articles);
+        recyclerViewArticles.setAdapter(articlesAdapter);
 
         return rootView;
     }
@@ -264,13 +361,15 @@ public class HomeFragment extends Fragment {
 
         barDataSet = new BarDataSet(barEntries, getResources().getString(R.string.mood_tracker_msg));
         barData = new BarData(barDataSet);
-
+        barChart.setNoDataTextColor(getResources().getColor(R.color.ni_blue));
+        barChart.setGridBackgroundColor(getResources().getColor(R.color.ni_lightBlue));
         barChart.setData(barData);
         barData.setBarWidth(0.3f);
         barDataSet.setColor(getResources().getColor(R.color.ni_blue));
         barDataSet.setValueTextColor(getResources().getColor(R.color.ni_blue));
-        barDataSet.setValueTextSize(12f);
+        barDataSet.setValueTextSize(15f);
         barChart.setDescription(null);
+
 
         for (IDataSet set : barChart.getData().getDataSets())
             set.setDrawValues(!set.isDrawValuesEnabled());

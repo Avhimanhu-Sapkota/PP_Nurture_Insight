@@ -51,6 +51,7 @@ dependencies {
     implementation 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
 
 }

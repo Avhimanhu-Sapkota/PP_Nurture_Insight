@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/ws_imgView_name"
-        android:layout_width="362dp"
-        android:layout_height="96dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_marginTop="96dp"
         android:contentDescription="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"

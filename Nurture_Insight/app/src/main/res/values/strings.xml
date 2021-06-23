@@ -12,7 +12,7 @@
     <string name="wm_title3">Help is Available and Necessary</string>
     <string name="wm_message3">You can access help to start feeling better from anywhere. Although we are here to support you throughout your journey,
         it is recommended to seek professional help at serious situations.\n We are just a tool not the solution!</string>
-    <string name="wm_title4">Trust the process, Trust Yourself.\nYou are strong Enough!</string>
+    <string name="wm_title4">Trust the process, Trust Yourself.\nYou are b Enough!</string>
     <string name="wm_message4">Thank You for making an effort to start your journey towards living a life free of anxiety,
         depression and stress with \nNurture Insight</string>
     <string name="wm_getStarted_button">Get Started</string>
@@ -162,7 +162,8 @@
         <item>Name 3 things your can touch, and reach out and touch them, right now.</item>
         <item>Name 2 things your can smell or like the smell of.</item>
         <item>Take 1 slow deep breath. Now focus on your breathing, before shifting you focus of attention onto something different…
-        \nLike a pink elephant riding a bright green sea turtle across the ocean into the majestic sunset, with dolphins piloted by sloths swimming alongside, avoiding icebergs.
+        \nLike a pink elephant riding a bright green sea turtle across the ocean into the majestic sunset, with dolphins piloted by
+            sloths swimming alongside, avoiding icebergs.
         You like the idea, the more weird, creative, strange, the better…</item>
     </string-array>
 
@@ -193,6 +194,622 @@
     </string-array>
     <string name="next">Next</string>
     <string name="goback">Go Back</string>
+
+    <string name="info_stress_title">Stress</string>
+    <string name="info_stress_text">
+        Stress is our emotional and physical response to pressure. That pressure can arise from external factors including life events,
+            illness (ourselves or someone close to us) living conditions, work, home and family, study, lack of some necessity, or the demands we place on ourselves.\n\n
+        Even those events which we see as enjoyable can be stressful, such as holidays, moving home, starting a better job, pregnancy, parenthood, Christmas, etc.\n\n
+
+        <b>Thoughts</b>\n
+
+               - You may have thoughts such as:\n
+               - This is too much - I can\'t cope!\n
+               - It\'s unfair. Someone should be helping me.\n
+               - I haven\'t got enough time.\n
+               - I\'ll never finish\n
+               - I must get this done!\n
+
+         \n\n
+        <b>Feelings</b>\n
+        You may feel:\n
+
+               - Irritable\n
+               - Bad tempered\n
+               - Anxious\n
+               - Impatient\n
+               - Angry\n
+               - Depressed\n
+               - Hopeless\n
+
+         \n\n
+        <b>Physical Sensations</b>\n\n
+        The physical response to stress is caused by the body\'s adrenaline response - the body\'s alarm signal and
+            mechanism when faced with a threat.\n\n
+        You may experience sensations including:\n\n
+
+               - Heart racing\n
+               - Breathing faster\n
+               - Tense muscles\n
+               - Hot, sweaty\n
+               - Headache\n
+               - Have difficulty concentrating\n
+               - Being forgetful\n
+               - Feeling agitated or restless\n
+               - Having bladder or bowel problems\n
+
+         \n\n
+        <b>Behavior</b>\n
+        You may:\n
+
+               - Be unable to settle, constantly busy, rushing about\n
+               - Have lots of things on the go, but don\'t finish them\n
+               - Have sleep disturbances\n
+               - Begin shouting or arguing\n
+               - Ear more (or less)\n
+               - Drink/Smoke/Use drugs more to cope\n
+               - Feel the urge to cry\n
+
+         \n\n
+        <b>Identify your Triggers</b>\n
+        Try your best to identify what makes you stressed. For example, ask yourself:\n
+
+               - Where am I when I\'m feeling stressed? What am I doing? Who am I with?\n
+               - What helpful changes could I make?\n
+               - What is within my control?\n
+               - Even if there is little you can do about some situations, maybe making some small changes - in routine,
+                in the way you handle things, doing things differently, taking time out, thinking about it in a different way,
+                in getting help, seeking advice - could make all the difference.\n
+
+         \n\n
+        <b>Doing Things Differently</b>\n
+
+               - Do something different (to what you normally do)\n
+               - Make time for yourself each day to have some relaxation, fun, and enjoyment. Create a healthy balance -
+                allow time for activities which give you a sense of achievement, those that give a sense of closeness to others,
+                and of a sense of enjoyment. When stressed, it\'s often the case that we spend more time doing things that help us achieve,
+                but less of enjoyment and closeness to others. Aim for a healthy balance.\n
+               - You can use your diary to keep track of things you did and how you felt throughout that day.\n
+               - Help others\n
+               - Be with others - contact a friend, visit family\n
+               - Talk to someone\n
+               - Practice grounding techniques - look around you, what do you see, hear, smell sense? Hold a comforting object\n
+               - Physical exercise - walk, swim, go to the gym, cycle (take the stairs instead of the lift, get off the bus a stop early)\n
+               - Engage in a hobby or other interest - if you don\'t have one, find one! What have you enjoyed in the past? What have you sometimes
+                thought about doing but not got around to?\n
+               - Limit your responsibilities - it\'s okay to say no\n
+               - Write down your thoughts and feelings - get them out of your head.\n
+               - Just take one step at a time - don\'t plan too far ahead\n
+               - Use positive self-talk - encourage yourself, tell yourself: \"I can do this, I am b and capable\" - find an affirmation that
+                works for you (even if you don\'t believe it at first!). Add it to the affirmations section of the app and you can look at it when you need it.\n
+               - Do something creative - make a box of items that remind you to use the techniques that help, or put photos on paper, or write and decorate a list.\n
+               - Use imagery examples to relax and bring about future goals\n
+               - Tell yourself: \"This will pass, it\'s only temporary\". \"I\'ve got through this before, I can do it now.\" When we\'re going through
+                a tunnel and become fearful of being trapped, there\'s no point in stopping - we just have to carry on in order to reach the end of the tunnel\n
+               - Learn to communicate assertively (rather than passively or aggressively)\n
+               - Eat a healthy balanced diet, with plenty of fruit and vegetables\n
+               - Drink\n
+               - Pamper yourself - do something you really enjoy, or do something relaxing. You deserve it!\n
+
+         \n\n
+        <b>Thinking Differently</b>\n
+        Stop! Pause, take a breath, don\'t react automatically.\n
+        Ask yourself:\n
+
+               - What am I reacting to?\n
+               - What is it that I think is going to happen here?\n
+               - Is this fact or opinion?\n
+               - What\'s the worst (and best) that could happen? What\'s most likely to happen?\n
+               - How helpful is it for me to think this way?\n
+               - Am I blowing thing out of proportion?\n
+               - Is it worth it?\n
+               - How important is this really? How important will it be in 6 months\' time?\n
+               - What meaning am I giving this situation?\n
+               - Am I overestimating the threat?\n
+               - Am I underestimating my ability to cope?\n
+               - Have I got my stress-head on?\n
+               - What do I look like to other people? How am I affecting them?\n
+               - Am I mind-reading what others might be thinking?\n
+               - Am I believing I can predict the future?\n
+               - Is there another way of looking at this?\n
+               - What advice would I give someone else in this situation?\n
+               - Am I putting more pressure on myself?\n
+               - Just because I feel bad, doesn\'t mean things really are bad.\n
+               - Can I do things any differently here?\n
+               - How much can I control in this situation? What is outside of my control?\n
+               - What changes (however small) can I make to those things that I am able to control?\n
+               - What do I want or need from this person or situation? What do they want or need from me? Is there a compromise?\n
+               - What would be the consequences of responding the way I usually do?\n
+               - Is there another way of dealing with this?\n
+               - What would be the most helpful and effective action to take? (For me, for the situation, for the other person)\n
+
+         \n\n
+        For more information, please visit <a href="http://www.getselfhelp.co.uk/stress.htm">www.getselfhelp.co.uk/stress.htm</a>\n\n
+    </string>
+
+    <string name="info_selfEsteem_title">Self-Esteem</string>
+    <string name="info_selfEsteem_text">
+        We tend to go through life evaluating ourselves and other according to a scale of worth. The idea of self-esteem is the amount
+            of value that we consider we are worth. These values vary from person to person. Whilst we might rate ourselves as being of
+            little value, others might rate us much higher. If we get into the habit of thinking negatively about ourselves, then low
+            self-esteem, or placing little value on ourselves, is the result. Low self-esteem can be a result of negative life experiences,
+            particularly when we\'re young and most vulnerable. These experiences may include being criticized or judged negatively,
+            such as from a parent or school bullies. As adults, abusive relationship and very stressful life events can also cause low self-esteem.\n
+        Low self-esteem can stay low, because of our own self-critical thoughts, which can be triggered by criticism, or perceived
+            criticism (even if none is intended, we believe we are being criticized).\n\n
+
+        <b>Low Self Esteem Effects</b>\n
+        Your emotions:\n
+
+               - Depressed\n
+               - Hurt\n
+               - Angry\n
+               - Frustrated\n
+               - Anxious\n
+               - Ashamed\n
+               - Guilty\n
+               - Your thoughts:\n
+               - Negative &amp; self-critical\n
+               - I\'m so stupid\n
+               - I\'m worthless\n
+               - It\'s my fault\n
+               - I\'m a failure\n
+               - I\'m not good enough\n
+               - I\'m incompetent\n
+               - Unhelpful Thinking Habits\n
+               - Mental Filter\n
+               - Mind reading\n
+               - Self-Blame\n
+               - Internal Critic\n
+               - Compare &amp; Despair\n
+               - Should and Musts\n
+               - Black and White Thinking\n
+               - Your Behavior:\n
+               - Trying to please others\n
+               - Getting defensive when we believe we\'re being criticized\n
+               - Under-achieving or working harder to compensate and cover up our incompetence\n
+               - Acting shy and passive around others\n
+               - Avoiding certain situations and people\n
+               - Neglecting or abusing ourselves\n
+
+         \n\n
+        <b>Doing things differently</b>\n
+
+               - Communicate with others assertively\n
+               - Set achievable and realistic goals. When you achieve them, congratulate and treat yourself, and allow others to congratulate you.\n
+               - Accept compliments - say thank you, and smile.\n
+               - Act the person you want to be - play the role for long enough and you can become that person\n
+               - Visualize positive change\n
+               - Look after yourself - eat healthy, exercise, do more things you enjoy doing\n
+               - Stand, walk and talk confidently\n
+               - Change your image - hair, clothes, make-up\n
+               - Take up a new hobby or interest\n
+               - Learn a new skill\n
+               - Reward yourself for achievements and successes - however small\n
+               - Thank others - show your appreciation, and others will appreciate you\n
+               - Do things for others - help someone out. It makes us feel better about ourselves. Set limits and agree what you will and won\'t do.\n
+               - If you can do something well, let others notice - when they notice your work, their opinion of you will be raised,
+                which in turn, raises your own self-esteem\n
+
+         \n
+        <b>Thinking differently</b>\n
+        Ask yourself:\n
+
+               - What am I reacting to? What have I been thinking about here?\n
+               - Is this fact or opinion?\n
+               - Is that \'Internal Critic\' operating again?\n
+               - There\'s that parrot again! I don\'t have to listen to it.\n
+               - Am I looking at things through those gloomy specs (\'Mental Filter\') again?\n
+               - Am I blowing things out of proportion?\n
+               - How important is this really? How important will it be in 6 months\' time?\n
+               - Am I expecting something from myself that is unrealistic?\n
+               - What\'s the worst (and best) that could happen? What\'s most likely to happen?\n
+               - Am I using that negative filter? Those gloomy specs? Is there another way of looking at it?\n
+               - Am I spending time ruminating about the past or worrying about the future? What could I do right now that would help me feel better?\n
+               - Am I putting more pressure on myself, setting up expectations of myself that are almost impossible? What would be more realistic?\n
+               - Am I jumping to conclusions about what this person meant? Am I mis-reading between the lines? Is it possible that they
+                didn\'t mean that?\n
+               - What do I want or need from this person or situation? What do they want or need from me? Is there a compromise? How could I
+                act in a way that was more effective or helpful?\n
+               - Am I just focusing on the worst possible thing that could happen? What would be more realistic?\n
+               - Am I focusing on the negative, putting myself down? What would be more realistic?\n
+               - Is there another way of looking at this?\n
+               - Am I exaggerating the good aspects of others, and putting myself down? Or am I exaggerating the negative and minimizing the
+                positives? How would someone else see it? What\'s the bigger picture?\n
+               - Things aren\'t either totally white or totally black - there are shades of grey. Where is this on the spectrum?\n
+               - This is just a reminder of the past. That was then, and this is now. Even though this memory makes me feel upset, it\'s
+                not actually happening again right now.\n
+               - What would be the consequences of doing what I normally do?\n
+               - Is there another way of dealing with this? What would be the most helpful and effective action to take? (for me, for the situation,
+                for the other person)\n
+               - Be compassionate with yourself - just as you might be with someone else\n
+               - What would a carrying friend say to me in this situation?\n
+               - What is a kind and constructive way to think about how I can improve this situation?\n
+               - Whoever said human being are supposed to be perfect?\n
+               - Would a caring mother say this to her child is she wanted the child to grow and develop?\n
+               - How will I learn if it\'s not okay to make mistakes?\n
+
+         \n\n
+        <b>Finally:</b>\n
+
+               - Acknowledge your strengths - start by writing out a list of things you\'re good at, or what others have said or do say about you.\n
+               - Notice the positives - carry a notepad around, and write down whenever you notice something good or helpful that you\'ve
+                said, or done, or what others have said about you\n
+               - At the end of each day, ask yourself:\n
+               - What have I done or tried today that I\'ve never done or tried before?\n
+               - What have I done to help other people today?\n
+               - Who has helped me?\n
+               - What have I enjoyed doing today?\n
+
+         \n\n
+        For more information, please visit <a href="http://www.getselfhelp.co.uk/esteem.htm">www.getselfhelp.co.uk/esteem.htm</a>\n\n
+    </string>
+
+    <string name="info_depression_title">Depression</string>
+    <string name="info_depression_text">
+        Depression can happen to anyone - and does happen to one in four of us over our lifetimes. Different factors that make it more
+            likely to happen, include biological make-up, upbringing, or reaction to life events. What keeps it going through, is how we deal
+            with those things. The way we think and we feel. Depression is often accompanied by other feelings such as guilt, shame, anger and anxiety.\n\n
+
+        <b>Thoughts</b>\n
+        People who are depressed tend to think very negatively about themselves, the future and the world around them.\n
+
+               - It can be like seeing life through \'gloomy glasses\'\n
+               - Everything is hopeless - nothing can change\n
+               - I\'m useless, worthless\n
+               - It\'s all my fault\n
+               - The world is a terrible place - everything goes wrong\n
+               - We can dwell on these thoughts repeatedly, mulling over things asking ourselves why, thinking regretful things about the past,
+                what we should or shouldn\'t have done.\n
+
+         \n\n
+        <b>Physical Sensations</b>\n
+        You may experience:\n
+
+               - Tiredness, fatigue, lethargy\n
+               - Difficulty concentrating or remembering\n
+               - Sleep changes (sleep more or less)\n
+               - Eating changes (eat more or less)\n
+               - Lose interest in hobbies, activities, sex\n
+
+         \n\n
+        <b>Behavior</b>\n
+        Because of the tiredness, difficulty sleeping and eating, and negative style of thinking, we tend to do less and less. We stop
+            doing the things we used to do and enjoy. It could get so bad that we can\'t even go to work, or do things at home. We
+            want to stay in bed, or stay at home doing very little. We might isolate ourselves from friends and family.\n\n
+         \n\n
+        <b>Breaking the Cycle</b>\n
+        When we\'re depressed, we can feel particularly tired and lack any motivation to do anything. Just increasing our activity
+            and exercise levels can have an enormous impact on our mood as it stimulates the body to produce natural anti-depressants. The benefits include:\n\n
+
+               - Making us feel better about ourselves\n
+               - Making us feel less tired\n
+               - Motivating us to do more\n
+               - Improving our ability to think more clearly\n
+               - Helping us think about something other than focusing on our unhelpful thoughts\n
+               - Using up the adrenaline resources created by anxiety and anger\n
+               - Giving us a sense of achievement\n
+               - Enjoyment\n
+               - Being with other people\n
+               - Stimulating the body to produce natural anti-depressants\n
+               - Making us generally more healthy\n
+               - Stimulating our appetite\n
+               - Schedule activities that give you a sense of:\n
+               - Achievement\n
+               - Closeness to others\n
+               - Enjoyment\n
+
+         \n\n
+        <b>Extra tips:</b>\n
+
+               - Use an Activity Diary\n
+               - It\'s important to get a healthy balance of activities which give you a sense of achievement, enjoyment and being close to others.
+                Choose activities which are important to you, have positive meanings, or are purposeful, and you might want to plan rest periods too.\n
+               - Keep goals realistic - set achievable limits. Eg. Aim to walk for 15 minutes rather than a half-marathon, or was the dishes
+                rather than spring clean the whole house. Don\'t set yourself up to fail! You can build up your activity over time.\n
+               - Reward yourself! When you\'re doing well, or remembering to pace yourself doing more of what helps, or doing less of what
+                doesn\'t - give yourself a treat, a pat on the back.\n
+
+         \n\n
+        <b>Doing things differently</b>\n
+        If lack of activity and tiredness is helping to maintain our negative thinking, and therefore keeping us depressed, then doing more
+            (in spite of feeling tired and depressed) will help us feel better.\n
+
+               - Do something different (to what you normally do)\n
+               - Pause, take a breath\n
+               - Mindfulness - learn Mindful Breathing\n
+               - Focus your attention fully on another activity - Mindful activity\n
+               - Relaxation techniques - try lots and find one that works for you\n
+               - Put on some music - sing and dance along, or just listen attentively (use music that is likely to help you feel your desired
+                emotion - avoid sad songs if you\'re depressed)\n
+               - Help others\n
+               - Be with others - contact a friend, visit family\n
+               - Talk to someone\n
+               - Grounding techniques - look around you, what do you see, hear, smell, sense? Hold a comforting object\n
+               - Physical exercise - walk, swim, go to the gym, cycle\n
+               - Engage in a hobby or other interest - if you don\'t have one, find one!\n
+               - What have you enjoyed in the past? What have you sometimes thought about doing but not got around to?\n
+               - Write down your thoughts and feelings - get them out of your head\n
+               - Just take one step at a time - don\'t plan too far ahead\n
+               - Pamper yourself - do something you really enjoy, or do something relaxing\n
+               - Positive self-talk - encourage yourself, tell yourself: I can do this, I am b and capable - find an affirmation
+                that works for you (even if you don\'t believe it at first!). Write it down and memorize it for when you need it.\n
+               - Do something creative - make a box of items that remind you to use the techniques that help, or put photos on paper, or write
+                and decorate a list\n
+               - Use safe place imagery\n
+               - Tell yourself: \'This will pass, it\'s only temporary\'. \'I\'ve got through this before, I can do it
+                now\'. When we\'re going through a tunnel and become fearful of being trapped, there\'s no point in stopping
+                - we just have to carry on in order to reach the end of the tunnel. That light is there, and waiting.\n
+               - Visualize yourself enjoying doing the things you used to enjoy doing, or would like to enjoy doing, and successfully doing
+                the things you need to do.\n
+
+         \n\n
+        <b>Thinking Differently</b>\n
+
+               - STOP! Pause, take a breath\n
+               - Ask yourself\n
+               - What am I reacting to? What have I been thinking about here?\n
+               - Am I blowing things out of proportion?\n
+               - Is this fact or opinion?\n
+               - How important is this really? How important will it be in 6 months\' time?\n
+               - Am I expecting something from this person or situation that is unrealistic?\n
+               - What\'s the worst (and best) that could happen? What\'s most likely to happen?\n
+               - Am I using that negative filter? Those gloomy specs? Is there another way of looking at it?\n
+               - What advice would I give to someone else in this situation&gt;\n
+               - Am I spending time ruminating about the past or worrying about the future? What could I do right now that would help me feel better?\n
+               - Am I putting more pressure on myself, setting up expectations of myself that are almost impossible? What would be more realistic?\n
+               - Am I jumping to conclusions about what this person meant? Am I mis-reading between the lines? Is it possible that they didn\'t mean that?\n
+               - What do I want or need from this person or situation? What do they want or need from me? Is there a compromise?\n
+               - Am I just focusing on the worst possible thing that could happen? What would be more realistic?\n
+               - Is there another way of looking at this?\n
+               - Am I exaggerating the good aspects of others, and putting myself down? Or am I exaggerating the negative and minimizing
+                the positives? How would someone else see it? What\'s the bigger picture?\n
+               - Things aren\'t either totally white or totally black - there are shades of grey. Where is this on the spectrum?\n
+               - This is just a reminder of the past. That was then, and this is now. Even though this memory makes me feel upset, it\'s
+                not actually happening again right now.\n
+               - What would be the consequences of doing what I normally do?\n
+               - Is there another way of dealing with this? What would be the most helpful and effective action to take? (For me, for the situation,
+                for the other person)\n
+               - Visualization: Breathe in orange (for positive energy) and breathe out blue/black (for negative energy).\n
+
+         \n
+        For more information, please visit <a href="http://www.getselfhelp.co.uk/depression.htm">www.getselfhelp.co.uk/depression.htm</a>\n\n
+    </string>
+
+    <string name="info_anger_title">Anger</string>
+    <string name="info_anger_text">
+        Anger is a result of thinking that we have been unfairly treated or disrespected, or that others have broken or fallen short of our rules,
+            standards or expectations, and we won\'t stand for it.\n\n
+        Thinking this way leads us to feel angry, which stimulates the body\'s adrenaline response which is our body\'s way of helping
+            us to cope with either fighting or running away (\'fight or flight\' response). We respond to those thoughts and feelings,
+            by acting, or feeling an urge to act, in threatening or aggressive ways.\n\n
+         \n\n
+        <b>Thoughts</b>\n
+        Thoughts that often occur:\n
+
+               - I\'m being treated unfairly\n
+               - I\'m being disrespected\n
+               - They\'re breaking a rule or standard\n
+               - I won\'t stand for it\n
+
+         \n\n
+        <b>Physical Sensations</b>\n
+
+               - When there is real, or we believe there is a real, threat or danger, our body\'s automatic survival mechanism kicks in very quickly.
+                This helps energize us to fight or run away (\'fight or flight response). The action urge associate with anger is the urge to attack.\n
+               - We will notice lots of physical sensations, which might include:\n
+               - Heart racing or pounding\n
+               - Breathing quickly\n
+               - Tense muscles\n
+               - Shaking\n
+               - Hot, sweating\n
+               - Light-headed\n
+               - Stomach churning or butterflies\n
+               - Fist or teeth clenching\n
+               - Physical urge to go towards whatever is making us angry\n
+
+         \n\n
+        <b>Behavior</b>\n
+        Behavior might include:\n
+
+               - Staring and facial expressions\n
+               - Aggressive body posture\n
+               - Moving towards the source of anger\n
+               - Attacking\n
+               - Lashing out (or an urge to lash out)\n
+               - Arguing\n
+               - Shouting\n
+               - Running or storming away\n
+               - Not talking\n
+               - Sulking\n
+
+         \n\n
+        We all feel angry sometimes. Some people tend to become angry easily (a short fuse) and some have problems controlling their anger.
+            Anger has consequences, and they often involve hurting other people. Anger can cause problems in our personal lives, and affect work
+            and study. After an angry outburst, we can think very critically of ourselves and our actions, leading us to feel guilty and ashamed,
+            which lowers our mood. This can result in our withdrawing from others and not wanting to do anything.\n\n
+
+        <b>Identify your triggers</b>\n
+
+               - What or when are the times when you are more likely to get angry? If you can see the patterns, then maybe you can do something
+                about those situations, and do something different.\n
+               - For example, do you get angry:\n
+               - Behind the wheel?\n
+               - At work?\n
+               - When stressed?\n
+               - With certain people?\n
+               - When you\'ve been drinking or using other substances?\n
+
+         \n\n
+        <b>When you feel angry</b>\n
+
+               - STOP! Pause, take breath don\'t react automatically\n
+               - Walk away - you can come back and talk later\n
+               - Visualize yourself dealing with the situation in a calm, non-aggressive but assertive way, respecting the rights and opinion of all others involved.\n
+               - #Ask yourself\n
+               - What am I reacting to?\n
+               - What is it that\'s really pushing my buttons here?\n
+               - Is this fact or opinion?\n
+               - Am I blowing things out of proportion?\n
+               - How important is this really?\n
+               - How important will it be in 6-month time?\n
+               - What harm has actually been done?\n
+               - Am I expecting anything from this person or situation that is unrealistic?\n
+               - What\'s the worst (and best) that could happen?\n
+               - Am I jumping to conclusion about what this person meant? Am I mis-reading between the lines? Is it possible that they didn\'t mean that?\n
+               - What do I want or need from this person or situation? What do they want or need from me? Is there a compromise?\n
+               - What would be the consequences of responding angrily?\n
+               - Is there another way of dealing with this? What would be most helpful and effective action to take? (For me, for the situation,
+                for the other person)\n
+
+         \n
+        <b>Dealing with physical sensations</b>\n
+        Counteract the body\'s adrenaline response - it\'s readiness of action, by using that energy in a healthy way.
+            For example, try:\n\n
+
+               - Practice calming or mindful breathing - this one act alone will help reduce the physical sensations, emotions and
+                intensity of thoughts.\n
+               - Visualization: breathe in blue (for calm) and / or green (for balance), and breathe out red.\n
+               - Go for a walk, run or cycle, or may be do some gardening or housework.\n
+
+         \n
+        For more information, please visit <a href="http://www.getselfhelp.co.uk/anger.htm">www.getselfhelp.co.uk/anger.htm</a>\n\n
+    </string>
+
+    <string name="info_anxiety_title">Anxiety</string>
+    <string name="info_anxiety_text">
+        Anxiety is the body\'s way of responding to being way of responding to being in danger. Adrenaline is rushed into our
+            bloodstream to enable us to run away of fight. This happens weather the danger is real or. Is the body\'s alarm and
+            survival mechanism it works so well, that it often kicks in when it\'s not needed - when the danger, so that\'s
+            enough to trigger the system to go, go, go! People who get anxious tend to get into scanning mode - where they\'re
+            constantly on the outlook for danger, hyper-alert to any of the signals, and make it more likely that the alarm system will be activated.\n\n
+         \n\n
+        <b>Thoughts</b>\n
+        Thoughts that often occurs:\n
+
+               - I am in danger right now.\n
+               - The worst possible scenario is going to happen.\n
+               - I won\'t be able to cope with it.\n
+
+         \n\n
+        <b>Physical sensation</b>\n
+        When there is a real, or when we believe there is a real threat or danger, our body automatic survival mechanism kicks in very quickly.
+            This helps to energize us to fight or run away (\'fight or flight\' response). The action urge associated with anxiety is to escape or avoid.\n\n
+        We will therefore notice lots of physical sensations, which might include:\n
+
+               - Heart racing - This helps to take the blood to where it is most needed - the legs so that we can run faster (flight):
+                the arms so that we can hit out (fight); The lungs to increase stamina. At the same time blood is taken from the places it is not
+                needed for example fingers, toes tingling. Coldness and numbness.\n
+               - Breathing gets faster - this helps the bloodstream to carry oxygen to the arms, legs and lungs this will give us more power.
+                The side effects may include chest pain, breathlessness and a choking feeling. As there is a slight drop in the blood and oxygen
+                being sent to the brain, we may feel dizzy or light headed, we may experience blurred vision.\n
+               - Muscle\'s tense and prepare - the large skeletal muscles tense and create power, this may cause pain aching and shaking.\n
+               - Sweating - sweating helps to cool the muscles and the body. It helps to stop them from overheating.\n
+               - Pupils dilate - this lets more light into eyes so that overall vision improves. Side effects may include sensitivity to light
+                or spots before our eyes.\n
+               - Digestive system slows down - these are not important while in sanger and not important while in danger and so are slows down
+                then the saved energy goes to where it is most needed. Side effects may include nausea butterflies and a dry mouth.\n
+               - More alert - we will be looking for danger much less able to concentrate on anything else. We\'re waiting for something
+                for something to happen.\n
+
+         \n
+        <b>Behavior</b>\n
+        Behavior might include:\n
+
+               - Avoiding people or places\n
+               - Not going out\n
+               - Going to certain places at certain times, e.g., shopping at smaller shops, at less buying time\n
+               - Only going somewhere with something else\n
+               - Escape, leave early\n
+               - Going to the feared situation, but use coping behaviors to get you through, such as:\n
+               - Self-talk\n
+               - Holding a drink\n
+               - Smoke more\n
+               - Fiddling with clothes or handbag\n
+               - Avoiding eye contact with others\n
+               - Having an escape plan, medication\n
+
+         \n\n
+        These are called \'safety behaviors. Safety behavior can also help to keep your anxiety going. Whist you depend on them to
+            help you cope, you don\'t get to find out that without them, the anxiety would reduce and go away on its own. Whilst avoiding
+            people or situations might help you feel better at that time, it doesn\'t make your anxiety any better over a longer period
+            if you are frightened that your anxiety will make you pass out or vomit in the supermarket aisle, you won\'t find out that
+            that won\'t actually happen, because you don\'t go. So, the belief that it will happen remains, along with anxiety.\n\n
+
+        <b>Identify your triggers</b>\n
+
+               - What or when are the times you more likely to get anxious? If you can see the patterns, then maybe you can do something
+                about those situations, and do something different.\n
+               - Certain places?\n
+               - Certain people?\n
+               - Seeing certain things?\n
+               - Hearing certain things?\n
+               - Hiking ahead to certain situations?\n
+
+         \n\n
+        <b>Doing things differently</b>\n
+        It avoiding situation and using safety behaviors helps to maintain our anxiety over the long-term, then it makes sense that
+            learning to confront it might be uncomfortable in the short-term, but it will help us take control and this will help us feel better over time.\n\n
+        Make a plan to gradually do the things you normally avoid going instance if you normally avoid going out to big social events
+            at work, then start with a small dinner at a restaurant where you feel more comfortable, with few close colleagues - not
+            the annual Christmas party! Whilst it will feel uncomfortable, you will learn that you can enjoy these events, and the anxious
+            feelings will gradually go away. You can use breathing techniques or self- talk (challenging your unhelpful thoughts and repeating
+            more realistic thoughts) to get you through these times. If you normally depend on safety behaviors to help you cope. Then list them
+            in order of importance, then start bud roping or not doing the least important, and gradually work your way up over time.\n\n
+         \n\n
+        <b>When feeling anxious </b>\n
+
+               - Stop! Pause, take a breath, don\'t react automatically\n
+               - # Ask yourself.\n
+               - What am I reacting to?\n
+               - What is it that I think is going to happen here?\n
+               - Is this fact or opinion?\n
+               - What\'s the worst (and best) thing that could happen? what\'s most likely to happen here?\n
+               - Am I blowing things out of proportion?\n
+               - How important is this really? How important will this be in 6 months\' time?\n
+               - Am I overestimating the danger?\n
+               - Am I underestimating my ability to cope?\n
+               - Am I mind-reading what others might be thinking?\n
+               - Am I believing I can predict the future?\n
+               - Is there another way of looking at this?\n
+               - What advice I give someone else in this situation?\n
+               - Am I putting more pressure on myself?\n
+               - Just because I feel bad doesn\'t mean things really are bad\n
+               - What do I want or need from this person or situation? What do they want or need from me? Is there a compromise?\n
+               - What would be the consequences of responding the way I usually do?\n
+               - Is there another way of dealing with this? What would be the most helpful and effective action to take? (For me, for the situation, for others)\n
+               - Visualize yourself successfully coping with anxious about. See it through to a successful completion.
+         \n\n
+        <b>Dealing with physical sensation</b>\n
+
+               - Counteract the body\'s adrenaline response - it\'s readiness for action, by using that energy in a healthy way.\n
+               - Practice calming or mindful breathing - this one act alone will help the physical sensations, emotion and intensity of thoughts.\n
+               - Visualization: breath in blue (for calm) and breath in red.\n
+               - Go for a walk, run or cycle, or may be do some gardening or household\n
+
+         \n\n
+        For more information, please visit <a href="http://www.getselfhelp.co.uk/anxiety.htm">www.getselfhelp.co.uk/anxiety.htm</a>\n\n
+    </string>
+
+    <string name="journaling_form_title">Write on your Journal</string>
+    <string name="journaling_form_q1">What are you grateful for today, Why?</string>
+    <string name="journaling_form_q1_hint">I am grateful for…</string>
+    <string name="journaling_form_q2">Write about your day today…</string>
+    <string name="journaling_form_q2_hint">Today…</string>
+    <string name="journaling_form_q3">What do you want to remember forever about today?</string>
+    <string name="journaling_form_q3_hint">I want to remember…</string>
+    <string name="journaling_form_q4">What could have been improved today?</string>
+    <string name="journaling_form_q4_hint">… could have been improved today.</string>
+    <string name="journaling_form_q5">Write anything that comes to your mind (Brain Dump Journaling): </string>
+    <string name="journaling_form_q5_hint">Brain Dump…</string>
+    <string name="save_journal_button">Save Journal</string>
+    <string name="saved_journal_title">Journal Memory: 01 Jan, 2021</string>
+    <string name="journal_title">Nurture Insight - Journal</string>
+    <string name="journal_message"> Pick a date to read or write the Journal </string>
+    <string name="journal_answer_notFound">Journal not Found!! No Journal writings have been recorded for this date.</string>
+    <string name="journal_error">Please answer every question for successful Journaling Attempt.
+        If you wish not to write for certain questions then Type a hyphen (-) </string>
+
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -282,9 +899,5 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

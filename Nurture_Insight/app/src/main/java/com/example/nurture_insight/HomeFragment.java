@@ -211,7 +211,8 @@ public class HomeFragment extends Fragment {
         Integer[] articlesToDisplay = {R.drawable.article1,
                 R.drawable.article2,
                 R.drawable.article3,
-                R.drawable.article4};
+                R.drawable.article4,
+                R.drawable.article1};
 
 
         articles = new ArrayList<>();

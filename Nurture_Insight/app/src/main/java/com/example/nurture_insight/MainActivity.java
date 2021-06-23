@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.nurture_insight.Prevalent.Prevalent;
+import com.example.nurture_insight.journal.JournalFragment;
 import com.luseen.spacenavigation.SpaceItem;
 import com.luseen.spacenavigation.SpaceNavigationView;
 import com.luseen.spacenavigation.SpaceOnClickListener;
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new ChatCommunityFragment();
                 }
                 else if(itemIndex == 3){
-                    selectedFragment = new ScrollingFragment();
+                    selectedFragment = new JournalFragment();
                 }
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_fragmentLayout, selectedFragment).commit();

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="210dp"
+android:layout_margin="10dp"
+android:elevation="20dp"
+app:cardCornerRadius="20dp">
+
+<ImageView
+    android:id="@+id/each_habit_image"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:src="@drawable/habit_1" />
+
+</androidx.cardview.widget.CardView>

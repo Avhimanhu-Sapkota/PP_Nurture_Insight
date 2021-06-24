@@ -21,5 +21,6 @@
     <color name="ni_dark_red">#8F0000</color>
     <color name="ni_purple">#5E17EB</color>
     <color name="ni_tur_blue">#03AB8D</color>
-
+    <color name="ni_yellow">#FBB040</color>
+    <color name="ni_purple_blue">#262262</color>
 </resources>

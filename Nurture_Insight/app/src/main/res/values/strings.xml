@@ -809,7 +809,18 @@
     <string name="journal_answer_notFound">Journal not Found!! No Journal writings have been recorded for this date.</string>
     <string name="journal_error">Please answer every question for successful Journaling Attempt.
         If you wish not to write for certain questions then Type a hyphen (-) </string>
-
+    <string name="habit_title">Nurture Insight - Habit Tracker</string>
+    <string name="habit_tracker_message">Select Habits and Track them to see your Progress over time.</string>
+    <string name="add_habit_button">Add Habit</string>
+    <string name="remove_habit_button">Remove Habit</string>
+    <string name="habit_tracker_calendar_button">Habit Tracker - Calendar</string>
+    <string name="add_habit_title">Add a New Habit</string>
+    <string name="new_habit_message">Tap on the habit to add it to your daily tracking schedule.</string>
+    <string name="habit_add_msg">Do want to add this habit to your daily tracking schedule?</string>
+    <string name="habit_added_msg">Great! You have added a new Habit to your daily Tracking schedule.</string>
+    <string name="habit_completed_msg">Did you perform this Habit today?</string>
+    <string name="habit_tracker_message_2">Please Pick a date to see habits your tracked on that date.</string>
+    <string name="habit_tracker_message_3"> ------ Habits Tracked ------ </string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

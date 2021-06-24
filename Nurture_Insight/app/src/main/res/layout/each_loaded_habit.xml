@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="143dp"
+    android:layout_marginTop="5dp"
+    android:elevation="20dp"
+    app:cardCornerRadius="20dp">
+
+    <ImageView
+        android:id="@+id/habit_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/habit_background" />
+
+    <TextView
+        android:id="@+id/each_habit_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginRight="25dp"
+        android:fontFamily="@font/alegreya_sans_bold"
+        android:gravity="center"
+        android:text="HABIT NAME"
+        android:textColor="@color/ni_yellow"
+        android:textSize="25sp" />
+
+</androidx.cardview.widget.CardView>

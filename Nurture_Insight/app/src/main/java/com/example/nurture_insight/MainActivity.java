@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.nurture_insight.Prevalent.Prevalent;
+import com.example.nurture_insight.habit_tracker.habit_tracker_home;
 import com.example.nurture_insight.journal.JournalFragment;
 import com.luseen.spacenavigation.SpaceItem;
 import com.luseen.spacenavigation.SpaceNavigationView;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.main_navSpace);
         navigationView.initWithSaveInstanceState(savedInstanceState);
         navigationView.addSpaceItem(new SpaceItem("", R.drawable.ic_baseline_home_24));
-        navigationView.addSpaceItem(new SpaceItem("", R.drawable.ic_baseline_explore_24));
+        navigationView.addSpaceItem(new SpaceItem("", R.drawable.ic_baseline_track_changes_24));
         navigationView.addSpaceItem(new SpaceItem("", R.drawable.ic_baseline_forum_24));
         navigationView.addSpaceItem(new SpaceItem("", R.drawable.ic_baseline_import_contacts_24));
 
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new HomeFragment();
                 }
                 else if(itemIndex == 1){
-                    selectedFragment = new ScrollingFragment();
+                    selectedFragment = new habit_tracker_home();
                 }
                 else if(itemIndex == 2){
                     selectedFragment = new ChatCommunityFragment();

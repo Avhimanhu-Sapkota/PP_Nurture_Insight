@@ -11,6 +11,7 @@ import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -21,7 +22,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.nurture_insight.Prevalent.Prevalent;
+import com.example.nurture_insight.instant_help.live_in_present;
 import com.example.nurture_insight.login_signup.LoginActivity;
+import com.example.nurture_insight.therapist_dashboard.therapistDashboard;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -45,11 +48,7 @@ public class TherapistProfileFragment extends Fragment {
     TextView username;
     CircleImageView profileImage;
     ImageView logout;
-    Uri imageUri;
-    String myUrl = "";
-    StorageReference storageProfilePicRef;
-    StorageTask uploadTask;
-    String checker ="";
+    Button therapistDashboardButton;
 
     @Nullable
     @Override
@@ -61,6 +60,7 @@ public class TherapistProfileFragment extends Fragment {
         username = (TextView)rootView.findViewById(R.id.therapistProfile_username);
         profileImage = (CircleImageView)rootView.findViewById(R.id.therapistProfile_image);
         logout = (ImageView)rootView.findViewById(R.id.therapistProfile_imgView_logout);
+        therapistDashboardButton = (Button) rootView.findViewById(R.id.therapist_dashboard_button);
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,31 +71,18 @@ public class TherapistProfileFragment extends Fragment {
             }
         });
         username.setText(Prevalent.currentOnlineUser.getUsername());
-        Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile_picture).into(profileImage);
 
-        profileImage.setOnClickListener(new View.OnClickListener() {
+        therapistDashboardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog dialog = new AlertDialog.Builder(getContext()).create();
-                dialog.setTitle(getResources().getString(R.string.profile_Title));
-                dialog.setMessage(getResources().getString(R.string.profile_picChangeMessage));
-                dialog.setCancelable(false);
-                dialog.setButton(DialogInterface.BUTTON_POSITIVE, "No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int buttonId) {
+                Fragment fragment = new therapistDashboard();
 
-                    }
-                });
-                dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int buttonId) {
-                        CropImage.activity(imageUri)
-                                .setAspectRatio(1,1)
-                                .start(rootView.getContext(), TherapistProfileFragment.this);
-                    }
-                });
-                dialog.setIcon(android.R.drawable.ic_dialog_alert);
-                dialog.show();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_fragmentLayout, fragment );
+                transaction.commit();
             }
         });
+
         return rootView;
     }
 }

@@ -102,10 +102,6 @@ public class habit_tracker_home extends Fragment {
                                 trackedHabitList.add(model);
                             }
 
-                            for(int i=0; i<trackedHabitList.size(); i++){
-                                Log.d("UNIQUENAME", "onDataChange: " + trackedHabitList.get(i));
-                            }
-
                             layoutManager = new LinearLayoutManager(getContext());
                             trackedHabitsRV.setLayoutManager(layoutManager);
                             trackedHabitsAdapter = new TrackedHabitsAdapter(getContext(), trackedHabitList);

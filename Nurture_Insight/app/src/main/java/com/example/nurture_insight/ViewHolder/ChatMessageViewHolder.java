@@ -15,7 +15,6 @@ public class ChatMessageViewHolder extends RecyclerView.ViewHolder implements Vi
 
     public TextView chatMessage, chatMessageDate, chatMessageUsername;
     public ItemClickListener listener;
-    public ImageView saveButton, deleteButton;
 
     public ChatMessageViewHolder(@NonNull View itemView) {
         super(itemView);

@@ -86,7 +86,7 @@
             android:layout_marginTop="15dp"
             app:layout_constraintStart_toEndOf="@+id/main_icon_6"
             app:layout_constraintTop_toBottomOf="@+id/main_icon_3"
-            app:srcCompat="@drawable/calm_down" />
+            app:srcCompat="@drawable/explore" />
 
         <ImageView
             android:id="@+id/main_icon_5"
@@ -108,7 +108,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/main_icon_7"
             app:layout_constraintTop_toBottomOf="@+id/main_icon_4"
-            app:srcCompat="@drawable/breathing_control" />
+            app:srcCompat="@drawable/settings" />
 
         <ImageView
             android:id="@+id/main_icon_6"

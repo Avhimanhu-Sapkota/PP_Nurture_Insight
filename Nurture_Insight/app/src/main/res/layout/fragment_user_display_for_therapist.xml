@@ -8,10 +8,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".habit_tracker.add_new_habit">
+        tools:context=".therapist_dashboard.userDisplayForTherapist">
 
         <ImageView
-            android:id="@+id/add_habit_backButton"
+            android:id="@+id/tdAddUser_backButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/back"
@@ -25,12 +25,12 @@
             android:layout_width="297dp"
             android:layout_height="42dp"
             android:layout_marginStart="10dp"
-            app:layout_constraintStart_toEndOf="@+id/add_habit_backButton"
+            app:layout_constraintStart_toEndOf="@+id/tdAddUser_backButton"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/header" />
 
         <TextView
-            android:id="@+id/habit_home_title"
+            android:id="@+id/tdAddUser_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -38,7 +38,7 @@
             android:layout_marginTop="25dp"
             android:fontFamily="@font/alegreya_sans_bold"
             android:gravity="center"
-            android:text="@string/add_habit_title"
+            android:text="@string/therapist_dashboard_add_user"
             android:textColor="@color/ni_blue"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +47,7 @@
 
 
         <TextView
-            android:id="@+id/add_new_habit_message"
+            android:id="@+id/tdAddUser_message"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -56,21 +56,21 @@
             android:layout_marginEnd="30dp"
             android:fontFamily="@font/alegreya_sans"
             android:gravity="center"
-            android:text="@string/new_habit_message"
+            android:text="@string/tdAddUser_message"
             android:textColor="@color/ni_blue"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/habit_home_title" />
+            app:layout_constraintTop_toBottomOf="@+id/tdAddUser_title" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/new_habits_recyclerView"
+            android:id="@+id/tdAddUser_recyclerView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_new_habit_message" />
+            app:layout_constraintTop_toBottomOf="@+id/tdAddUser_message" />
 
         <ImageView
             android:id="@+id/pageDivider"
@@ -83,9 +83,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/new_habits_recyclerView"
+            app:layout_constraintTop_toBottomOf="@+id/tdAddUser_recyclerView"
             app:srcCompat="@drawable/page_divider" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.core.widget.NestedScrollView>

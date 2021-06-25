@@ -19,7 +19,7 @@
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/depression_title"
-            app:srcCompat="@drawable/meditate_2" />
+            app:srcCompat="@drawable/depression1" />
 
         <TextView
             android:id="@+id/depression_title"

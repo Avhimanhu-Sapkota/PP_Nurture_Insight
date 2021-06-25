@@ -208,11 +208,11 @@ public class HomeFragment extends Fragment {
 
 
         recyclerViewArticles = (RecyclerView) rootView.findViewById(R.id.recyclerViewArticles);
-        Integer[] articlesToDisplay = {R.drawable.article1,
-                R.drawable.article2,
-                R.drawable.article3,
-                R.drawable.article4,
-                R.drawable.article1};
+        Integer[] articlesToDisplay = {R.drawable.anger2,
+                R.drawable.anxiety2,
+                R.drawable.depression2,
+                R.drawable.self_esteem2,
+                R.drawable.stress2};
 
 
         articles = new ArrayList<>();

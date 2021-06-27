@@ -16,6 +16,16 @@
         app:layout_constraintTop_toBottomOf="@+id/cdi3_message1"
         app:srcCompat="@drawable/stayback" />
 
+    <ImageView
+        android:id="@+id/cdi3_backButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/cdi3_message1"
         android:layout_width="365dp"
@@ -27,7 +37,7 @@
         android:textColor="@color/ni_purple"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cdi3_backButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

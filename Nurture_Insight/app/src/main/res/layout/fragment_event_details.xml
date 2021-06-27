@@ -8,10 +8,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".therapist_dashboard.therapistDashboard">
+        tools:context=".therapist_dashboard.EventDetailsFragment">
 
         <ImageView
-            android:id="@+id/therapist_dashboard_backButton"
+            android:id="@+id/eventDetails_backButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/back"
@@ -24,8 +24,8 @@
             android:id="@+id/main_imgView_header_txt"
             android:layout_width="297dp"
             android:layout_height="42dp"
-            android:layout_marginStart="45dp"
-            app:layout_constraintStart_toEndOf="@+id/therapist_dashboard_backButton"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toEndOf="@+id/eventDetails_backButton"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/header" />
 
@@ -37,133 +37,129 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_imgView_header_txt"
-            app:srcCompat="@drawable/background_2" />
+            app:srcCompat="@drawable/background_7" />
 
         <TextView
-            android:id="@+id/therapist_dashboard_title"
+            android:id="@+id/eventDetails_title"
             android:layout_width="267dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/alegreya_sans_bold"
             android:gravity="center"
-            android:text="@string/therapist_dashboard_title"
+            android:text="Event Title"
             android:textColor="@color/ni_blue"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_imgView_background" />
 
-        <Button
-            android:id="@+id/td_add_patient"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/sos_button"
-            android:text="@string/therapist_dashboard_add_user"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/ni_blue"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/therapist_dashboard_title" />
-
         <TextView
-            android:id="@+id/td_message1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="@font/alegreya_sans_bold"
-            android:gravity="center"
-            android:text="@string/td_message1"
-            android:textColor="@color/ni_blue"
-            android:textSize="22sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/td_add_patient"/>
-
-        <TextView
-            android:id="@+id/td_message2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="@font/alegreya_sans"
-            android:gravity="center"
-            android:text="@string/td_message2"
-            android:textColor="@color/ni_blue"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/td_message1"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/td_recyclerView"
+            android:id="@+id/eventDetails_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/alegreya_sans"
+            android:text="Event date and time"
+            android:textColor="@color/ni_blue"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/td_message2" />
+            app:layout_constraintTop_toBottomOf="@+id/eventDetails_title" />
 
-        <Button
-            android:id="@+id/td_add_event_button"
-            android:layout_width="300dp"
+        <TextView
+            android:id="@+id/eventDetails_location"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/alegreya_sans"
+            android:text="Event Location"
+            android:textColor="@color/ni_blue"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventDetails_date" />
+
+        <TextView
+            android:id="@+id/eventDetails_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/alegreya_sans"
+            android:text="Event description will be here"
+            android:textColor="@color/ni_blue"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventDetails_location" />
+
+        <TextView
+            android:id="@+id/eventDetails_host"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/alegreya_sans"
+            android:text="Host Name"
+            android:gravity="right"
+            android:textColor="@color/ni_blue"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventDetails_description"
+            tools:ignore="RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/eventDetails_host_contact"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/alegreya_sans"
+            android:text="Host Contact"
+            android:gravity="right"
+            android:textColor="@color/ni_blue"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventDetails_host"
+            tools:ignore="RtlHardcoded" />
+        <Button
+            android:id="@+id/eventDetails_delete_event"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/sos_button"
-            android:text="@string/td_create_event"
+            android:text="@string/deleteEvent"
             android:textColor="@color/white"
             app:backgroundTint="@color/ni_blue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/td_recyclerView" />
-
-        <LinearLayout
-            android:id="@+id/td_slider_linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical"
-            android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/td_add_event_button">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/td_event_title"
-                android:textColor="@color/ni_blue"
-                android:fontFamily="@font/alegreya_sans_bold"
-                android:textSize="20sp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/td_event_recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp" />
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@+id/eventDetails_host_contact" />
 
         <ImageView
-            android:id="@+id/pageDivider"
+            android:id="@+id/eventDetails_pageDivider"
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:layout_marginStart="100dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="45dp"
             android:layout_marginEnd="100dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="45dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/td_slider_linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/eventDetails_delete_event"
             app:srcCompat="@drawable/page_divider" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

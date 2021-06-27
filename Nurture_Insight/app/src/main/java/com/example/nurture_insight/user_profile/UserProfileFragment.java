@@ -1,4 +1,4 @@
-package com.example.nurture_insight;
+package com.example.nurture_insight.user_profile;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.nurture_insight.Prevalent.Prevalent;
+import com.example.nurture_insight.R;
 import com.example.nurture_insight.login_signup.LoginActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;

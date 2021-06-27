@@ -1,21 +1,17 @@
-package com.example.nurture_insight;
+package com.example.nurture_insight.chat_community;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,15 +21,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nurture_insight.Model.Chat_Message;
-import com.example.nurture_insight.Model.Mood_Tracker;
-import com.example.nurture_insight.Model.Save_Chat_Message;
-import com.example.nurture_insight.Model.Users;
 import com.example.nurture_insight.Prevalent.Prevalent;
-import com.example.nurture_insight.ViewHolder.ChatMessageViewHolder;
-import com.example.nurture_insight.login_signup.LoginActivity;
-import com.example.nurture_insight.login_signup.SignUpActivity;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.example.nurture_insight.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -47,7 +36,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 
 public class ChatCommunityFragment extends Fragment {
 

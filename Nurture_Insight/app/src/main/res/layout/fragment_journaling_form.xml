@@ -11,14 +11,23 @@
         tools:context=".journal.journaling_form">
 
         <ImageView
-            android:id="@+id/main_imgView_header_txt"
-            android:layout_width="389dp"
-            android:layout_height="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/write_journal_backButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/back"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="2dp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/main_imgView_header_txt"
+            android:layout_width="297dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toEndOf="@+id/saved_journal_backButton"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/header" />
-
         <ImageView
             android:id="@+id/main_imgView_background"
             android:layout_width="0dp"

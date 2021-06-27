@@ -1,12 +1,9 @@
 package com.example.nurture_insight.habit_tracker;
 
-import android.app.AlertDialog;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
@@ -16,16 +13,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.nurture_insight.ChatCommunityFragment;
-import com.example.nurture_insight.HomeFragment;
 import com.example.nurture_insight.Model.Habits;
-import com.example.nurture_insight.Prevalent.Prevalent;
 import com.example.nurture_insight.R;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -54,7 +43,10 @@ public class add_new_habit extends Fragment {
                 R.drawable.habit_7,
                 R.drawable.habit_8,
                 R.drawable.habit_9,
-                R.drawable.habit_10};
+                R.drawable.habit_10,
+                R.drawable.habit_11,
+                R.drawable.habit_12,
+                R.drawable.habit_13};
 
         habitsArrayList = new ArrayList<>();
         for (int index=0; index < habit_titles.length; index++){

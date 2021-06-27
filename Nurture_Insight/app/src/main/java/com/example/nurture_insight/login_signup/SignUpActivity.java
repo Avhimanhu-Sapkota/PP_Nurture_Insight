@@ -134,6 +134,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                                         Intent signUpIntent= new Intent(SignUpActivity.this, LoginActivity.class);
                                         startActivity(signUpIntent);
+                                        finish();
                                     }
                                     else{
                                         loading.dismiss();

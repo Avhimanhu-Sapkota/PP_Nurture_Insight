@@ -11,6 +11,16 @@
         tools:context=".articles.article_anger">
 
         <ImageView
+            android:id="@+id/anger_backButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/back"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
             android:id="@+id/anger_coverImage"
             android:layout_width="0dp"
             android:layout_height="390dp"
@@ -31,7 +41,7 @@
             android:textColor="@color/ni_blue"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/add_event_backButton"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView

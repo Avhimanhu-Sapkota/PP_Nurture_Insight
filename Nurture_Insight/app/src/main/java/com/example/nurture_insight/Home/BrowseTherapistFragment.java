@@ -1,6 +1,5 @@
-package com.example.nurture_insight;
+package com.example.nurture_insight.Home;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +13,9 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.nurture_insight.Model.Chat_Message;
 import com.example.nurture_insight.Model.Therapist;
 import com.example.nurture_insight.Model.Users;
-import com.example.nurture_insight.Prevalent.Prevalent;
-import com.example.nurture_insight.ViewHolder.ChatMessageViewHolder;
+import com.example.nurture_insight.R;
 import com.example.nurture_insight.ViewHolder.eachTherapistViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -27,8 +24,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 public class BrowseTherapistFragment extends Fragment {
 

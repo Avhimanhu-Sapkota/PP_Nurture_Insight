@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
@@ -17,8 +18,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.nurture_insight.Prevalent.Prevalent;
 import com.example.nurture_insight.R;
-import com.example.nurture_insight.instant_help.affirmations;
-import com.example.nurture_insight.login_signup.SignUpActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -33,6 +32,7 @@ import java.util.HashMap;
 
 public class journaling_form extends Fragment {
 
+    ImageView backButton;
     Button save_journal_button;
     EditText journal_answer_1, journal_answer_2, journal_answer_3, journal_answer_4, journal_answer_5;
     String saveCurrentDate;
@@ -51,7 +51,16 @@ public class journaling_form extends Fragment {
         journal_answer_4 = (EditText) view.findViewById(R.id.journaling_q4_answer);
         journal_answer_5 = (EditText) view.findViewById(R.id.journaling_q5_answer);
         save_journal_button = (Button) view.findViewById(R.id.save_journal_button);
-
+        backButton = (ImageView) view.findViewById(R.id.write_journal_backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment =  new JournalFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_fragmentLayout, fragment );
+                transaction.commit();
+            }
+        });
 
         Calendar calForDate = Calendar.getInstance();
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");

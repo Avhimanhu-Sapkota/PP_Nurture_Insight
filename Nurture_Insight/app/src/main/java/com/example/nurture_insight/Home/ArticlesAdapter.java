@@ -1,25 +1,23 @@
-package com.example.nurture_insight;
+package com.example.nurture_insight.Home;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nurture_insight.Model.Articles;
+import com.example.nurture_insight.R;
 import com.example.nurture_insight.articles.article_anger;
 import com.example.nurture_insight.articles.article_anxiety;
 import com.example.nurture_insight.articles.article_depression;
 import com.example.nurture_insight.articles.article_selfEsteem;
 import com.example.nurture_insight.articles.article_stress;
-import com.example.nurture_insight.instant_help.live_in_present;
 
 import java.util.ArrayList;
 

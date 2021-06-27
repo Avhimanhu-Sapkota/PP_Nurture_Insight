@@ -1,4 +1,4 @@
-package com.example.nurture_insight;
+package com.example.nurture_insight.therapist_profile;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -22,6 +22,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.nurture_insight.Prevalent.Prevalent;
+import com.example.nurture_insight.R;
 import com.example.nurture_insight.instant_help.live_in_present;
 import com.example.nurture_insight.login_signup.LoginActivity;
 import com.example.nurture_insight.therapist_dashboard.therapistDashboard;

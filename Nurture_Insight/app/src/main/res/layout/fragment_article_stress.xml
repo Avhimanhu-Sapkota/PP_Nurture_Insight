@@ -10,6 +10,16 @@
         android:layout_height="wrap_content"
         tools:context=".articles.article_stress">
 
+        <ImageView
+            android:id="@+id/stress_backButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/back"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/stress_coverImage"
         android:layout_width="0dp"

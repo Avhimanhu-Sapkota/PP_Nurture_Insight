@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.nurture_insight.HomeFragment;
+import com.example.nurture_insight.Home.HomeFragment;
 import com.example.nurture_insight.R;
 
 import java.util.Random;

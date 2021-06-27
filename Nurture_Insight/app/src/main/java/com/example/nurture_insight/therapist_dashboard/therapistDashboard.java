@@ -1,30 +1,26 @@
 package com.example.nurture_insight.therapist_dashboard;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nurture_insight.Model.events;
 import com.example.nurture_insight.Model.Users;
 import com.example.nurture_insight.Prevalent.Prevalent;
 import com.example.nurture_insight.R;
-import com.example.nurture_insight.TherapistProfileFragment;
-import com.example.nurture_insight.journal.JournalFragment;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.example.nurture_insight.therapist_profile.TherapistProfileFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,16 +28,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class therapistDashboard extends Fragment {
 
     ImageView backButton;
-    Button addPatientButton;
-    RecyclerView recyclerView;
+    Button addPatientButton, addEventButton;
+    RecyclerView recyclerView, eventRecyclerView;
     RecyclerView.LayoutManager layoutManager;
     ArrayList<Users> patientsList;
+    ArrayList<events> eventsList;
+    EventDisplayAdapter eventDisplayAdapter;
     PatientDisplayAdapter patientDisplayAdapter;
+    LinearLayout eventLinearLayout;
 
     @Nullable
     @Override
@@ -51,8 +49,11 @@ public class therapistDashboard extends Fragment {
         View view = inflater.inflate(R.layout.fragment_therapist_dashboard, container, false);
 
         addPatientButton = (Button) view.findViewById(R.id.td_add_patient);
+        addEventButton = (Button) view.findViewById(R.id.td_add_event_button);
         backButton = (ImageView) view.findViewById(R.id.therapist_dashboard_backButton);
         recyclerView = (RecyclerView) view.findViewById(R.id.td_recyclerView);
+        eventLinearLayout = (LinearLayout) view.findViewById(R.id.td_slider_linearLayout);
+        eventRecyclerView = (RecyclerView) view.findViewById(R.id.td_event_recyclerView);
 
         addPatientButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +66,18 @@ public class therapistDashboard extends Fragment {
             }
         });
 
+        addEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new add_mental_health_events();
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_fragmentLayout, fragment );
+                transaction.commit();
+            }
+        });
+
+
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,10 +89,66 @@ public class therapistDashboard extends Fragment {
             }
         });
 
+        final DatabaseReference eventRef = FirebaseDatabase.getInstance().getReference()
+                .child("events");
+
+        eventRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.hasChild(Prevalent.currentOnlineUser.getPhoneNo())){
+                    eventLinearLayout.setVisibility(View.VISIBLE);
+                }
+                else{
+                    eventLinearLayout.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
         patientsList = new ArrayList<>();
         loadPatients();
 
+        eventsList = new ArrayList<>();
+        loadEvents();
+
         return view;
+    }
+
+    private void loadEvents() {
+        final DatabaseReference eventRef = FirebaseDatabase.getInstance().getReference()
+                .child("events").child(Prevalent.currentOnlineUser.getPhoneNo());
+
+        eventRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                eventsList.clear();
+                for (DataSnapshot newSnapshot: snapshot.getChildren()){
+                    String eventID = newSnapshot.getKey();
+                    DatabaseReference finalEventRef = eventRef.child(eventID);
+
+                    events model = new events(finalEventRef);
+                    eventsList.add(model);
+
+                }
+
+                layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+                eventRecyclerView.setLayoutManager(layoutManager);
+                eventRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                eventDisplayAdapter = new EventDisplayAdapter(getContext(),eventsList);
+                eventRecyclerView.setAdapter(eventDisplayAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
     private void loadPatients() {

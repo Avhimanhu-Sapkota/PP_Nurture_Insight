@@ -7,12 +7,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/test"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/test"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nurture_Insight">
-        <activity android:name=".TherapistInfo" />
+        <activity android:name=".therapist_profile.TherapistInfo" />
         <activity android:name=".instant_help.calm_down_info_1" />
         <activity android:name=".instant_help.calm_down_info_2" />
         <activity android:name=".instant_help.calm_down_info_3" />

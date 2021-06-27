@@ -6,9 +6,13 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.nurture_insight.Home.HomeFragment;
 import com.example.nurture_insight.Prevalent.Prevalent;
+import com.example.nurture_insight.chat_community.ChatCommunityFragment;
 import com.example.nurture_insight.habit_tracker.habit_tracker_home;
 import com.example.nurture_insight.journal.JournalFragment;
+import com.example.nurture_insight.therapist_profile.TherapistProfileFragment;
+import com.example.nurture_insight.user_profile.UserProfileFragment;
 import com.luseen.spacenavigation.SpaceItem;
 import com.luseen.spacenavigation.SpaceNavigationView;
 import com.luseen.spacenavigation.SpaceOnClickListener;

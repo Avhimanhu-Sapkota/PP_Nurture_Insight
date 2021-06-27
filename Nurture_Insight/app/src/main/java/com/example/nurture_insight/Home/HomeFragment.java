@@ -1,7 +1,9 @@
-package com.example.nurture_insight;
+package com.example.nurture_insight.Home;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,14 +20,19 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nurture_insight.Home.ArticlesAdapter;
+import com.example.nurture_insight.Home.BrowseTherapistFragment;
 import com.example.nurture_insight.Model.Articles;
 import com.example.nurture_insight.Model.Mood_Tracker;
+import com.example.nurture_insight.Model.events;
 import com.example.nurture_insight.Prevalent.Prevalent;
+import com.example.nurture_insight.R;
 import com.example.nurture_insight.instant_help.affirmations;
 import com.example.nurture_insight.instant_help.breathing_control;
 import com.example.nurture_insight.instant_help.calm_down_info_1;
 import com.example.nurture_insight.instant_help.live_in_present;
 import com.example.nurture_insight.instant_help.quotes;
+import com.example.nurture_insight.therapist_dashboard.EventDisplayAdapter;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -54,14 +61,17 @@ public class HomeFragment extends Fragment {
     ImageView mainIcon1, mainIcon2, mainIcon3, mainIcon4, mainIcon5, mainIcon6;
     String userMood;
     CardView moodCard, moodHistoryCard;
-    RecyclerView recyclerViewArticles;
+    RecyclerView recyclerViewArticles, eventRecyclerView;
     ArrayList<Articles> articles;
+    ArrayList<events> eventsList;
+    EventDisplayAdapter eventDisplayAdapter;
     ArticlesAdapter articlesAdapter;
     BarChart barChart;
     BarData barData;
     BarDataSet barDataSet;
     ArrayList barEntries;
     Button sosButton;
+    RecyclerView.LayoutManager layoutManager;
 
     @Nullable
     @Override
@@ -230,7 +240,122 @@ public class HomeFragment extends Fragment {
         articlesAdapter = new ArticlesAdapter(getContext(), articles);
         recyclerViewArticles.setAdapter(articlesAdapter);
 
+        eventRecyclerView = (RecyclerView) rootView.findViewById(R.id.home_event_recyclerView);
+        eventsList = new ArrayList<>();
+        loadEvents();
+
         return rootView;
+    }
+
+    private void loadEvents() {
+        final DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference()
+                .child("events");
+
+        rootRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                eventsList.clear();
+                for (DataSnapshot newSnapshot: snapshot.getChildren()){
+                    String userID = newSnapshot.getKey();
+
+                    DatabaseReference eventRef = rootRef.child(userID);
+                    eventRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                            for(DataSnapshot finalSnapshot: snapshot.getChildren()){
+                                String eventID = finalSnapshot.getKey();
+                                DatabaseReference finalEventRef = eventRef.child(eventID);
+
+                                events model = new events(finalEventRef);
+                                eventsList.add(model);
+
+                                finalEventRef.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot finalSnapshot) {
+
+                                        String saveCurrentDate;
+                                        Calendar calForDate = Calendar.getInstance();
+                                        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+                                        saveCurrentDate = currentDate.format(calForDate.getTime());
+                                        String eventDate = finalSnapshot.child("date").getValue().toString();
+
+                                        try {
+                                            Date currentDateD = currentDate.parse(saveCurrentDate);
+                                            Date eventDateD = currentDate.parse(eventDate);
+/*
+                                            new AlertDialog.Builder(getContext())
+                                                    .setTitle("HELLO")
+                                                    .setMessage("The date is "+ currentDateD + "The Mood is " + eventDateD)
+                                                    .setNegativeButton(android.R.string.no, null)
+                                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                                    .show();*/
+
+                                            if(currentDateD.compareTo(eventDateD) > 0){
+
+                                                Log.d("UNIQUENAME1", "onDataChange: " + "NO");
+                                            }
+                                            else if (currentDateD.compareTo(eventDateD) < 0){
+
+                                                Log.d("UNIQUENAME1", "onDataChange: " + "YES");
+                                            }
+                                            else{
+
+                                                Log.d("UNIQUENAME1", "onDataChange: " + "EQUAL");
+                                            }
+                                        } catch (ParseException e) {
+                                            e.printStackTrace();
+                                        }
+
+                                        /*try {
+
+                                            if(eventDateD.before(currentDateD)){
+
+
+                                                events model = new events(finalEventRef);
+                                                eventsList.add(model);
+                                            }
+                                        } catch (ParseException e) {
+                                            e.printStackTrace();
+                                        }*/
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+
+                            }
+
+                            layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+                            eventRecyclerView.setLayoutManager(layoutManager);
+                            eventRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                            eventDisplayAdapter = new EventDisplayAdapter(getContext(),eventsList);
+                            eventRecyclerView.setAdapter(eventDisplayAdapter);
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+
+                layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+                eventRecyclerView.setLayoutManager(layoutManager);
+                eventRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                eventDisplayAdapter = new EventDisplayAdapter(getContext(),eventsList);
+                eventRecyclerView.setAdapter(eventDisplayAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void recordUserMood(String userMood) {

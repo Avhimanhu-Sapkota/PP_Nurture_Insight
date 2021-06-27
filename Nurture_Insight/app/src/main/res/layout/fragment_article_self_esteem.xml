@@ -10,6 +10,16 @@
         android:layout_height="wrap_content"
         tools:context=".articles.article_selfEsteem">
 
+        <ImageView
+            android:id="@+id/selfEsteem_backButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/back"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/selfEsteem_coverImage"
         android:layout_width="0dp"
@@ -21,18 +31,18 @@
         app:layout_constraintTop_toBottomOf="@+id/selfEsteem_title"
         app:srcCompat="@drawable/self_esteem1" />
 
-    <TextView
-        android:id="@+id/selfEsteem_title"
-        android:layout_width="365dp"
-        android:layout_height="52dp"
-        android:fontFamily="@font/alegreya_sans_bold"
-        android:gravity="center"
-        android:text="@string/info_selfEsteem_title"
-        android:textColor="@color/ni_blue"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/selfEsteem_title"
+            android:layout_width="365dp"
+            android:layout_height="52dp"
+            android:fontFamily="@font/alegreya_sans_bold"
+            android:gravity="center"
+            android:text="@string/info_selfEsteem_title"
+            android:textColor="@color/ni_blue"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/anger_backButton"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/selfEsteem_text"

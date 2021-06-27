@@ -1,6 +1,5 @@
 package com.example.nurture_insight.instant_help;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.nurture_insight.BrowseTherapistFragment;
-import com.example.nurture_insight.HomeFragment;
+import com.example.nurture_insight.Home.HomeFragment;
 import com.example.nurture_insight.R;
 
 public class live_in_present extends Fragment {

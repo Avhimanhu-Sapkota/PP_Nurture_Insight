@@ -95,6 +95,16 @@ public class HabitsAdapter  extends RecyclerView.Adapter<HabitsAdapter.ViewHolde
             case 9:
                 habit_title = "Take a Mindful Break";
                 break;
+            case 10:
+                habit_title = "Get Enough Sleep";
+                break;
+            case 11:
+                habit_title = "Drink 6 Glasses of Water";
+                break;
+            case 12:
+                habit_title = "Do something that makes me Happy";
+                break;
+
         }
 
         DatabaseReference habitRef = FirebaseDatabase.getInstance().getReference()
@@ -105,7 +115,29 @@ public class HabitsAdapter  extends RecyclerView.Adapter<HabitsAdapter.ViewHolde
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.hasChild(habit_title)){
 
+                    AlertDialog dialog = new AlertDialog.Builder(context).create();
+                    dialog.setTitle(context.getResources().getString(R.string.removeHabitTitle));
+                    dialog.setMessage(context.getResources().getString(R.string.removeHabitAsk));
+                    dialog.setCancelable(false);
+                    dialog.setButton(DialogInterface.BUTTON_POSITIVE, "No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int buttonId) {
+
+                        }
+                    });
+                    dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int buttonId) {
+
+                            habitRef.child(habit_title).removeValue();
+                            Fragment fragment =  new habit_tracker_home();
+                            FragmentTransaction transaction = ((AppCompatActivity)context).getSupportFragmentManager().beginTransaction();
+                            transaction.replace(R.id.main_fragmentLayout, fragment );
+                            transaction.commit();
+                        }
+                    });
+                    dialog.setIcon(android.R.drawable.ic_dialog_alert);
+                    dialog.show();
                 }
+
                 else{
                     HashMap<String, Object> habitMap = new HashMap<>();
                     habitMap.put("ID", 1);

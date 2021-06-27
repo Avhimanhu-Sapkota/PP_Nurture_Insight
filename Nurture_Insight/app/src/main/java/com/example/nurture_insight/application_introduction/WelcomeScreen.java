@@ -28,6 +28,7 @@ public class WelcomeScreen extends AppCompatActivity {
         if (!(firstTime)) {
             Intent welcomeIntent = new Intent(WelcomeScreen.this, SplashActivity.class);
             startActivity(welcomeIntent);
+            finish();
         }
 
     }

@@ -16,7 +16,7 @@ import com.example.nurture_insight.MainActivity;
 import com.example.nurture_insight.Model.Users;
 import com.example.nurture_insight.Prevalent.Prevalent;
 import com.example.nurture_insight.R;
-import com.example.nurture_insight.TherapistInfo;
+import com.example.nurture_insight.therapist_profile.TherapistInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -126,10 +126,12 @@ public class LoginActivity extends AppCompatActivity {
                                         if(therapistSnapshot.child(inputPhone).exists()){
                                             Intent signUpIntent= new Intent(LoginActivity.this, MainActivity.class);
                                             startActivity(signUpIntent);
+                                            finish();
                                         }
                                         else{
                                             Intent therapistIntent= new Intent(LoginActivity.this, TherapistInfo.class);
                                             startActivity(therapistIntent);
+                                            finish();
                                         }
                                     }
 
@@ -142,6 +144,7 @@ public class LoginActivity extends AppCompatActivity {
                             else{
                                 Intent signUpIntent= new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(signUpIntent);
+                                finish();
                             }
 
                         }
@@ -188,10 +191,12 @@ public class LoginActivity extends AppCompatActivity {
                                         if(therapistSnapshot.child(inputPhone).exists()){
                                             Intent signUpIntent= new Intent(LoginActivity.this, MainActivity.class);
                                             startActivity(signUpIntent);
+                                            finish();
                                         }
                                         else{
                                             Intent therapistIntent= new Intent(LoginActivity.this, TherapistInfo.class);
                                             startActivity(therapistIntent);
+                                            finish();
                                         }
                                     }
 
@@ -204,17 +209,16 @@ public class LoginActivity extends AppCompatActivity {
                             else{
                                 Intent signUpIntent= new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(signUpIntent);
+                                finish();
                             }
 
                         }
                         else{
                             loading.dismiss();
-                            //password.setError(getString(R.string.login_error_2));
                         }
                     }
                 }
                 else{
-                    //phone.setError(getString(R.string.login_error_1));
                     loading.dismiss();
                 }
             }

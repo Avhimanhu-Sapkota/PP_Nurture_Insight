@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.nurture_insight.ChatCommunityFragment;
 import com.example.nurture_insight.Prevalent.Prevalent;
 import com.example.nurture_insight.R;
 import com.google.firebase.database.DataSnapshot;
@@ -20,9 +19,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 public class journal_display extends Fragment {
 

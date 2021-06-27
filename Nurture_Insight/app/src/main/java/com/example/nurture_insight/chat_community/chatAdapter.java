@@ -1,21 +1,19 @@
-package com.example.nurture_insight;
+package com.example.nurture_insight.chat_community;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nurture_insight.Interface.ItemClickListener;
 import com.example.nurture_insight.Model.Chat_Message;
 import com.example.nurture_insight.Prevalent.Prevalent;
+import com.example.nurture_insight.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;

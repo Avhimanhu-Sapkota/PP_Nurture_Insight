@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login_signup.otpActivity">
+
+
+    <ImageView
+        android:id="@+id/main_imgView_header_txt"
+        android:layout_width="400dp"
+        android:layout_height="55dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/header" />
+
+    <ImageView
+        android:id="@+id/main_imgView_background"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_imgView_header_txt"
+        app:srcCompat="@drawable/background_5" />
+
+    <TextView
+        android:id="@+id/otp_title"
+        android:layout_width="267dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/alegreya_sans_bold"
+        android:gravity="center"
+        android:text="Enter OTP Code"
+        android:textColor="@color/ni_blue"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_imgView_background" />
+
+    <com.chaos.view.PinView
+        android:id="@+id/otpcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:cursorVisible="true"
+        android:focusable="true"
+        android:layout_marginTop="25dp"
+        android:focusableInTouchMode="true"
+        android:inputType="number"
+        android:itemBackground="@color/white"
+        android:textColor="@color/black"
+        app:cursorColor="@color/ni_blue"
+        app:hideLineWhenFilled="false"
+        app:itemCount="6"
+        app:itemHeight="70dp"
+        app:itemRadius="10dp"
+        app:itemWidth="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/otp_title"
+        app:lineColor="@color/ni_blue"
+        app:viewType="rectangle" />
+
+    <Button
+        android:id="@+id/optSubmitButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sos_button"
+        android:text="Submit OTP"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/ni_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/otpcode" />
+</androidx.constraintlayout.widget.ConstraintLayout>

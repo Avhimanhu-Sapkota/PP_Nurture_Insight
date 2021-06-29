@@ -118,9 +118,8 @@ public class add_mental_health_events extends Fragment {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 Calendar pickedTime = Calendar.getInstance();
-                SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm");
-                pickedTime.set(hourOfDay, minute);
-                pickedTimeStr  = currentTime.format(pickedTime.getTime());
+
+                pickedTimeStr  = hourOfDay + ":" + minute;
                 pickTime.setText(pickedTimeStr);
             }
         };

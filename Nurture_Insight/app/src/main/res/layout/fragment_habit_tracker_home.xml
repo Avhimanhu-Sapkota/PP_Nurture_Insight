@@ -64,6 +64,22 @@
             app:layout_constraintTop_toBottomOf="@+id/habit_tracker_message"/>
 
         <TextView
+        android:id="@+id/habit_tracker_message1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="30dp"
+        android:fontFamily="@font/alegreya_sans"
+        android:gravity="center"
+        android:text="@string/habit_tracker_message1"
+        android:textColor="@color/ni_blue"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_habit_button" />
+
+        <TextView
             android:id="@+id/habit_tracker_message2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -74,7 +90,7 @@
             android:gravity="center"
             android:text="@string/habit_tracker_message_2"
             android:textColor="@color/ni_blue"
-            android:textSize="18sp"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -117,7 +133,7 @@
             android:layout_marginEnd="25dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_habit_button" />
+            app:layout_constraintTop_toBottomOf="@+id/habit_tracker_message1" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/trackedHabits_recyclerView"

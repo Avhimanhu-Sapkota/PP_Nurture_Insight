@@ -1,17 +1,27 @@
 package com.example.nurture_insight.Home;
 
+import android.Manifest;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.telephony.SmsManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,19 +30,19 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.nurture_insight.Home.ArticlesAdapter;
-import com.example.nurture_insight.Home.BrowseTherapistFragment;
 import com.example.nurture_insight.Model.Articles;
 import com.example.nurture_insight.Model.Mood_Tracker;
 import com.example.nurture_insight.Model.events;
 import com.example.nurture_insight.Prevalent.Prevalent;
 import com.example.nurture_insight.R;
+import com.example.nurture_insight.Self_Care_Packages.self_care_package_home;
 import com.example.nurture_insight.instant_help.affirmations;
 import com.example.nurture_insight.instant_help.breathing_control;
-import com.example.nurture_insight.instant_help.calm_down_info_1;
+import com.example.nurture_insight.instant_help.calm_down_info;
 import com.example.nurture_insight.instant_help.live_in_present;
 import com.example.nurture_insight.instant_help.quotes;
 import com.example.nurture_insight.therapist_dashboard.EventDisplayAdapter;
+import com.example.nurture_insight.weekly_assessment;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -57,13 +67,14 @@ import java.util.HashMap;
 
 public class HomeFragment extends Fragment {
 
-    ImageView happyMood, goodMood, mehMood, sadMood, awfulMood;
-    ImageView mainIcon1, mainIcon2, mainIcon3, mainIcon4, mainIcon5, mainIcon6;
-    String userMood;
+    private static final int PERMISSION_CODE = 101;
+    ImageView happyMood, goodMood, mehMood, sadMood, awfulMood, moodBackground;
+    ImageView mainIcon1, mainIcon2, mainIcon3, mainIcon4, mainIcon5, mainIcon6, mainIcon7, mainIcon8;
+    String userMood, saveCurrentDate, dayOfTheWeek;
     CardView moodCard, moodHistoryCard;
     RecyclerView recyclerViewArticles, eventRecyclerView;
     ArrayList<Articles> articles;
-    ArrayList<events> eventsList;
+    public static ArrayList<events> eventsList;
     EventDisplayAdapter eventDisplayAdapter;
     ArticlesAdapter articlesAdapter;
     BarChart barChart;
@@ -72,6 +83,9 @@ public class HomeFragment extends Fragment {
     ArrayList barEntries;
     Button sosButton;
     RecyclerView.LayoutManager layoutManager;
+    private boolean permissionGranted;
+    LinearLayout homeEventLinearLayout;
+
 
     @Nullable
     @Override
@@ -95,6 +109,33 @@ public class HomeFragment extends Fragment {
         mainIcon3 = (ImageView) rootView.findViewById(R.id.main_icon_3);
         mainIcon5 = (ImageView) rootView.findViewById(R.id.main_icon_5);
         mainIcon6 = (ImageView) rootView.findViewById(R.id.main_icon_6);
+        mainIcon7 = (ImageView) rootView.findViewById(R.id.main_icon_7);
+        mainIcon8 = (ImageView) rootView.findViewById(R.id.main_icon_8);
+        sosButton = (Button) rootView.findViewById(R.id.main_button_sos);
+        homeEventLinearLayout = (LinearLayout) rootView.findViewById(R.id.home_event_linearLayout);
+        moodBackground = (ImageView) rootView.findViewById(R.id.main_card_imgView_bg);
+        moodBackground.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+        Calendar calForDate = Calendar.getInstance();
+        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+        saveCurrentDate = currentDate.format(calForDate.getTime());
+
+        sosButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sharedPreferences = getContext().getSharedPreferences("phoneNo", getContext().MODE_PRIVATE);
+                if(sharedPreferences.getAll().isEmpty()){
+                    Fragment fragment = new sosDetailsFragment();
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.main_fragmentLayout, fragment );
+                    transaction.commit();
+                }else{
+                    sosEmergency(sharedPreferences);
+                }
+
+            }
+        });
+
 
         mainIcon4.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,13 +197,34 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        mainIcon7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new self_care_package_home();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_fragmentLayout, fragment );
+                transaction.commit();
+            }
+        });
+
         mainIcon1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), calm_down_info_1.class);
-                startActivity(intent);
+                Fragment fragment = new calm_down_info();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_fragmentLayout, fragment );
+                transaction.commit();
             }
         });
+
+        mainIcon8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkAssessment();
+            }
+        });
+
+        requestPermission();
 
         XAxis xAxis = barChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -247,101 +309,166 @@ public class HomeFragment extends Fragment {
         return rootView;
     }
 
+    private void checkAssessment() {
+        DatabaseReference assessmentRef = FirebaseDatabase.getInstance().getReference().child("Assessment")
+                .child(Prevalent.currentOnlineUser.getPhoneNo());
+
+        assessmentRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.hasChild(saveCurrentDate)){
+                    new AlertDialog.Builder(getContext())
+                            .setTitle(getResources().getString(R.string.assessment_title))
+                            .setMessage("Hey! You are doing great! You have already taken the test for the day! ")
+                            .setNegativeButton(android.R.string.yes, null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
+                else{
+                    Fragment fragment = new weekly_assessment();
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.main_fragmentLayout, fragment );
+                    transaction.commit();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void sosEmergency(SharedPreferences sharedPreferences) {
+        String phoneNo = sharedPreferences.getString("phoneNo", " ");
+        String userName = Prevalent.currentOnlineUser.getUsername();
+
+
+        AlertDialog dialog = new AlertDialog.Builder(getContext()).create();
+        dialog.setTitle(getResources().getString(R.string.sosSendTitle));
+        dialog.setMessage(getResources().getString(R.string.sosSendMessage));
+        dialog.setCancelable(false);
+        dialog.setButton(DialogInterface.BUTTON_POSITIVE, "No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int buttonId) {
+
+            }
+        });
+        dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int buttonId) {
+                Log.d("UNIQUENAME", "sosEmergency: " + phoneNo);
+                    SmsManager smsManager = SmsManager.getDefault();
+                    smsManager.sendTextMessage(phoneNo, "", "Hey! I am " + userName + " (" + phoneNo + ") " + getResources().getString(R.string.SosMessage2), null, null);
+
+            }
+        });
+        dialog.setIcon(android.R.drawable.ic_dialog_alert);
+        dialog.show();
+
+    }
+
+    public void requestPermission(){
+        String[] permission={Manifest.permission.SEND_SMS};
+        if(ContextCompat.checkSelfPermission(getContext().getApplicationContext(),Manifest.permission.SEND_SMS)== PackageManager.PERMISSION_GRANTED){
+
+        }else{
+            ActivityCompat.requestPermissions(getActivity(),permission,PERMISSION_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode==PERMISSION_CODE){
+            if(permissions[0].equals(Manifest.permission.SEND_SMS)&&grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                permissionGranted=true;
+            }
+        }
+    }
+
     private void loadEvents() {
         final DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference()
                 .child("events");
 
-        rootRef.addValueEventListener(new ValueEventListener() {
+        rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                eventsList.clear();
-                for (DataSnapshot newSnapshot: snapshot.getChildren()){
-                    String userID = newSnapshot.getKey();
+                if (snapshot.hasChildren()){
+                    homeEventLinearLayout.setVisibility(View.VISIBLE);
 
-                    DatabaseReference eventRef = rootRef.child(userID);
-                    eventRef.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    eventsList.clear();
+                    for (DataSnapshot newSnapshot: snapshot.getChildren()){
+                        String userID = newSnapshot.getKey();
 
-                            for(DataSnapshot finalSnapshot: snapshot.getChildren()){
-                                String eventID = finalSnapshot.getKey();
-                                DatabaseReference finalEventRef = eventRef.child(eventID);
+                        DatabaseReference eventRef = rootRef.child(userID);
+                        eventRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                                events model = new events(finalEventRef);
-                                eventsList.add(model);
+                                for(DataSnapshot finalSnapshot: snapshot.getChildren()){
+                                    String eventID = finalSnapshot.getKey();
+                                    DatabaseReference finalEventRef = eventRef.child(eventID);
 
-                                finalEventRef.addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot finalSnapshot) {
+                                    events model = new events(finalEventRef);
+                                    eventsList.add(model);
 
-                                        String saveCurrentDate;
-                                        Calendar calForDate = Calendar.getInstance();
-                                        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
-                                        saveCurrentDate = currentDate.format(calForDate.getTime());
-                                        String eventDate = finalSnapshot.child("date").getValue().toString();
+                                    finalEventRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot finalSnapshot) {
 
-                                        try {
-                                            Date currentDateD = currentDate.parse(saveCurrentDate);
-                                            Date eventDateD = currentDate.parse(eventDate);
-/*
-                                            new AlertDialog.Builder(getContext())
-                                                    .setTitle("HELLO")
-                                                    .setMessage("The date is "+ currentDateD + "The Mood is " + eventDateD)
-                                                    .setNegativeButton(android.R.string.no, null)
-                                                    .setIcon(android.R.drawable.ic_dialog_alert)
-                                                    .show();*/
+                                            String saveCurrentDate;
+                                            Calendar calForDate = Calendar.getInstance();
+                                            SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+                                            saveCurrentDate = currentDate.format(calForDate.getTime());
+                                            String eventDate = finalSnapshot.child("date").getValue().toString();
 
-                                            if(currentDateD.compareTo(eventDateD) > 0){
+                                            try {
+                                                Date currentDateD = currentDate.parse(saveCurrentDate);
+                                                Date eventDateD = currentDate.parse(eventDate);
 
-                                                Log.d("UNIQUENAME1", "onDataChange: " + "NO");
+                                                if(currentDateD.compareTo(eventDateD) > 0){
+
+                                                    Log.d("UNIQUENAME1", "onDataChange: " + "NO");
+                                                }
+                                                else if (currentDateD.compareTo(eventDateD) < 0){
+
+                                                    Log.d("UNIQUENAME1", "onDataChange: " + "YES");
+                                                }
+                                                else{
+
+                                                    Log.d("UNIQUENAME1", "onDataChange: " + "EQUAL");
+                                                }
+                                            } catch (ParseException e) {
+                                                e.printStackTrace();
                                             }
-                                            else if (currentDateD.compareTo(eventDateD) < 0){
 
-                                                Log.d("UNIQUENAME1", "onDataChange: " + "YES");
-                                            }
-                                            else{
 
-                                                Log.d("UNIQUENAME1", "onDataChange: " + "EQUAL");
-                                            }
-                                        } catch (ParseException e) {
-                                            e.printStackTrace();
                                         }
 
-                                        /*try {
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
 
-                                            if(eventDateD.before(currentDateD)){
+                                        }
+                                    });
 
+                                }
 
-                                                events model = new events(finalEventRef);
-                                                eventsList.add(model);
-                                            }
-                                        } catch (ParseException e) {
-                                            e.printStackTrace();
-                                        }*/
-
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
+                                layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+                                eventRecyclerView.setLayoutManager(layoutManager);
+                                eventRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                                eventDisplayAdapter = new EventDisplayAdapter(getContext(),eventsList);
+                                eventRecyclerView.setAdapter(eventDisplayAdapter);
 
                             }
 
-                            layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-                            eventRecyclerView.setLayoutManager(layoutManager);
-                            eventRecyclerView.setItemAnimator(new DefaultItemAnimator());
-                            eventDisplayAdapter = new EventDisplayAdapter(getContext(),eventsList);
-                            eventRecyclerView.setAdapter(eventDisplayAdapter);
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
 
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
+                            }
+                        });
+                    }
+                }
+                else{
+                    homeEventLinearLayout.setVisibility(View.GONE);
                 }
 
                 layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -370,7 +497,10 @@ public class HomeFragment extends Fragment {
 
         final HashMap<String, Object> moodMap = new HashMap<>();
         moodMap.put("moodDate", saveCurrentDate);
-        moodMap.put("moodType", userMood);
+
+        if(!(TextUtils.isEmpty(userMood))){
+            moodMap.put("moodType", userMood);
+        }
 
         moodTrackerRef.child(Prevalent.currentOnlineUser.getPhoneNo()).child(saveCurrentDate)
                 .updateChildren(moodMap)
@@ -386,13 +516,6 @@ public class HomeFragment extends Fragment {
     }
 
     private void moodTrackerDisplay(){
-
-        String saveCurrentDate;
-
-        Calendar calForDate = Calendar.getInstance();
-        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
-        saveCurrentDate = currentDate.format(calForDate.getTime());
-
 
         final DatabaseReference moodTrackerRef = FirebaseDatabase.getInstance()
                 .getReference().child("Mood_Tracker")
@@ -466,7 +589,6 @@ public class HomeFragment extends Fragment {
                             e.printStackTrace();
                         }
                     }
-
                     showBarGraph(barEntries);
                 }
                 else{

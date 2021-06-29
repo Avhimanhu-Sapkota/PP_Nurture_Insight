@@ -142,7 +142,6 @@ public class ChatCommunityFragment extends Fragment {
                             dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Yes", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int buttonId) {
                                     int position = viewHolder.getBindingAdapterPosition();
-
                                     adapter.getDatabaseItem(position, getContext());
                                     adapter.notifyDataSetChanged();
                                 }

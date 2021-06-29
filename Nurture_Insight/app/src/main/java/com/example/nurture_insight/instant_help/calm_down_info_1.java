@@ -31,9 +31,10 @@ public class calm_down_info_1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Fragment fragment =  new HomeFragment();
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.main_fragmentLayout, fragment );
-                transaction.commit();
+
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.main_fragmentLayout, fragment, fragment.getClass().getSimpleName()).addToBackStack(null).commit();
+
             }
         });
     }

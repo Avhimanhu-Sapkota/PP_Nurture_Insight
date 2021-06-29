@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 
 public class EventDisplayAdapter extends RecyclerView.Adapter<EventDisplayAdapter.ViewHolder> {
 
-    public ArrayList<events> events;
+    public static ArrayList<events> events;
     Context context;
 
     public EventDisplayAdapter (Context context, ArrayList<events> events){
@@ -45,39 +46,42 @@ public class EventDisplayAdapter extends RecyclerView.Adapter<EventDisplayAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
+        holder.cardImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
         DatabaseReference eventRef = events.get(position).getEventRef();
         eventRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String eventTitle, eventLocation, eventDateAndTime, eventHost, eventHostContact;
-                events eventObj = snapshot.getValue(events.class);
-                eventTitle = snapshot.child("title").getValue().toString();
-                eventLocation = snapshot.child("location").getValue().toString();
-                eventDateAndTime = snapshot.child("time").getValue().toString() + " " + snapshot.child("date").getValue().toString();
-                eventHost = eventObj.getConductor();
-                eventHostContact = eventObj.getContact();
+                if(snapshot.exists()){
+                    String eventTitle, eventLocation, eventDateAndTime, eventHost, eventHostContact;
+                    events eventObj = snapshot.getValue(events.class);
+                    eventTitle = snapshot.child("title").getValue().toString();
+                    eventLocation = snapshot.child("location").getValue().toString();
+                    eventDateAndTime = snapshot.child("time").getValue().toString() + " " + snapshot.child("date").getValue().toString();
+                    eventHost = eventObj.getConductor();
+                    eventHostContact = eventObj.getContact();
 
-                Log.d("UNIQUENAME", "onDataChange: " + eventObj + eventTitle + eventLocation + eventHost + eventHostContact + eventDateAndTime);
+                    Log.d("UNIQUENAME", "onDataChange: " + eventObj + eventTitle + eventLocation + eventHost + eventHostContact + eventDateAndTime);
 
-                holder.eachEventTitle.setText(eventTitle);
-                holder.eachEventLocation.setText(eventLocation);
-                holder.eachEventDate.setText("Event Date: " + eventDateAndTime);
-                holder.eachEventHost.setText("Host: " + eventHost);
-                holder.eachEventHostContact.setText("Contact: " + eventHostContact);
+                    holder.eachEventTitle.setText(eventTitle);
+                    holder.eachEventLocation.setText(eventLocation);
+                    holder.eachEventDate.setText("Event Date: " + eventDateAndTime);
+                    holder.eachEventHost.setText("Host: " + eventHost);
+                    holder.eachEventHostContact.setText("Contact: " + eventHostContact);
 
-                holder.eachEventCard.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Fragment fragment = new EventDetailsFragment();
-                        Bundle bundle = new Bundle();
-                        bundle.putInt("position", position);
-                        bundle.putString("id", snapshot.getKey());
-                        fragment.setArguments(bundle);
-                        AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.main_fragmentLayout, fragment).addToBackStack(null).commit();
+                    holder.eachEventCard.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Fragment fragment = new EventDetailsFragment();
+                            Bundle bundle = new Bundle();
+                            bundle.putInt("position", position);
+                            bundle.putString("id", snapshot.getKey());
+                            fragment.setArguments(bundle);
+                            AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                            activity.getSupportFragmentManager().beginTransaction().replace(R.id.main_fragmentLayout, fragment).addToBackStack(null).commit();
 
-                    }
-                });
+                        }
+                    });
+                }
 
             }
 
@@ -97,6 +101,7 @@ public class EventDisplayAdapter extends RecyclerView.Adapter<EventDisplayAdapte
 
         TextView eachEventTitle, eachEventLocation, eachEventDate, eachEventHost, eachEventHostContact;
         CardView eachEventCard;
+        ImageView cardImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -107,6 +112,7 @@ public class EventDisplayAdapter extends RecyclerView.Adapter<EventDisplayAdapte
             eachEventHost = itemView.findViewById(R.id.each_event_host);
             eachEventHostContact = itemView.findViewById(R.id.each_event_host_contact);
             eachEventCard = itemView.findViewById(R.id.each_event_card);
+            cardImage = itemView.findViewById(R.id.event_background);
         }
     }
 }

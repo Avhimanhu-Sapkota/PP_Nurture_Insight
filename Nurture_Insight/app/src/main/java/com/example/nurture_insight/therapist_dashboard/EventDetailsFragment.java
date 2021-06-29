@@ -76,8 +76,7 @@ public class EventDetailsFragment extends Fragment {
                     if (userSnap.hasChild(id)){
                         DatabaseReference eventRef = userSnap.child(id).getRef();
 
-                        Log.d("UNIQUENAME", "onCreateView: " + eventRef);
-                        eventRef.addValueEventListener(new ValueEventListener() {
+                        eventRef.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 String eventTitle, eventLocation, eventDateAndTime, eventDesc, eventHost, eventHostContact;
@@ -107,9 +106,13 @@ public class EventDetailsFragment extends Fragment {
                                     @Override
                                     public void onClick(View v) {
                                         eventRef.removeValue();
-                                        EventDisplayAdapter eventDisplayAdapter = null;
-                                        eventDisplayAdapter.events.remove(eventRef);
-                                        notifyAll();
+                                        EventDisplayAdapter.events.remove(eventRef);
+                                        HomeFragment.eventsList.remove(eventRef);
+
+                                        Fragment fragment =  new HomeFragment();
+                                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                                        transaction.replace(R.id.main_fragmentLayout, fragment );
+                                        transaction.commit();
                                     }
                                 });
 

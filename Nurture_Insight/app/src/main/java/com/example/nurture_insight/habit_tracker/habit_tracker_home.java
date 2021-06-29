@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
@@ -24,6 +25,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -36,7 +39,7 @@ public class habit_tracker_home extends Fragment {
     ArrayList<Habits> loadHabitsList, trackedHabitList;
     AddedHabitsAdapter addedHabitsAdapter;
     TrackedHabitsAdapter trackedHabitsAdapter;
-
+    TextView message;
     CalendarView trackerCalendar;
 
     @Nullable
@@ -46,6 +49,7 @@ public class habit_tracker_home extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_habit_tracker_home, container, false);
+        message = (TextView) view.findViewById(R.id.habit_tracker_message1);
         trackedHabitsRV = (RecyclerView) view.findViewById(R.id.trackedHabits_recyclerView);
         habitTrackerRV = (RecyclerView) view.findViewById(R.id.habits_recyclerView);
         add_habit_button = (Button) view.findViewById(R.id.add_habit_button);
@@ -74,7 +78,6 @@ public class habit_tracker_home extends Fragment {
                 clickedCalendar.set(year, month, dayOfMonth);
                 String clickedDate = currentDate.format(clickedCalendar.getTime());
                 trackedHabitList = new ArrayList<>();
-
                 displayTrackedHabits(clickedDate);
             }
         });
@@ -133,38 +136,47 @@ public class habit_tracker_home extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 loadHabitsList.clear();
-                for (DataSnapshot habitSnapshot: snapshot.getChildren()){
-                    String name = habitSnapshot.getKey();
+                    if(snapshot.hasChildren()){
+                        habitTrackerRV.setVisibility(View.VISIBLE);
+                        message.setVisibility(View.VISIBLE);
 
-                    String saveCurrentDate;
-                    Calendar calForDate = Calendar.getInstance();
-                    SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
-                    saveCurrentDate = currentDate.format(calForDate.getTime());
+                        for (DataSnapshot habitSnapshot: snapshot.getChildren()){
+                            String name = habitSnapshot.getKey();
 
-                    habitRef.child(name).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.hasChild(saveCurrentDate)){
+                            String saveCurrentDate;
+                            Calendar calForDate = Calendar.getInstance();
+                            SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+                            saveCurrentDate = currentDate.format(calForDate.getTime());
 
-                            }
-                            else {
-                                Habits model = new Habits(name);
-                                loadHabitsList.add(model);
-                            }
+                            habitRef.child(name).addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if(snapshot.hasChild(saveCurrentDate)){
 
-                            layoutManager = new LinearLayoutManager(getContext());
-                            habitTrackerRV.setLayoutManager(layoutManager);
-                            addedHabitsAdapter = new AddedHabitsAdapter(getContext(), loadHabitsList);
-                            habitTrackerRV.setAdapter(addedHabitsAdapter);
+                                    }
+                                    else {
+                                        Habits model = new Habits(name);
+                                        loadHabitsList.add(model);
+                                    }
+
+                                    layoutManager = new LinearLayoutManager(getContext());
+                                    habitTrackerRV.setLayoutManager(layoutManager);
+                                    addedHabitsAdapter = new AddedHabitsAdapter(getContext(), loadHabitsList);
+                                    habitTrackerRV.setAdapter(addedHabitsAdapter);
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
                         }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                    else{
+                        habitTrackerRV.setVisibility(View.GONE);
+                        message.setVisibility(View.GONE);
 
                     }
-                });
-
-                }
 
             }
 

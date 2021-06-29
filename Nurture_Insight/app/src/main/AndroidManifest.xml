@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +15,7 @@
         android:roundIcon="@drawable/test"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nurture_Insight">
+        <activity android:name=".login_signup.otpActivity"></activity>
         <activity android:name=".therapist_profile.TherapistInfo" />
         <activity android:name=".instant_help.calm_down_info_1" />
         <activity android:name=".instant_help.calm_down_info_2" />

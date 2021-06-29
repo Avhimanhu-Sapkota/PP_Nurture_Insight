@@ -19,20 +19,30 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stress_title"
-        app:srcCompat="@drawable/meditate_2" />
+        app:srcCompat="@drawable/stress2" />
 
-    <TextView
-        android:id="@+id/stress_title"
-        android:layout_width="365dp"
-        android:layout_height="52dp"
-        android:fontFamily="@font/alegreya_sans_bold"
-        android:gravity="center"
-        android:text="@string/info_stress_title"
-        android:textColor="@color/ni_blue"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/stress_backButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/back"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/stress_title"
+            android:layout_width="365dp"
+            android:layout_height="52dp"
+            android:fontFamily="@font/alegreya_sans_bold"
+            android:gravity="center"
+            android:text="@string/info_stress_title"
+            android:textColor="@color/ni_blue"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/stress_backButton"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/stress_text"

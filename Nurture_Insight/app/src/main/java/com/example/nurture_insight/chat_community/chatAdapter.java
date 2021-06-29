@@ -71,25 +71,26 @@ public class chatAdapter extends RecyclerView.Adapter<chatAdapter.ChatMessageVie
     }
 
     public void getDatabaseItem(int position, Context context) {
-        final Boolean[] done = {true};
+
         Chat_Message chatMessage = chatMessageList.get(position);
         String currentID = chatMessage.getMessageDate()+chatMessage.getMessageTime();
         final DatabaseReference chatReference = FirebaseDatabase.getInstance().getReference().child("Chat_Messages")
                 .child(Prevalent.currentOnlineUser.getPhoneNo());
 
-        chatReference.addValueEventListener(new ValueEventListener() {
+        chatReference.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 for(DataSnapshot deleteSnapshot : snapshot.getChildren()){
                     String dataID = deleteSnapshot.getKey();
 
                     if(currentID.equals(dataID)){
                         deleteSnapshot.getRef().removeValue();
                         chatMessageList.clear();
-                        done[0] = true;
+
                     }else{
-                        done[0] = false;
+
                     }
 
                 }
@@ -100,15 +101,6 @@ public class chatAdapter extends RecyclerView.Adapter<chatAdapter.ChatMessageVie
 
             }
         });
-
-        if (!(done[0])){
-            new AlertDialog.Builder(context)
-                    .setTitle(context.getResources().getString(R.string.chat_dialog_title))
-                    .setMessage("Sorry! You can't delete this chat message")
-                    .setNegativeButton(android.R.string.no, null)
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .show();
-        }
     }
 
     public void saveDatabaseItem(int position, Context context) {

@@ -19,6 +19,9 @@ import android.widget.Toast;
 import com.example.nurture_insight.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,7 +38,8 @@ public class SignUpActivity extends AppCompatActivity {
     EditText phoneNo, email, password, username;
     TextView goToLoginMessage;
     Button signUpButton;
-    ProgressDialog loading;
+    ProgressDialog loading, newLoading;
+    String otpStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +53,7 @@ public class SignUpActivity extends AppCompatActivity {
         goToLoginMessage = (TextView) findViewById(R.id.signUp_message5);
         signUpButton = (Button) findViewById(R.id.signUp_button);
         loading = new ProgressDialog(this);
+        newLoading = new ProgressDialog(this);
 
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +121,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(!(snapshot.child("Users").child(inputPhoneNo).exists())){
-
+                    String status = "false";
                     HashMap<String, Object> userDataMap = new HashMap<>();
                     userDataMap.put("phoneNo", inputPhoneNo);
                     userDataMap.put("username", inputName);
@@ -123,6 +129,7 @@ public class SignUpActivity extends AppCompatActivity {
                     userDataMap.put("password", inputPassword);
                     userDataMap.put("type", "user");
                     userDataMap.put("therapistID", "0000000000");
+                    userDataMap.put("status", status);
 
                     RootReference.child("Users").child(inputPhoneNo).updateChildren(userDataMap)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {

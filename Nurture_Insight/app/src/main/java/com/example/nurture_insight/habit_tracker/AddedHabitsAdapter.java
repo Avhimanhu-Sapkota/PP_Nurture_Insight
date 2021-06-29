@@ -10,6 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nurture_insight.Model.Habits;
@@ -49,6 +53,8 @@ public class AddedHabitsAdapter extends RecyclerView.Adapter<AddedHabitsAdapter.
         String habit_name = habits.get(position).getHabits_name();
 
                     holder.eachHabitTitle.setText(habit_name);
+                    holder.background.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
                     holder.background.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -56,7 +62,37 @@ public class AddedHabitsAdapter extends RecyclerView.Adapter<AddedHabitsAdapter.
                         }
                     });
 
+                    holder.background.setOnLongClickListener(new View.OnLongClickListener() {
+                        @Override
+                        public boolean onLongClick(View v) {
 
+                            AlertDialog dialog = new AlertDialog.Builder(context).create();
+                            dialog.setTitle(context.getResources().getString(R.string.removeHabitTitle));
+                            dialog.setMessage(context.getResources().getString(R.string.removeHabitAsk));
+                            dialog.setCancelable(false);
+                            dialog.setButton(DialogInterface.BUTTON_POSITIVE, "No", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int buttonId) {
+
+                                }
+                            });
+                            dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Yes", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int buttonId) {
+                                    DatabaseReference habitRef = FirebaseDatabase.getInstance().getReference()
+                                            .child("Habit_Tracker").child(Prevalent.currentOnlineUser.getPhoneNo()).child(habit_name);
+
+                                    habitRef.removeValue();
+                                    Fragment fragment =  new habit_tracker_home();
+                                    FragmentTransaction transaction = ((AppCompatActivity)context).getSupportFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.main_fragmentLayout, fragment );
+                                    transaction.commit();
+                                }
+                            });
+                            dialog.setIcon(android.R.drawable.ic_dialog_alert);
+                            dialog.show();
+
+                            return true;
+                        }
+                    });
 
     }
 
@@ -73,7 +109,7 @@ public class AddedHabitsAdapter extends RecyclerView.Adapter<AddedHabitsAdapter.
         habitMap.put("status", "done");
 
         AlertDialog dialog = new AlertDialog.Builder(context).create();
-        dialog.setTitle(context.getResources().getString(R.string.add_habit_title));
+        dialog.setTitle("Nurture Insight - Habit Tracker");
         dialog.setMessage(context.getResources().getString(R.string.habit_completed_msg));
         dialog.setCancelable(false);
         dialog.setButton(DialogInterface.BUTTON_POSITIVE, "No", new DialogInterface.OnClickListener() {

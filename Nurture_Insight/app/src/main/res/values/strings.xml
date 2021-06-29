@@ -829,7 +829,7 @@
     <string name="tdAddUser_failed"> Sorry! There was a problem while adding this user as your patient. </string>
     <string name="tdAddUser_Question"> Do you want to add this user as your Patient? </string>
     <string name="td_message1">Your Patients</string>
-    <string name="td_message2">Tap on Patients details and Swipe Left to remove the patient.</string>
+    <string name="td_message2">Tap on Patients details to view their profile or Long Press to remove the user from your patient\'s list.</string>
     <string name="td_removeUserQuestion">Do you want to remove the user from your patient\'s list?.</string>
     <string name="td_removeSuccessful">The Patient has been removed from your patient\'s list.</string>
     <string name="td_removeFailed">Sorry! There was a problem while removing the patient from your patient\'s list.</string>
@@ -853,6 +853,30 @@
     <string name="removeHabitAsk">Do you want to remove this habit from your schedule?</string>
     <string name="removeHabitSuccess">The habit has been removed from your schedule</string>
     <string name="removeHabitFailed">Sorry, there was a problem while removing the habit from your schedule</string>
+    <string name="addSosTitle">Add SOS Contact</string>
+    <string name="sosContactHint">Phone No of trusted close one…</string>
+    <string name="addContact">Add Contact</string>
+    <string name="SosMessage1"> Hey! </string>
+    <string name="SosMessage2">" I am having some mental health issue and I am in danger. Please contact as soon as possible." </string>
+    <string name="sosSendTitle">SOS Emergency</string>
+    <string name="sosSendMessage">Are you in danger! Do you want to notify your contact?</string>
+    <string name="habit_tracker_message1"> Please tap on the habit to complete habit for today.\n
+        Long press the habit if you intend to remove the habit from your daily schedule.</string>
+
+    <string name="assessment_title">Nurture Insight\'s\nMental Health Assessment</string>
+    <string-array name="assessmentQuestionAnswers">
+        <item> How are you feeling on the scale of 5 (with 1 being bad and 5 being great)?, 1, 2, 3, 4,5 </item>
+        <item> How are you feeling on the scale of 2?, 1, 2, 3, 4, 5</item>
+        <item> How are you feeling on the scale of 3?, 1, 2, 3, 4, 5</item>
+        <item> How are you feeling on the scale of 4?, 1, 2, 3, 4, 5</item>
+        <item> How are you feeling on the scale of 5?, 1, 2, 3, 4, 5</item>
+    </string-array>
+
+    <string name="nextButton"> Next </string>
+    <string name="endAssessment"> End Assessment </string>
+
+    <string name="scp_home_title">Nurture Insight \nSelf-Care Packages</string>
+    <string name="scp_home_message1">A daily self-care practice can be life-changing. Browse through different Self-care Packages take Nurture Yourself. Best of Luck! </string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -942,5 +966,7 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

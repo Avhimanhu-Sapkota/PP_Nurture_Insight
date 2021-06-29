@@ -3,6 +3,7 @@ package com.example.nurture_insight.therapist_dashboard;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +20,13 @@ import com.example.nurture_insight.Model.Users;
 import com.example.nurture_insight.Prevalent.Prevalent;
 import com.example.nurture_insight.R;
 import com.example.nurture_insight.habit_tracker.habit_tracker_home;
+import com.example.nurture_insight.login_signup.LoginActivity;
+import com.example.nurture_insight.login_signup.otpActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,6 +35,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 public class UserDisplayAdapter extends RecyclerView.Adapter<UserDisplayAdapter.ViewHolder>  {
 
@@ -95,7 +102,6 @@ public class UserDisplayAdapter extends RecyclerView.Adapter<UserDisplayAdapter.
         });
         dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int buttonId) {
-
                 userRef.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

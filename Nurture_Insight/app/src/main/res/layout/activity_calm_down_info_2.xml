@@ -37,7 +37,7 @@
         android:textColor="@color/ni_dark_red"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cdi1_backButton"
+        app:layout_constraintStart_toEndOf="@+id/cdi2_backButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

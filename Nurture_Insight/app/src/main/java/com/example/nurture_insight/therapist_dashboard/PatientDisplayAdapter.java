@@ -9,12 +9,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nurture_insight.Model.Users;
+import com.example.nurture_insight.Prevalent.Prevalent;
 import com.example.nurture_insight.R;
+import com.example.nurture_insight.habit_tracker.habit_tracker_home;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -51,7 +56,7 @@ public class PatientDisplayAdapter extends RecyclerView.Adapter<PatientDisplayAd
         final DatabaseReference userRef = FirebaseDatabase.getInstance().getReference()
                 .child("Users").child(users.get(position).getUsersID());
 
-        userRef.addValueEventListener(new ValueEventListener() {
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String userContact = "Contact at:\n" + snapshot.child("phoneNo").getValue().toString()
@@ -59,7 +64,33 @@ public class PatientDisplayAdapter extends RecyclerView.Adapter<PatientDisplayAd
 
                 holder.eachUserName.setText(snapshot.child("username").getValue().toString());
                 holder.eachUserContact.setText(userContact);
+                holder.eachUserCard.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
 
+                        AlertDialog dialog = new AlertDialog.Builder(context).create();
+                        dialog.setTitle("Nurture Insight - Remove a Patient");
+                        dialog.setMessage("Do You want to remove this user from your patient's List?");
+                        dialog.setCancelable(false);
+                        dialog.setButton(DialogInterface.BUTTON_POSITIVE, "No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int buttonId) {
+
+                            }
+                        });
+                        dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int buttonId) {
+                                HashMap<String, Object> deleteHash = new HashMap<>();
+                                deleteHash.put("therapistID", "0000000000");
+                                userRef.updateChildren(deleteHash);
+                                users.remove(position);
+                            }
+                        });
+                        dialog.setIcon(android.R.drawable.ic_dialog_alert);
+                        dialog.show();
+
+                        return true;
+                    }
+                });
             }
 
             @Override

@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,11 +18,16 @@ import com.example.nurture_insight.Model.Users;
 import com.example.nurture_insight.Prevalent.Prevalent;
 import com.example.nurture_insight.R;
 import com.example.nurture_insight.therapist_profile.TherapistInfo;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.concurrent.TimeUnit;
 
 import io.paperdb.Paper;
 
@@ -99,9 +105,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private void checkCredentials(String inputPhone, String inputPassword) {
 
-        Paper.book().write(Prevalent.userPhoneKey, inputPhone);
-        Paper.book().write(Prevalent.userPasswordKey, inputPassword);
-
         final DatabaseReference RootReference;
         RootReference = FirebaseDatabase.getInstance().getReference();
 
@@ -115,36 +118,45 @@ public class LoginActivity extends AppCompatActivity {
                         if (userData.getPassword().equals(inputPassword)){
                             loading.dismiss();
 
-                            Prevalent.currentOnlineUser = userData;
-                            if(Prevalent.currentOnlineUser.getType().equals("therapist")){
+                            if(userData.getStatus().equals("true")){
 
-                                DatabaseReference newReference = FirebaseDatabase.getInstance().getReference().child("Therapist");
+                                Paper.book().write(Prevalent.userPhoneKey, inputPhone);
+                                Paper.book().write(Prevalent.userPasswordKey, inputPassword);
 
-                                newReference.addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot therapistSnapshot) {
-                                        if(therapistSnapshot.child(inputPhone).exists()){
-                                            Intent signUpIntent= new Intent(LoginActivity.this, MainActivity.class);
-                                            startActivity(signUpIntent);
-                                            finish();
+                                Prevalent.currentOnlineUser = userData;
+                                if(Prevalent.currentOnlineUser.getType().equals("therapist")){
+
+                                    DatabaseReference newReference = FirebaseDatabase.getInstance().getReference().child("Therapist");
+
+                                    newReference.addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot therapistSnapshot) {
+                                            if(therapistSnapshot.child(inputPhone).exists()){
+                                                Intent signUpIntent= new Intent(LoginActivity.this, MainActivity.class);
+                                                startActivity(signUpIntent);
+                                                finish();
+                                            }
+                                            else{
+                                                Intent therapistIntent= new Intent(LoginActivity.this, TherapistInfo.class);
+                                                startActivity(therapistIntent);
+                                                finish();
+                                            }
                                         }
-                                        else{
-                                            Intent therapistIntent= new Intent(LoginActivity.this, TherapistInfo.class);
-                                            startActivity(therapistIntent);
-                                            finish();
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+
                                         }
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
+                                    });
+                                }
+                                else{
+                                    Intent signUpIntent= new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(signUpIntent);
+                                    finish();
+                                }
                             }
                             else{
-                                Intent signUpIntent= new Intent(LoginActivity.this, MainActivity.class);
-                                startActivity(signUpIntent);
-                                finish();
+                                sendOtpCode();
                             }
 
                         }
@@ -165,6 +177,37 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void sendOtpCode() {
+        PhoneAuthProvider.getInstance().verifyPhoneNumber("+977" + phone.getText(), 60, TimeUnit.SECONDS,
+                LoginActivity.this, new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                    @Override
+                    public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+               /* progressBar.setVisibility(View.GONE);
+                secretCodeSenderBtn.setVisibility(View.VISIBLE);*/
+
+                    }
+
+                    @Override
+                    public void onVerificationFailed(@NonNull FirebaseException e) {
+                /*progressBar.setVisibility(View.GONE);
+                secretCodeSenderBtn.setVisibility(View.VISIBLE);
+                Toast.makeText(MultiLoginOption.this, e.getMessage(), Toast.LENGTH_SHORT).show();*/
+                    }
+
+                    @Override
+                    public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                        //progressBar.setVisibility(View.GONE);
+                        // secretCodeSenderBtn.setVisibility(View.VISIBLE);
+                        Intent intent = new Intent(LoginActivity.this, otpActivity.class);
+                        String phone_number = phone.getText().toString();
+                        intent.putExtra("phone_number", phone_number);
+                        intent.putExtra("otp_code", s);
+                        startActivity(intent);
+                        loading.dismiss();
+                    }
+                });
     }
 
     private void AllowAccess(String inputPhone, String inputPassword) {

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
@@ -40,6 +41,7 @@ public class therapistDashboard extends Fragment {
     EventDisplayAdapter eventDisplayAdapter;
     PatientDisplayAdapter patientDisplayAdapter;
     LinearLayout eventLinearLayout;
+    TextView td_message1, td_message2;
 
     @Nullable
     @Override
@@ -54,6 +56,8 @@ public class therapistDashboard extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.td_recyclerView);
         eventLinearLayout = (LinearLayout) view.findViewById(R.id.td_slider_linearLayout);
         eventRecyclerView = (RecyclerView) view.findViewById(R.id.td_event_recyclerView);
+        td_message1 = (TextView) view.findViewById(R.id.td_message1);
+        td_message2 = (TextView) view.findViewById(R.id.td_message2);
 
         addPatientButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +113,6 @@ public class therapistDashboard extends Fragment {
             }
         });
 
-
         patientsList = new ArrayList<>();
         loadPatients();
 
@@ -158,22 +161,32 @@ public class therapistDashboard extends Fragment {
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                patientsList.clear();
-                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    String therapistID = dataSnapshot.child("therapistID").getValue().toString();
 
-                    if(therapistID.equals(Prevalent.currentOnlineUser.getPhoneNo())) {
-                        String usersID = dataSnapshot.getKey();
-                        Users model = new Users(usersID);
-                        patientsList.add(model);
+                if(snapshot.hasChildren()){
+                    td_message1.setVisibility(View.VISIBLE);
+                    td_message2.setVisibility(View.VISIBLE);
+                    patientsList.clear();
+                    for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                        String therapistID = dataSnapshot.child("therapistID").getValue().toString();
+
+                        if(therapistID.equals(Prevalent.currentOnlineUser.getPhoneNo())) {
+                            String usersID = dataSnapshot.getKey();
+                            Users model = new Users(usersID);
+                            patientsList.add(model);
+                        }
+
+                        layoutManager = new LinearLayoutManager(getContext());
+                        recyclerView.setLayoutManager(layoutManager);
+                        patientDisplayAdapter = new PatientDisplayAdapter(getContext(),patientsList);
+                        recyclerView.setAdapter(patientDisplayAdapter);
+
                     }
-
-                    layoutManager = new LinearLayoutManager(getContext());
-                    recyclerView.setLayoutManager(layoutManager);
-                    patientDisplayAdapter = new PatientDisplayAdapter(getContext(),patientsList);
-                    recyclerView.setAdapter(patientDisplayAdapter);
-
                 }
+                else{
+                    td_message1.setVisibility(View.GONE);
+                    td_message2.setVisibility(View.GONE);
+                }
+
             }
 
             @Override

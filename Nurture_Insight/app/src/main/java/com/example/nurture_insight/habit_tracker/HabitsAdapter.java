@@ -110,32 +110,16 @@ public class HabitsAdapter  extends RecyclerView.Adapter<HabitsAdapter.ViewHolde
         DatabaseReference habitRef = FirebaseDatabase.getInstance().getReference()
                 .child("Habit_Tracker").child(Prevalent.currentOnlineUser.getPhoneNo());
 
-        habitRef.addValueEventListener(new ValueEventListener() {
+        habitRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.hasChild(habit_title)){
-
-                    AlertDialog dialog = new AlertDialog.Builder(context).create();
-                    dialog.setTitle(context.getResources().getString(R.string.removeHabitTitle));
-                    dialog.setMessage(context.getResources().getString(R.string.removeHabitAsk));
-                    dialog.setCancelable(false);
-                    dialog.setButton(DialogInterface.BUTTON_POSITIVE, "No", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int buttonId) {
-
-                        }
-                    });
-                    dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Yes", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int buttonId) {
-
-                            habitRef.child(habit_title).removeValue();
-                            Fragment fragment =  new habit_tracker_home();
-                            FragmentTransaction transaction = ((AppCompatActivity)context).getSupportFragmentManager().beginTransaction();
-                            transaction.replace(R.id.main_fragmentLayout, fragment );
-                            transaction.commit();
-                        }
-                    });
-                    dialog.setIcon(android.R.drawable.ic_dialog_alert);
-                    dialog.show();
+                    new AlertDialog.Builder(context)
+                            .setTitle("Nurture Insight - Add a New Habit")
+                            .setMessage("You have already added this habit into your daily schedule")
+                            .setNegativeButton(android.R.string.no, null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
                 }
 
                 else{

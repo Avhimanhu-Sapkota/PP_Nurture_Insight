@@ -14,9 +14,9 @@
 
         <ImageView
             android:id="@+id/main_imgView_header_txt"
-            android:layout_width="389dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/therapistProfile_imgView_logout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/header" />
@@ -27,7 +27,7 @@
             android:layout_height="96dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/profile_picture"
-            app:civ_border_color="@color/white"
+            app:civ_border_color="@color/ni_blue"
             app:civ_border_width="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -50,7 +50,6 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="15dp"
             android:src="@drawable/logout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

@@ -15,12 +15,8 @@
         android:roundIcon="@drawable/test"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nurture_Insight">
-        <activity android:name=".login_signup.otpActivity"></activity>
+        <activity android:name=".login_signup.otpActivity" />
         <activity android:name=".therapist_profile.TherapistInfo" />
-        <activity android:name=".instant_help.calm_down_info_1" />
-        <activity android:name=".instant_help.calm_down_info_2" />
-        <activity android:name=".instant_help.calm_down_info_3" />
-        <activity android:name=".instant_help.calm_down_info_4" />
         <activity android:name=".login_signup.SignUpActivity" />
         <activity android:name=".login_signup.LoginActivity" />
         <activity android:name=".SplashActivity" />

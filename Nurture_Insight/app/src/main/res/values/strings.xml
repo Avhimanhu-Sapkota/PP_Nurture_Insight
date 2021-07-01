@@ -90,28 +90,19 @@
     <string name="cdi1_message2">Focus on your breathing to slow down the adrenaline response and the distressing thoughts.
         \nBreathe mindfully and notice the sensations of breathing into your belly. You might find it helpful to count your breaths, or to
         breath in to a count of 4, and out to a count of 4.
-        \n\nSwipe to continue.
-    </string>
-
-    <string name="cdi2_message1">Observe!</string>
-    <string name="cdi2_message2">Your thoughts and feelings.
+        \n\nObserve!\n\n
+        Your thoughts and feelings.
         \nFor Example:\n  - I\'m anxious.\n  - My body\'s alarm system has been triggered.\n  - My mind is tricking me into believing I\'m in danger
         \n  - I\'m feeling really tense and hyped up.
-        \n\nSwipe to continue.
-    </string>
-
-    <string name="cdi3_message1">Pull Back!</string>
-    <string name="cdi3_message2">Ask Yourself:
+        \n\n
+        Pull Back!Ask Yourself:\n\n
         \n  - Is this really true or does it just feel that way?
         \n  - Is this fact or opinion?
         \n  - What would a friend say about this?
         \n  - What advice would I tell someone else?
         \nEven though it feels really bad, these physical sensations are a normal body response…it will pass.
-        \n\nSwipe to continue.
-    </string>
-
-    <string name="cdi4_message1">Your Turn!</string>
-    <string name="cdi4_message2">Now it\'s over to you. Don\'t worry though, this part is easy. Try something that works for you. Maybe do something that helps you
+        \n\n
+        Your Turn!\n\nNow it\'s over to you. Don\'t worry though, this part is easy. Try something that works for you. Maybe do something that helps you
         relax, read through some positive quotes or affirmations, do some deep breathing exercises, or remind yourself that you are in the present.
         \nThere is no right or wrong thing to try, whatever works for you is best!
     </string>
@@ -865,18 +856,22 @@
 
     <string name="assessment_title">Nurture Insight\'s\nMental Health Assessment</string>
     <string-array name="assessmentQuestionAnswers">
-        <item> How are you feeling on the scale of 5 (with 1 being bad and 5 being great)?, 1, 2, 3, 4,5 </item>
-        <item> How are you feeling on the scale of 2?, 1, 2, 3, 4, 5</item>
-        <item> How are you feeling on the scale of 3?, 1, 2, 3, 4, 5</item>
-        <item> How are you feeling on the scale of 4?, 1, 2, 3, 4, 5</item>
-        <item> How are you feeling on the scale of 5?, 1, 2, 3, 4, 5</item>
+        <item> How are you feeling on the scale of 5 (with 1 being bad and 5 being amazing)?, 1, 2, 3, 4,5 </item>
+        <item> How confident have you felt in terms of your ability to sustain your relationships?, Not Confident at All, Somewhat confident, Satisfactory Confident, Very Confident, Extremely Confident</item>
+        <item> How hopeful are you about your future?, Not Hopeful at All, Somewhat Hopeful, Quite Hopeful, Very Hopeful, Extremely Hopeful</item>
+        <item> How often are you interested and excited about your life?, Never, Sometimes, Quite Often, Most of the Time, Every time</item>
+        <item> How satisfied are you with your Psychological Health?, Not Satisfied, Somewhat Satisfied, Quite Satisfied, Very Satisfied, Extremely Satisfied</item>
     </string-array>
 
     <string name="nextButton"> Next </string>
-    <string name="endAssessment"> End Assessment </string>
+    <string name="sca_title"> Nurture Insight\nSelf-Care Assessment </string>
+    <string name="sca_message1">What do you want to focus on at the moment for your Self-Care Journey?</string>
+    <string name="sca_message2">Please select what brought you to Nurture Insight, you can later change you focus for Self-Care from your Profile.</string>
 
     <string name="scp_home_title">Nurture Insight \nSelf-Care Packages</string>
     <string name="scp_home_message1">A daily self-care practice can be life-changing. Browse through different Self-care Packages take Nurture Yourself. Best of Luck! </string>
+
+    <string name="edit_message"> Edit your Details and Save to make changes in your profile. </string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

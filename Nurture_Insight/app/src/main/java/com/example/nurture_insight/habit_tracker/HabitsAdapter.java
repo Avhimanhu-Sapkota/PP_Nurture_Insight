@@ -51,7 +51,7 @@ public class HabitsAdapter  extends RecyclerView.Adapter<HabitsAdapter.ViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        holder.eachHabitTitle.setScaleType(ImageView.ScaleType.CENTER_CROP);
         holder.eachHabitTitle.setImageResource(habits.get(position).getHabit_title());
         holder.eachHabitTitle.setOnClickListener(new View.OnClickListener() {
             @Override

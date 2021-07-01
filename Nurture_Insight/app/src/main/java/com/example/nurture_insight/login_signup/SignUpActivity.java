@@ -130,6 +130,7 @@ public class SignUpActivity extends AppCompatActivity {
                     userDataMap.put("type", "user");
                     userDataMap.put("therapistID", "0000000000");
                     userDataMap.put("status", status);
+                    userDataMap.put("category", "default");
 
                     RootReference.child("Users").child(inputPhoneNo).updateChildren(userDataMap)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {

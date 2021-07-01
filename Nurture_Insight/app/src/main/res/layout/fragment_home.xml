@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_background_6"
     tools:context=".Home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.141">
-
 
         <ImageView
             android:id="@+id/main_imgView_header_txt"
@@ -36,90 +36,6 @@
             app:layout_constraintTop_toBottomOf="@+id/main_imgView_header_txt"
             app:srcCompat="@drawable/background_4" />
 
-        <ImageView
-            android:id="@+id/main_icon_1"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_button_sos"
-            app:srcCompat="@drawable/calm_down" />
-
-        <ImageView
-            android:id="@+id/main_icon_4"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/main_icon_3"
-            app:layout_constraintTop_toBottomOf="@+id/main_button_sos"
-            app:srcCompat="@drawable/browse_therapist" />
-
-        <ImageView
-            android:id="@+id/main_icon_3"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintStart_toEndOf="@+id/main_icon_2"
-            app:layout_constraintTop_toBottomOf="@+id/main_button_sos"
-            app:srcCompat="@drawable/live_in_present" />
-
-        <ImageView
-            android:id="@+id/main_icon_2"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintStart_toEndOf="@+id/main_icon_1"
-            app:layout_constraintTop_toBottomOf="@+id/main_button_sos"
-            app:srcCompat="@drawable/breathing_control" />
-
-        <ImageView
-            android:id="@+id/main_icon_7"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            app:layout_constraintStart_toEndOf="@+id/main_icon_6"
-            app:layout_constraintTop_toBottomOf="@+id/main_icon_3"
-            app:srcCompat="@drawable/explore" />
-
-        <ImageView
-            android:id="@+id/main_icon_5"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_icon_1"
-            app:srcCompat="@drawable/uplifting_quotes" />
-
-        <ImageView
-            android:id="@+id/main_icon_8"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/main_icon_7"
-            app:layout_constraintTop_toBottomOf="@+id/main_icon_4"
-            app:srcCompat="@drawable/settings" />
-
-        <ImageView
-            android:id="@+id/main_icon_6"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            app:layout_constraintStart_toEndOf="@+id/main_icon_5"
-            app:layout_constraintTop_toBottomOf="@+id/main_icon_2"
-            app:srcCompat="@drawable/affirmations" />
-
         <Button
             android:id="@+id/main_button_sos"
             android:layout_width="200dp"
@@ -136,6 +52,143 @@
             app:strokeColor="@color/ni_red"
             app:strokeWidth="2dp" />
 
+        <TableLayout
+            android:id="@+id/home_grids"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_button_sos">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/main_icon_1"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@layout/image_border"
+                    app:srcCompat="@drawable/calm_down" />
+
+                <ImageView
+                    android:id="@+id/main_icon_2"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="15dp"
+                    android:background="@layout/image_border"
+                    android:layout_marginTop="20dp"
+                    app:srcCompat="@drawable/breathing_control" />
+
+                <ImageView
+                    android:id="@+id/main_icon_3"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@layout/image_border"
+                    app:srcCompat="@drawable/live_in_present" />
+
+                <ImageView
+                    android:id="@+id/main_icon_4"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@layout/image_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:srcCompat="@drawable/browse_therapist" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/main_icon_5"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@layout/image_border"
+                    app:srcCompat="@drawable/uplifting_quotes" />
+
+                <ImageView
+                    android:id="@+id/main_icon_6"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@layout/image_border"
+                    app:srcCompat="@drawable/affirmations" />
+
+                <ImageView
+                    android:id="@+id/main_icon_7"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@layout/image_border"
+                    app:srcCompat="@drawable/explore" />
+
+                <ImageView
+                    android:id="@+id/main_icon_8"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@layout/image_border"
+                    app:srcCompat="@drawable/assessment" />
+
+            </TableRow>
+
+        </TableLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:id="@+id/self_care_linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_grids">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Your Daily Self-Care Exercises "
+                android:textColor="@color/ni_blue"
+                android:fontFamily="@font/alegreya_sans_bold"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Scroll  Horizontally to View More!"
+                android:textColor="@color/ni_blue"
+                android:fontFamily="@font/alegreya_sans"
+                android:textSize="12sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewSelfCare"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+
         <androidx.cardview.widget.CardView
             android:id="@+id/main_cardView_mood"
             android:layout_width="0dp"
@@ -148,7 +201,7 @@
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_icon_7">
+            app:layout_constraintTop_toBottomOf="@+id/self_care_linearLayout">
 
             <ImageView
                 android:id="@+id/main_card_imgView_bg"
@@ -224,25 +277,33 @@
             android:layout_marginTop="25dp"
             android:layout_marginEnd="20dp"
             android:padding="10dp"
-            app:cardCornerRadius="15dp"
             app:cardPreventCornerOverlap="false"
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:backgroundTint="@color/ni_lightBlue"
-            app:layout_constraintTop_toBottomOf="@+id/main_icon_7">
+            app:cardBackgroundColor="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@+id/self_care_linearLayout">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Nurture Insight - Mood Tracker"
+                android:textColor="@color/ni_blue"
+                android:fontFamily="@font/alegreya_sans_bold"
+                android:textSize="20sp" />
 
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/main_mood_barChart"
+                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                />
+                android:layout_height="match_parent" />
 
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="230dp"
             android:orientation="vertical"
@@ -250,7 +311,7 @@
             android:id="@+id/article_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_icon_7">
+            app:layout_constraintTop_toBottomOf="@+id/self_care_linearLayout">
 
             <TextView
                 android:layout_width="match_parent"
@@ -275,12 +336,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp" />
+
+
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/home_event_linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:orientation="vertical"

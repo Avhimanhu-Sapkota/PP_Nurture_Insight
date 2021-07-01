@@ -37,7 +37,7 @@
         android:layout_height="52dp"
         android:fontFamily="@font/alegreya_sans_bold"
         android:gravity="center"
-        android:text="@string/cdi3_message1"
+        android:text="Calm Down"
         android:textColor="@color/ni_blue"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,13 +45,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/cdi3_message2"
+        android:id="@+id/cdi1_message2"
         android:layout_width="338dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:fontFamily="@font/alegreya_sans"
         android:gravity="center"
-        android:text="@string/cdi3_message2"
+        android:text="@string/cdi1_message2"
         android:textColor="@color/ni_blue"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"

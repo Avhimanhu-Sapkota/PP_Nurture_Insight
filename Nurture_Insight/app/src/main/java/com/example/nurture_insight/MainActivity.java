@@ -3,17 +3,17 @@ package com.example.nurture_insight;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.nurture_insight.Home.HomeFragment;
 import com.example.nurture_insight.Prevalent.Prevalent;
+import com.example.nurture_insight.Self_Care_Packages.self_care_package_home;
+import com.example.nurture_insight.assessment.Self_care_assessment;
+import com.example.nurture_insight.assessment.weekly_assessment;
 import com.example.nurture_insight.chat_community.ChatCommunityFragment;
 import com.example.nurture_insight.habit_tracker.habit_tracker_home;
-import com.example.nurture_insight.journal.JournalFragment;
 import com.example.nurture_insight.therapist_profile.TherapistProfileFragment;
 import com.example.nurture_insight.user_profile.UserProfileFragment;
 import com.google.firebase.database.DataSnapshot;
@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.main_navSpace);
         navigationView.initWithSaveInstanceState(savedInstanceState);
         navigationView.addSpaceItem(new SpaceItem("", R.drawable.ic_baseline_home_24));
+        navigationView.addSpaceItem(new SpaceItem("", R.drawable.ic_baseline_explore_24));
         navigationView.addSpaceItem(new SpaceItem("", R.drawable.ic_baseline_track_changes_24));
         navigationView.addSpaceItem(new SpaceItem("", R.drawable.ic_baseline_forum_24));
-        navigationView.addSpaceItem(new SpaceItem("", R.drawable.ic_baseline_import_contacts_24));
 
         Calendar calForDate = Calendar.getInstance();
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
@@ -54,11 +54,18 @@ public class MainActivity extends AppCompatActivity {
         Date d = new Date();
         dayOfTheWeek = sdf.format(d);
 
-        if(dayOfTheWeek.equals("Saturday")){
-            checkAssessment();
+        if(Prevalent.currentOnlineUser.getCategory().equals("default")){
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragmentLayout, new Self_care_assessment()).commit();
+
         }
         else{
-            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragmentLayout, new HomeFragment()).commit();
+            if(dayOfTheWeek.equals("Saturday")){
+                checkAssessment();
+            }
+            else{
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_fragmentLayout, new HomeFragment()).commit();
+            }
+
         }
 
         navigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
@@ -84,13 +91,13 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 else if(itemIndex == 1){
-                    selectedFragment = new habit_tracker_home();
+                    selectedFragment = new self_care_package_home();
                 }
                 else if(itemIndex == 2){
-                    selectedFragment = new ChatCommunityFragment();
+                    selectedFragment = new habit_tracker_home();
                 }
                 else if(itemIndex == 3){
-                    selectedFragment = new JournalFragment();
+                    selectedFragment = new ChatCommunityFragment();
                 }
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_fragmentLayout, selectedFragment).commit();

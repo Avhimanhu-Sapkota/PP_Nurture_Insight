@@ -1,5 +1,6 @@
 package com.example.nurture_insight.Self_Care_Packages;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,6 +39,7 @@ public class self_care_exercise_list extends Fragment {
     ArrayList<Self_care> self_care_arrayList;
     RecyclerView.LayoutManager layoutManager;
     self_care_exercise_list_adapter scelAdapter;
+    Integer[] imageViewList;
 
     @Nullable
     @Override
@@ -96,10 +98,20 @@ public class self_care_exercise_list extends Fragment {
                     self_care_arrayList.add(model);
 
                 }
+                imageViewList = new Integer[]{R.drawable.each_exercise_bg_1,
+                        R.drawable.each_exercise_bg_2,
+                        R.drawable.each_exercise_bg_3,
+                        R.drawable.each_exercise_bg_4,
+                        R.drawable.each_exercise_bg_5,
+                        R.drawable.each_exercise_bg_6,
+                        R.drawable.each_exercise_bg_7,
+                        R.drawable.each_exercise_bg_8,
+                        R.drawable.each_exercise_bg_9,
+                        R.drawable.each_exercise_bg_10};
 
                 layoutManager = new LinearLayoutManager(getContext());
                 packageListRecyclerView.setLayoutManager(layoutManager);
-                scelAdapter = new self_care_exercise_list_adapter(getContext(),self_care_arrayList);
+                scelAdapter = new self_care_exercise_list_adapter(getContext(),self_care_arrayList, imageViewList);
                 packageListRecyclerView.setAdapter(scelAdapter);
             }
 

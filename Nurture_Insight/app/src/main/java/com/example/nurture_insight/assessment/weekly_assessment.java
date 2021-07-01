@@ -1,4 +1,4 @@
-package com.example.nurture_insight;
+package com.example.nurture_insight.assessment;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.nurture_insight.Home.HomeFragment;
 import com.example.nurture_insight.Prevalent.Prevalent;
+import com.example.nurture_insight.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -72,6 +73,7 @@ public class weekly_assessment extends Fragment {
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
         saveCurrentDate = currentDate.format(calForDate.getTime());
 
+        Log.d("UNIQUENAME", "onCreateView: DONE DONE" );
         questionList = getQuestions();
         displayQuestions();
 
@@ -79,7 +81,7 @@ public class weekly_assessment extends Fragment {
             @Override
             public void onClick(View v) {
                 int isChecked = assessmentOptions.getCheckedRadioButtonId();
-                Log.d("UNIQUENAME", "onClick: " + isChecked);
+
                 if (isChecked == 0){
                     new AlertDialog.Builder(getContext())
                             .setTitle(getResources().getString(R.string.assessment_title))

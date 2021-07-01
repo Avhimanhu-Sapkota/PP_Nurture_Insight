@@ -3,7 +3,6 @@ package com.example.nurture_insight.Home;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -18,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -27,22 +25,25 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nurture_insight.Model.Articles;
 import com.example.nurture_insight.Model.Mood_Tracker;
+import com.example.nurture_insight.Model.Self_care;
 import com.example.nurture_insight.Model.events;
 import com.example.nurture_insight.Prevalent.Prevalent;
 import com.example.nurture_insight.R;
-import com.example.nurture_insight.Self_Care_Packages.self_care_package_home;
+import com.example.nurture_insight.Self_Care_Packages.self_care_exercise_list_adapter;
 import com.example.nurture_insight.instant_help.affirmations;
 import com.example.nurture_insight.instant_help.breathing_control;
 import com.example.nurture_insight.instant_help.calm_down_info;
 import com.example.nurture_insight.instant_help.live_in_present;
 import com.example.nurture_insight.instant_help.quotes;
+import com.example.nurture_insight.journal.JournalFragment;
 import com.example.nurture_insight.therapist_dashboard.EventDisplayAdapter;
-import com.example.nurture_insight.weekly_assessment;
+import com.example.nurture_insight.assessment.weekly_assessment;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -72,9 +73,11 @@ public class HomeFragment extends Fragment {
     ImageView mainIcon1, mainIcon2, mainIcon3, mainIcon4, mainIcon5, mainIcon6, mainIcon7, mainIcon8;
     String userMood, saveCurrentDate, dayOfTheWeek;
     CardView moodCard, moodHistoryCard;
-    RecyclerView recyclerViewArticles, eventRecyclerView;
+    RecyclerView recyclerViewArticles, eventRecyclerView, packageListRecyclerView;
+    self_care_exercise_list_adapter scelAdapter;
     ArrayList<Articles> articles;
     public static ArrayList<events> eventsList;
+    ArrayList<Self_care> self_care_arrayList;
     EventDisplayAdapter eventDisplayAdapter;
     ArticlesAdapter articlesAdapter;
     BarChart barChart;
@@ -83,6 +86,7 @@ public class HomeFragment extends Fragment {
     ArrayList barEntries;
     Button sosButton;
     RecyclerView.LayoutManager layoutManager;
+    Integer[] imageViewList;
     private boolean permissionGranted;
     LinearLayout homeEventLinearLayout;
 
@@ -136,13 +140,10 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
-        mainIcon4.setOnClickListener(new View.OnClickListener() {
+        mainIcon1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = null;
-                fragment = new BrowseTherapistFragment();
-
+                Fragment fragment = new calm_down_info();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.main_fragmentLayout, fragment );
                 transaction.commit();
@@ -152,9 +153,7 @@ public class HomeFragment extends Fragment {
         mainIcon2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = null;
-                fragment = new breathing_control();
-
+                Fragment fragment =  new breathing_control();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.main_fragmentLayout, fragment );
                 transaction.commit();
@@ -164,9 +163,17 @@ public class HomeFragment extends Fragment {
         mainIcon3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = null;
-                fragment = new live_in_present();
+                Fragment fragment =  new live_in_present();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_fragmentLayout, fragment );
+                transaction.commit();
+            }
+        });
 
+        mainIcon4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new BrowseTherapistFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.main_fragmentLayout, fragment );
                 transaction.commit();
@@ -176,9 +183,7 @@ public class HomeFragment extends Fragment {
         mainIcon5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = null;
-                fragment = new quotes();
-
+                Fragment fragment =  new quotes();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.main_fragmentLayout, fragment );
                 transaction.commit();
@@ -188,9 +193,7 @@ public class HomeFragment extends Fragment {
         mainIcon6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = null;
-                fragment = new affirmations();
-
+                Fragment fragment =  new affirmations();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.main_fragmentLayout, fragment );
                 transaction.commit();
@@ -200,17 +203,7 @@ public class HomeFragment extends Fragment {
         mainIcon7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new self_care_package_home();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.main_fragmentLayout, fragment );
-                transaction.commit();
-            }
-        });
-
-        mainIcon1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new calm_down_info();
+                Fragment fragment = new JournalFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.main_fragmentLayout, fragment );
                 transaction.commit();
@@ -278,6 +271,21 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        packageListRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewSelfCare);
+        self_care_arrayList = new ArrayList<>();
+
+        imageViewList = new Integer[]{R.drawable.each_exercise_bg_1,
+                R.drawable.each_exercise_bg_2,
+                R.drawable.each_exercise_bg_3,
+                R.drawable.each_exercise_bg_4,
+                R.drawable.each_exercise_bg_5,
+                R.drawable.each_exercise_bg_6,
+                R.drawable.each_exercise_bg_7,
+                R.drawable.each_exercise_bg_8,
+                R.drawable.each_exercise_bg_9,
+                R.drawable.each_exercise_bg_10};
+
+        loadSelfCareExercises();
 
         recyclerViewArticles = (RecyclerView) rootView.findViewById(R.id.recyclerViewArticles);
         Integer[] articlesToDisplay = {R.drawable.anger2,
@@ -307,6 +315,66 @@ public class HomeFragment extends Fragment {
         loadEvents();
 
         return rootView;
+    }
+
+    private void loadSelfCareExercises() {
+        final DatabaseReference packageRef = FirebaseDatabase.getInstance().getReference()
+                .child("Self_care");
+
+        packageRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot newSnap: snapshot.getChildren()){
+                    String exerciseID = newSnap.getKey();
+                    DatabaseReference exerciseRef = packageRef.child(exerciseID);
+
+                    exerciseRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot newSnapshot) {
+                            for (DataSnapshot finalSnap: newSnapshot.getChildren()){
+                                String eachID = finalSnap.getKey();
+                                DatabaseReference eachRef = exerciseRef.child(eachID);
+
+                                eachRef.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot eachSnapshot) {
+                                        if (eachSnapshot.child("category").getValue().toString().equals(Prevalent.currentOnlineUser.getCategory())){
+
+                                            Self_care model = new Self_care(eachRef);
+                                            self_care_arrayList.add(model);
+
+                                            GridLayoutManager layoutManager1 =
+                                                    new GridLayoutManager(getActivity(), 2, GridLayoutManager.HORIZONTAL, false);
+
+                                            packageListRecyclerView.setLayoutManager(layoutManager1);
+                                            scelAdapter = new self_care_exercise_list_adapter(getContext(),self_care_arrayList, imageViewList);
+                                            packageListRecyclerView.setAdapter(scelAdapter);
+
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void checkAssessment() {
@@ -411,45 +479,6 @@ public class HomeFragment extends Fragment {
                                     events model = new events(finalEventRef);
                                     eventsList.add(model);
 
-                                    finalEventRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(@NonNull DataSnapshot finalSnapshot) {
-
-                                            String saveCurrentDate;
-                                            Calendar calForDate = Calendar.getInstance();
-                                            SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
-                                            saveCurrentDate = currentDate.format(calForDate.getTime());
-                                            String eventDate = finalSnapshot.child("date").getValue().toString();
-
-                                            try {
-                                                Date currentDateD = currentDate.parse(saveCurrentDate);
-                                                Date eventDateD = currentDate.parse(eventDate);
-
-                                                if(currentDateD.compareTo(eventDateD) > 0){
-
-                                                    Log.d("UNIQUENAME1", "onDataChange: " + "NO");
-                                                }
-                                                else if (currentDateD.compareTo(eventDateD) < 0){
-
-                                                    Log.d("UNIQUENAME1", "onDataChange: " + "YES");
-                                                }
-                                                else{
-
-                                                    Log.d("UNIQUENAME1", "onDataChange: " + "EQUAL");
-                                                }
-                                            } catch (ParseException e) {
-                                                e.printStackTrace();
-                                            }
-
-
-                                        }
-
-                                        @Override
-                                        public void onCancelled(@NonNull DatabaseError error) {
-
-                                        }
-                                    });
-
                                 }
 
                                 layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -486,9 +515,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void recordUserMood(String userMood) {
-
         String saveCurrentDate;
-
         Calendar calForDate = Calendar.getInstance();
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
         saveCurrentDate = currentDate.format(calForDate.getTime());
@@ -521,23 +548,24 @@ public class HomeFragment extends Fragment {
                 .getReference().child("Mood_Tracker")
                 .child(Prevalent.currentOnlineUser.getPhoneNo());
 
-        moodTrackerRef.addValueEventListener(new ValueEventListener() {
+        moodTrackerRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                barChart.clear();
+                barChart.invalidate();
                 if(snapshot.hasChild(saveCurrentDate)){
-                    moodCard.setVisibility(View.GONE);
-                    try {
-                        getMoodEntriesForGraph();
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
                     moodHistoryCard.setVisibility(View.VISIBLE);
-
+                    moodCard.setVisibility(View.GONE);
                 }
                 else{
                     moodCard.setVisibility(View.VISIBLE);
                     moodHistoryCard.setVisibility(View.GONE);
+                }
+
+                try {
+                    getMoodEntriesForGraph();
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
 
             }
@@ -551,20 +579,19 @@ public class HomeFragment extends Fragment {
 
     private void getMoodEntriesForGraph() throws ParseException {
         barEntries = new ArrayList<>();
-
         String saveCurrentDate;
+
         Calendar calForDate = Calendar.getInstance();
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
         saveCurrentDate = currentDate.format(calForDate.getTime());
         Date myCurrentDate = currentDate.parse(saveCurrentDate);
-
 
         final DatabaseReference moodTrackerRef = FirebaseDatabase.getInstance()
                 .getReference().child("Mood_Tracker")
                 .child(Prevalent.currentOnlineUser.getPhoneNo());
 
 
-        moodTrackerRef.addValueEventListener(new ValueEventListener() {
+        moodTrackerRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int index = 1;
@@ -572,14 +599,13 @@ public class HomeFragment extends Fragment {
                 if(snapshot.hasChildren()){
                     for(DataSnapshot myDataSnapshot: snapshot.getChildren()){
                         Mood_Tracker dataPoint = myDataSnapshot.getValue(Mood_Tracker.class);
-                        String eachDateInString = dataPoint.getMoodDate();
-                        String currentMood = dataPoint.getMoodType();
+                        String eachDateInString = myDataSnapshot.child("moodDate").getValue().toString();
+                        String currentMood = myDataSnapshot.child("moodType").getValue().toString();
 
                         try {
                             Date eachDate = currentDate.parse(eachDateInString);
                             if((myCurrentDate.getTime() - eachDate.getTime()) < 604800000){
                                 int moodNumber = getMoodNumber(currentMood);
-
                                 barEntries.add(new BarEntry(index, moodNumber));
                                 index++;
                             }
@@ -609,20 +635,16 @@ public class HomeFragment extends Fragment {
 
         barDataSet = new BarDataSet(barEntries, getResources().getString(R.string.mood_tracker_msg));
         barData = new BarData(barDataSet);
-        barChart.setNoDataTextColor(getResources().getColor(R.color.ni_blue));
-        barChart.setGridBackgroundColor(getResources().getColor(R.color.ni_lightBlue));
         barChart.setData(barData);
         barData.setBarWidth(0.3f);
         barDataSet.setColor(getResources().getColor(R.color.ni_blue));
         barDataSet.setValueTextColor(getResources().getColor(R.color.ni_blue));
         barDataSet.setValueTextSize(15f);
         barChart.setDescription(null);
-
-
         for (IDataSet set : barChart.getData().getDataSets())
             set.setDrawValues(!set.isDrawValuesEnabled());
 
-        barChart.animateXY(2000, 2000);
+        barChart.animateXY(1000, 1000);
         barChart.invalidate();
 
     }

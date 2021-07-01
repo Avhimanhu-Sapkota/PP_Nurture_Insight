@@ -43,6 +43,7 @@ public class Self_Care_Packages_Adapter extends RecyclerView.Adapter<Self_Care_P
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
+        holder.package_image.setScaleType(ImageView.ScaleType.CENTER_CROP);
         holder.package_image.setImageResource(self_care_packages.get(position).getSelfCarePackages());
         holder.package_title.setText(self_care_packages.get(position).getSelfCarePackagesTitle());
         holder.package_desc.setText(self_care_packages.get(position).getSelfCarePackagesDesc());

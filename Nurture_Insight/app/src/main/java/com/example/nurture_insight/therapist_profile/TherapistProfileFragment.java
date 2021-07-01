@@ -48,7 +48,7 @@ public class TherapistProfileFragment extends Fragment {
 
     TextView username;
     CircleImageView profileImage;
-    ImageView logout;
+    ImageView logout, settings;
     Button therapistDashboardButton;
 
     @Nullable
@@ -62,6 +62,17 @@ public class TherapistProfileFragment extends Fragment {
         profileImage = (CircleImageView)rootView.findViewById(R.id.therapistProfile_image);
         logout = (ImageView)rootView.findViewById(R.id.therapistProfile_imgView_logout);
         therapistDashboardButton = (Button) rootView.findViewById(R.id.therapist_dashboard_button);
+        settings = (ImageView)rootView.findViewById(R.id.therapistProfile_imgView_settings);
+
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new EditTherapistProfile();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_fragmentLayout, fragment );
+                transaction.commit();
+            }
+        });
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +88,6 @@ public class TherapistProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Fragment fragment = new therapistDashboard();
-
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.main_fragmentLayout, fragment );
                 transaction.commit();

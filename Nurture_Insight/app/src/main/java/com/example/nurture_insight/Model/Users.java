@@ -1,13 +1,13 @@
 package com.example.nurture_insight.Model;
 
 public class Users {
-    private String phoneNo, username, email, password, type, therapistID, usersID, status;
+    private String phoneNo, username, email, password, type, therapistID, usersID, status, category;
 
     public Users(){
 
     }
 
-    public Users(String phone, String username, String email, String password, String type, String therapistID, String status) {
+    public Users(String phone, String username, String email, String password, String type, String therapistID, String status, String category) {
         this.phoneNo = phone;
         this.username = username;
         this.email = email;
@@ -15,6 +15,7 @@ public class Users {
         this.type = type;
         this.therapistID = therapistID;
         this.status = status;
+        this.category = category;
     }
 
     public Users(String usersID) {
@@ -83,5 +84,13 @@ public class Users {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

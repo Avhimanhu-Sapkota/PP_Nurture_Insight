@@ -78,8 +78,10 @@ public class self_care_exercise extends Fragment {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot finalSnapshot) {
                                 Self_care object = finalSnapshot.getValue(Self_care.class);
+                                String category = getCategoryName(object.getCategory());
+
                                 videoTitle.setText(object.getName());
-                                videoCategory.setText("Category: " + object.getCategory());
+                                videoCategory.setText("Category: " + category);
                                 videoDuration.setText("Duration: " + object.getDuration());
                                 videoDesc.setText(object.getDescription());
                                 videoHost.setText("Video By: " + object.getVideo_by());
@@ -110,10 +112,28 @@ public class self_care_exercise extends Fragment {
             }
         });
 
-
-
-
-
         return view;
+    }
+
+    private String getCategoryName(String category) {
+
+        if(category.equals("happiness")){
+            return "Happy Living";
+        }
+        else if(category.equals("anger")){
+            return "Manage Anger";
+        }
+        else if(category.equals("depression")){
+            return "Overcome Depression";
+        }
+        else if(category.equals("sleep")){
+            return "Better Sleep";
+        }
+        else if(category.equals("anxietyStress")){
+            return "Beat Anxiety or Stress";
+        }
+        else{
+            return "Self-Care";
+        }
     }
 }

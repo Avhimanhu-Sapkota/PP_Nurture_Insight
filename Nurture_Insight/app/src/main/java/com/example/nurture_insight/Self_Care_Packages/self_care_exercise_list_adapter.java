@@ -1,5 +1,6 @@
 package com.example.nurture_insight.Self_Care_Packages;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,15 +26,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class self_care_exercise_list_adapter  extends RecyclerView.Adapter<self_care_exercise_list_adapter.ViewHolder> {
 
     ArrayList<Self_care> self_care;
     Context context;
+    Integer[] images;
 
-    public self_care_exercise_list_adapter(Context context, ArrayList<Self_care> self_care) {
+    public self_care_exercise_list_adapter(Context context, ArrayList<Self_care> self_care, Integer[] images) {
         this.self_care = self_care;
         this.context = context;
+        this.images = images;
     }
 
     @NonNull
@@ -56,8 +60,11 @@ public class self_care_exercise_list_adapter  extends RecyclerView.Adapter<self_
                 if(snapshot.exists()){
                     Self_care self_care_obj = snapshot.getValue(Self_care.class);
 
-                    holder.eachTitle.setText(self_care_obj.getName());/*
-                    holder.eachCategory.setText("Category: " + self_care_obj.getCategory());*/
+                    final int random = new Random().nextInt((9 - 1) + 1) + 1;
+                    holder.eachImage.setImageResource(images[random]);
+
+                    holder.eachImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                    holder.eachTitle.setText(self_care_obj.getName());
                     holder.eachDuration.setText("Duration: " + self_care_obj.getDuration());
 
                     holder.eachCardView.setOnClickListener(new View.OnClickListener() {
@@ -91,14 +98,14 @@ public class self_care_exercise_list_adapter  extends RecyclerView.Adapter<self_
 
         CardView eachCardView;
         TextView eachTitle, eachCategory, eachDuration;
-
+        ImageView eachImage;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             eachCardView = itemView.findViewById(R.id.self_care_package_list_cardView);
-            eachTitle = itemView.findViewById(R.id.eachExercise_title);/*
-            eachCategory = itemView.findViewById(R.id.eachExercise_category);*/
+            eachTitle = itemView.findViewById(R.id.eachExercise_title);
             eachDuration = itemView.findViewById(R.id.eachExercise_duration);
+            eachImage = itemView.findViewById(R.id.eachExercise_image);
 
         }
     }

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_background"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -10,28 +11,20 @@
         android:layout_height="wrap_content"
         tools:context=".habit_tracker.habit_tracker_home">
 
-    <ImageView
-        android:id="@+id/main_imgView_background"
-        android:layout_width="0dp"
-        android:layout_height="190dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/background_5" />
 
-    <TextView
-        android:id="@+id/habit_home_title"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/alegreya_sans_bold"
-        android:gravity="center"
-        android:text="@string/habit_title"
-        android:textColor="@color/ni_blue"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_imgView_background" />
+        <TextView
+            android:id="@+id/habit_home_title"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/alegreya_sans_bold"
+            android:gravity="center"
+            android:text="@string/habit_title"
+            android:textColor="@color/ni_blue"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/habit_tracker_message"

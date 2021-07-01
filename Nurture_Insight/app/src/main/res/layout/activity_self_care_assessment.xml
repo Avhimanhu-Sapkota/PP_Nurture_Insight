@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background"
+    tools:context=".assessment.Self_care_assessment">
+
+    <ImageView
+        android:id="@+id/main_imgView_background"
+        android:layout_width="0dp"
+        android:layout_height="170dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background_6" />
+
+    <TextView
+        android:id="@+id/sca_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/alegreya_sans_bold"
+        android:gravity="center"
+        android:text="@string/sca_title"
+        android:textColor="@color/ni_blue"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_imgView_background" />
+
+    <TextView
+        android:id="@+id/sca_question"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="45dp"
+        android:fontFamily="@font/alegreya_sans_bold"
+        android:gravity="center"
+        android:text="@string/sca_message1"
+        android:textColor="@color/ni_blue"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sca_title" />
+
+    <TextView
+        android:id="@+id/sca_message_hint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:fontFamily="@font/alegreya_sans"
+        android:gravity="center"
+        android:text="@string/sca_message2"
+        android:textColor="@color/ni_blue"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sca_question" />
+
+    <RadioGroup
+        android:id="@+id/sc_assessment_answer_options"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sca_message_hint">
+
+        <RadioButton
+            android:id="@+id/sc_assessment_option1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alegreya_sans"
+            android:text="Better Sleep"
+            android:textColor="@color/ni_blue" />
+
+        <RadioButton
+            android:id="@+id/sc_assessment_option2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alegreya_sans"
+            android:text="Happy Living"
+            android:textColor="@color/ni_blue" />
+
+        <RadioButton
+            android:id="@+id/sc_assessment_option3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alegreya_sans"
+            android:text="Manager Anger"
+            android:textColor="@color/ni_blue" />
+
+        <RadioButton
+            android:id="@+id/sc_assessment_option4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alegreya_sans"
+            android:text="Overcome Depression"
+            android:textColor="@color/ni_blue" />
+
+        <RadioButton
+            android:id="@+id/sc_assessment_option5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alegreya_sans"
+            android:text="Beat Anxiety or Stress"
+            android:textColor="@color/ni_blue" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/sc_assessment_save_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/button_style"
+        android:text="Complete Assessment"
+        app:backgroundTint="@color/ni_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sc_assessment_answer_options" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

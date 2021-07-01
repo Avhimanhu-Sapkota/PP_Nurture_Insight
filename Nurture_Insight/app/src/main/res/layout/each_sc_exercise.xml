@@ -1,38 +1,35 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="320dp"
     android:layout_height="wrap_content"
     android:id="@+id/self_care_package_list_cardView"
     android:layout_margin="10dp"
+    android:layout_marginBottom="20dp"
+    app:cardCornerRadius="20dp"
     app:cardBackgroundColor="@android:color/transparent">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/eachExercise_image"
-            android:layout_width="120dp"
+            android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:src="@drawable/scp_meditation" />
-
-        <LinearLayout
-            android:layout_width="250dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:src="@drawable/each_exercise_bg" />
 
             <TextView
                 android:id="@+id/eachExercise_title"
-                android:layout_width="200dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/alegreya_sans_bold"
                 android:text="Package Title"
-                android:textColor="@color/white"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18sp"/>
+                android:gravity="center"
+                android:textColor="@color/ni_purple_blue"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:textSize="20sp"/>
 
             <!--<TextView
                 android:id="@+id/eachExercise_category"
@@ -50,17 +47,18 @@
                 android:id="@+id/eachExercise_duration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/alegreya_sans"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/alegreya_sans_bold"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="5dp"
+                android:gravity="right"
                 android:text="Duration"
-                android:textColor="@color/white"
-                android:textSize="15sp"/>
+                android:layout_below="@+id/eachExercise_title"
+                android:textColor="@color/ni_purple_blue"
+                android:textSize="12sp"/>
 
-        </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </androidx.cardview.widget.CardView>

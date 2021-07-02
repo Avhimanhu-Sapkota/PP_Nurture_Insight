@@ -31,6 +31,19 @@
             app:layout_constraintTop_toBottomOf="@+id/depression_title"
             app:srcCompat="@drawable/depression1" />
 
+        <Button
+            android:id="@+id/depression_browse_therapist"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_style"
+            android:layout_marginTop="20dp"
+            android:text="Browse Therapist"
+            app:backgroundTint="@color/ni_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/depression_coverImage" />
+
         <TextView
             android:id="@+id/depression_title"
             android:layout_width="365dp"
@@ -41,7 +54,7 @@
             android:textColor="@color/ni_blue"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/anger_backButton"
+            app:layout_constraintStart_toEndOf="@+id/depression_backButton"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -57,7 +70,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/depression_coverImage" />
+            app:layout_constraintTop_toBottomOf="@+id/depression_browse_therapist" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

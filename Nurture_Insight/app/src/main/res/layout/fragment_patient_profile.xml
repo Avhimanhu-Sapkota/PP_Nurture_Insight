@@ -4,39 +4,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".therapist_profile.TherapistProfileFragment">
-
+    tools:context=".therapist_dashboard.PatientProfile">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/therapistProfile_constraintLayout"
+        android:id="@+id/patient_profile_constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/therapistProfile_imgView_settings"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/settings"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
             android:id="@+id/main_imgView_header_txt"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
-            app:layout_constraintEnd_toStartOf="@+id/therapistProfile_imgView_logout"
-            app:layout_constraintStart_toEndOf="@+id/therapistProfile_imgView_settings"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/header" />
 
+        <ImageView
+            android:id="@+id/patient_profile_backButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/therapistProfile_image"
+            android:id="@+id/patient_profile_image"
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/therapist_profile_picture"
+            android:src="@drawable/profile_picture"
             app:civ_border_color="@color/ni_blue"
             app:civ_border_width="2dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,10 +45,10 @@
             app:layout_constraintTop_toBottomOf="@+id/main_imgView_header_txt" />
 
         <ImageView
-            android:id="@+id/therapistProfile_imgView_txtbg"
+            android:id="@+id/patient_profile_imgView_txtbg"
             android:layout_width="0dp"
             android:layout_height="67dp"
-            android:layout_marginTop="140dp"
+            android:layout_marginTop="144dp"
             android:src="@drawable/ribbon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -56,32 +56,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/therapist_profile_focus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/alegreya_sans_bold"
-            android:text="Focused on: "
-            android:textColor="@color/ni_blue"
-            android:gravity="center"
-            android:textSize="18dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/therapistProfile_imgView_txtbg" />
-
-        <ImageView
-            android:id="@+id/therapistProfile_imgView_logout"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/logout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/therapistProfile_username"
+            android:id="@+id/patient_profile_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
@@ -89,29 +64,28 @@
             android:text="Profile Name"
             android:textColor="@color/white"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/therapistProfile_imgView_txtbg"
-            app:layout_constraintEnd_toEndOf="@+id/therapistProfile_imgView_txtbg"
+            app:layout_constraintBottom_toBottomOf="@+id/patient_profile_imgView_txtbg"
+            app:layout_constraintEnd_toEndOf="@+id/patient_profile_imgView_txtbg"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="@+id/therapistProfile_imgView_txtbg" />
+            app:layout_constraintStart_toStartOf="@+id/patient_profile_imgView_txtbg" />
 
-        <Button
-            android:id="@+id/therapist_dashboard_button"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/patient_profile_focus"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="55dp"
-            android:layout_marginRight="55dp"
-            android:layout_marginTop="28dp"
-            android:background="@drawable/sos_button"
-            android:text="@string/therapist_dashboard_button"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/ni_blue"
+            android:fontFamily="@font/alegreya_sans_bold"
+            android:text="Focused on: "
+            android:textColor="@color/ni_blue"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/therapist_profile_focus" />
+            app:layout_constraintTop_toBottomOf="@+id/patient_profile_imgView_txtbg" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/therapist_constraintLayout2"
+            android:id="@+id/patient_constraintLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -119,10 +93,10 @@
             android:layout_marginEnd="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/therapist_dashboard_button">
+            app:layout_constraintTop_toBottomOf="@+id/patient_profile_focus">
 
             <ProgressBar
-                android:id="@+id/therapist_mood_progress"
+                android:id="@+id/patient_mood_progress"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="35dp"
@@ -133,20 +107,20 @@
                 tools:progress="0" />
 
             <TextView
-                android:id="@+id/therapist_mood_progress_percent"
+                android:id="@+id/patient_mood_progress_percent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/alegreya_sans_bold"
                 android:text="0%"
                 android:textColor="@color/ni_blue"
-                android:textSize="12dp"
-                app:layout_constraintBottom_toBottomOf="@+id/therapist_mood_progress"
-                app:layout_constraintEnd_toEndOf="@+id/therapist_mood_progress"
-                app:layout_constraintStart_toStartOf="@+id/therapist_mood_progress"
-                app:layout_constraintTop_toTopOf="@+id/therapist_mood_progress" />
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/patient_mood_progress"
+                app:layout_constraintEnd_toEndOf="@+id/patient_mood_progress"
+                app:layout_constraintStart_toStartOf="@+id/patient_mood_progress"
+                app:layout_constraintTop_toTopOf="@+id/patient_mood_progress" />
 
             <TextView
-                android:id="@+id/therapist_mood_progress_message"
+                android:id="@+id/patient_mood_progress_message"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
@@ -154,12 +128,12 @@
                 android:gravity="center"
                 android:text="Mood Tracked for 30 days in this month"
                 android:textColor="@color/ni_blue"
-                android:textSize="12dp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/therapist_mood_progress" />
+                app:layout_constraintTop_toBottomOf="@+id/patient_mood_progress" />
 
             <ProgressBar
-                android:id="@+id/therapist_journal_progress"
+                android:id="@+id/patient_journal_progress"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginEnd="35dp"
@@ -170,20 +144,20 @@
                 tools:progress="0" />
 
             <TextView
-                android:id="@+id/therapist_journal_progress_percent"
+                android:id="@+id/patient_journal_progress_percent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/alegreya_sans_bold"
                 android:text="0%"
                 android:textColor="@color/ni_blue"
-                android:textSize="12dp"
-                app:layout_constraintBottom_toBottomOf="@+id/therapist_journal_progress"
-                app:layout_constraintEnd_toEndOf="@+id/therapist_journal_progress"
-                app:layout_constraintStart_toStartOf="@+id/therapist_journal_progress"
-                app:layout_constraintTop_toTopOf="@+id/therapist_journal_progress" />
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/patient_journal_progress"
+                app:layout_constraintEnd_toEndOf="@+id/patient_journal_progress"
+                app:layout_constraintStart_toStartOf="@+id/patient_journal_progress"
+                app:layout_constraintTop_toTopOf="@+id/patient_journal_progress" />
 
             <TextView
-                android:id="@+id/therapist_journal_progress_message"
+                android:id="@+id/patient_journal_progress_message"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="25dp"
@@ -191,25 +165,23 @@
                 android:gravity="center"
                 android:text="You wrote Journal for 30 days in this month"
                 android:textColor="@color/ni_blue"
-                android:textSize="12dp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/therapist_journal_progress" />
+                app:layout_constraintTop_toBottomOf="@+id/patient_journal_progress" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
-            android:id="@+id/therapist_write_journal_button"
-            android:layout_width="match_parent"
+            android:id="@+id/patient_view_journal_button"
+            android:layout_width="250dp"
             android:layout_height="45dp"
             android:layout_marginTop="40dp"
-            android:layout_marginRight="80dp"
-            android:layout_marginLeft="80dp"
             android:background="@drawable/button_style"
-            android:text="Write Journal"
+            android:text="View Journal"
             app:backgroundTint="@color/ni_blue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/therapist_constraintLayout2" />
+            app:layout_constraintTop_toBottomOf="@+id/patient_constraintLayout2" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -222,10 +194,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/therapist_write_journal_button">
+            app:layout_constraintTop_toBottomOf="@+id/patient_view_journal_button">
 
             <TextView
-                android:id="@+id/therapist_profile_AssessmentTitle"
+                android:id="@+id/patient_profile_AssessmentTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -234,10 +206,10 @@
                 android:gravity="center"
                 android:text="Assessment Records"
                 android:textColor="@color/ni_blue"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/therapist_profile_assessment_recyclerView"
+                android:id="@+id/patient_profile_assessment_recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:reverseLayout="true"
@@ -245,4 +217,6 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </androidx.core.widget.NestedScrollView>

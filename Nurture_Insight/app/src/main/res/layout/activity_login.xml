@@ -78,32 +78,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/therapistInfo_exitText_expertise" />
 
-    <TextView
-        android:id="@+id/login_message3"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:fontFamily="@font/alegreya_sans"
-        android:gravity="center"
-        android:text="@string/login_message3"
-        android:textColor="@color/ni_blue"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/therapistInfo_editText_password" />
-
     <Button
         android:id="@+id/therapistInfo_button_saveInfo"
         android:layout_width="219dp"
         android:layout_height="45dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/button_style"
         android:text="@string/login_message4"
         app:backgroundTint="@color/ni_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_message3" />
+        app:layout_constraintTop_toBottomOf="@+id/therapistInfo_editText_password" />
 
     <TextView
         android:id="@+id/login_message6"

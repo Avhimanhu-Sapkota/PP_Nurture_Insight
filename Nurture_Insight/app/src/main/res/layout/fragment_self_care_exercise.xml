@@ -38,7 +38,7 @@
             android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:videoId="S0Q4gqBUs7c"
+            app:videoId="1Dv-ldGLnIY"
             app:autoPlay="true"
             app:showFullScreenButton="true" />
 

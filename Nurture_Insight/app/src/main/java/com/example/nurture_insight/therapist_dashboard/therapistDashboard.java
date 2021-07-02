@@ -1,6 +1,7 @@
 package com.example.nurture_insight.therapist_dashboard;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,8 +57,8 @@ public class therapistDashboard extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.td_recyclerView);
         eventLinearLayout = (LinearLayout) view.findViewById(R.id.td_slider_linearLayout);
         eventRecyclerView = (RecyclerView) view.findViewById(R.id.td_event_recyclerView);
-        td_message1 = (TextView) view.findViewById(R.id.td_message1);
-        td_message2 = (TextView) view.findViewById(R.id.td_message2);
+        td_message1 = (TextView) view.findViewById(R.id.td_message1_patient);
+        td_message2 = (TextView) view.findViewById(R.id.td_message2_details);
 
         addPatientButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,6 +117,7 @@ public class therapistDashboard extends Fragment {
         patientsList = new ArrayList<>();
         loadPatients();
 
+
         eventsList = new ArrayList<>();
         loadEvents();
 
@@ -161,33 +163,32 @@ public class therapistDashboard extends Fragment {
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                patientsList.clear();
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    String therapistID = dataSnapshot.child("therapistID").getValue().toString();
 
-                if(snapshot.hasChildren()){
-                    td_message1.setVisibility(View.VISIBLE);
-                    td_message2.setVisibility(View.VISIBLE);
-                    patientsList.clear();
-                    for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                        String therapistID = dataSnapshot.child("therapistID").getValue().toString();
-
-                        if(therapistID.equals(Prevalent.currentOnlineUser.getPhoneNo())) {
-                            String usersID = dataSnapshot.getKey();
-                            Users model = new Users(usersID);
-                            patientsList.add(model);
-                        }
-
-                        layoutManager = new LinearLayoutManager(getContext());
-                        recyclerView.setLayoutManager(layoutManager);
-                        patientDisplayAdapter = new PatientDisplayAdapter(getContext(),patientsList);
-                        recyclerView.setAdapter(patientDisplayAdapter);
-
+                    if(therapistID.equals(Prevalent.currentOnlineUser.getPhoneNo())) {
+                        String usersID = dataSnapshot.getKey();
+                        Users model = new Users(usersID);
+                        patientsList.add(model);
                     }
-                }
-                else{
-                    td_message1.setVisibility(View.GONE);
-                    td_message2.setVisibility(View.GONE);
-                }
 
+                    if(patientsList.isEmpty()) {
+                        td_message1.setVisibility(View.GONE);
+                        td_message2.setVisibility(View.GONE);
+                    }else{
+                        td_message1.setVisibility(View.VISIBLE);
+                        td_message2.setVisibility(View.VISIBLE);
+                    }
+
+                    layoutManager = new LinearLayoutManager(getContext());
+                    recyclerView.setLayoutManager(layoutManager);
+                    patientDisplayAdapter = new PatientDisplayAdapter(getContext(),patientsList);
+                    recyclerView.setAdapter(patientDisplayAdapter);
+
+                }
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

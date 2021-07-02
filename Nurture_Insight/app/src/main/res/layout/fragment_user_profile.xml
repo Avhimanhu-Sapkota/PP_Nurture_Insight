@@ -73,7 +73,7 @@
             android:fontFamily="@font/alegreya_sans_bold"
             android:text="Profile Name"
             android:textColor="@color/white"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/profile_imgView_txtbg"
             app:layout_constraintEnd_toEndOf="@+id/profile_imgView_txtbg"
             app:layout_constraintHorizontal_bias="0.498"

@@ -8,7 +8,26 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".journal.JournalFragment">
+        tools:context=".therapist_dashboard.PatientJournal">
+
+        <ImageView
+            android:id="@+id/patient_journal_backButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/back"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/main_imgView_header_txt"
+            android:layout_width="297dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toEndOf="@+id/patient_journal_backButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/header" />
 
         <ImageView
             android:id="@+id/main_imgView_background"
@@ -16,20 +35,12 @@
             android:layout_height="150dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_imgView_header_txt"
             app:srcCompat="@drawable/background_4" />
 
-        <ImageView
-            android:id="@+id/journal_backButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:src="@drawable/back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/journal_title"
+            android:id="@+id/patient_journal_title"
             android:layout_width="267dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
@@ -43,7 +54,7 @@
             app:layout_constraintTop_toBottomOf="@+id/main_imgView_background" />
 
         <TextView
-            android:id="@+id/journal_message"
+            android:id="@+id/patient_journal_message"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -56,10 +67,10 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/journal_title" />
+            app:layout_constraintTop_toBottomOf="@+id/patient_journal_title" />
 
         <CalendarView
-            android:id="@+id/journal_calendar"
+            android:id="@+id/patient_journal_calendar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -67,10 +78,10 @@
             android:layout_marginEnd="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/journal_message" />
+            app:layout_constraintTop_toBottomOf="@+id/patient_journal_message" />
 
         <ImageView
-            android:id="@+id/journal_pageDivider"
+            android:id="@+id/patient_journal_pageDivider"
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:layout_marginStart="100dp"
@@ -80,8 +91,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/journal_calendar"
+            app:layout_constraintTop_toBottomOf="@+id/patient_journal_calendar"
             app:srcCompat="@drawable/page_divider" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </androidx.core.widget.NestedScrollView>

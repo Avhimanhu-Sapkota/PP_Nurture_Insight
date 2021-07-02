@@ -50,7 +50,7 @@
             app:layout_constraintTop_toBottomOf="@+id/therapist_dashboard_title" />
 
         <TextView
-            android:id="@+id/td_message1"
+            android:id="@+id/td_message1_patient"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -67,7 +67,7 @@
             app:layout_constraintTop_toBottomOf="@+id/td_add_patient"/>
 
         <TextView
-            android:id="@+id/td_message2"
+            android:id="@+id/td_message2_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -80,7 +80,7 @@
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/td_message1" />
+            app:layout_constraintTop_toBottomOf="@+id/td_message1_patient" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/td_recyclerView"
@@ -90,7 +90,7 @@
             android:layout_marginTop="35dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/td_message2" />
+            app:layout_constraintTop_toBottomOf="@+id/td_message2_details" />
 
         <Button
             android:id="@+id/td_add_event_button"
@@ -108,7 +108,7 @@
         <LinearLayout
             android:id="@+id/td_slider_linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:orientation="vertical"
@@ -129,7 +129,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/td_event_recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp" />
         </LinearLayout>
 

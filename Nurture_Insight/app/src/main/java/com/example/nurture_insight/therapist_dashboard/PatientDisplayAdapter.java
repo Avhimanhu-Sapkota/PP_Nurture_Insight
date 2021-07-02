@@ -3,6 +3,7 @@ package com.example.nurture_insight.therapist_dashboard;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,6 +90,19 @@ public class PatientDisplayAdapter extends RecyclerView.Adapter<PatientDisplayAd
                         dialog.show();
 
                         return true;
+                    }
+                });
+
+                holder.eachUserCard.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Fragment fragment = new PatientProfile();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("patientId", snapshot.child("phoneNo").getValue().toString());
+                        fragment.setArguments(bundle);
+                        AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.main_fragmentLayout, fragment).addToBackStack(null).commit();
+
                     }
                 });
             }

@@ -1,13 +1,6 @@
-package com.example.nurture_insight.therapist_profile;
+package com.example.nurture_insight.therapist_dashboard;
 
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,22 +21,13 @@ import com.example.nurture_insight.Model.Assessment;
 import com.example.nurture_insight.Prevalent.Prevalent;
 import com.example.nurture_insight.R;
 import com.example.nurture_insight.ViewHolder.AssessmentAdapter;
-import com.example.nurture_insight.instant_help.live_in_present;
 import com.example.nurture_insight.journal.JournalFragment;
-import com.example.nurture_insight.login_signup.LoginActivity;
 import com.example.nurture_insight.therapist_dashboard.therapistDashboard;
-import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
-import com.squareup.picasso.Picasso;
-import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -51,18 +35,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-import io.paperdb.Paper;
+public class PatientProfile extends Fragment {
 
-public class TherapistProfileFragment extends Fragment {
-
+    ImageView backButton;
+    String patientID, patientName,patientCategory;
     TextView username, focusedOn, moodProgressPercent, moodProgressMessage, journalProgressPercent, journalProgressMessage;
-    CircleImageView profileImage;
-    ImageView logout, settings;
+    Button viewJournal;
     ProgressBar moodProgressChart, journalProgressChart;
-    Button therapistDashboardButton, write_journal_button;
     ArrayList<Assessment> assessmentsList;
     AssessmentAdapter assessmentAdapter;
     RecyclerView assessmentRecyclerView;
@@ -73,53 +53,40 @@ public class TherapistProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_therapist_profile, container, false);
 
-        username = (TextView)rootView.findViewById(R.id.therapistProfile_username);
-        profileImage = (CircleImageView)rootView.findViewById(R.id.therapistProfile_image);
-        logout = (ImageView)rootView.findViewById(R.id.therapistProfile_imgView_logout);
-        therapistDashboardButton = (Button) rootView.findViewById(R.id.therapist_dashboard_button);
-        settings = (ImageView)rootView.findViewById(R.id.therapistProfile_imgView_settings);
-        focusedOn = (TextView)rootView.findViewById(R.id.therapist_profile_focus);
-        write_journal_button = (Button) rootView.findViewById(R.id.therapist_write_journal_button);
-        moodProgressPercent = (TextView)rootView.findViewById(R.id.therapist_mood_progress_percent);
-        moodProgressMessage = (TextView)rootView.findViewById(R.id.therapist_mood_progress_message);
-        moodProgressChart = (ProgressBar) rootView.findViewById(R.id.therapist_mood_progress);
-        journalProgressPercent = (TextView)rootView.findViewById(R.id.therapist_journal_progress_percent);
-        journalProgressMessage = (TextView)rootView.findViewById(R.id.therapist_journal_progress_message);
-        journalProgressChart = (ProgressBar) rootView.findViewById(R.id.therapist_journal_progress);
-        assessmentRecyclerView = (RecyclerView) rootView.findViewById(R.id.therapist_profile_assessment_recyclerView);
+        View view = inflater.inflate(R.layout.fragment_patient_profile, container, false);
 
-        write_journal_button.setOnClickListener(new View.OnClickListener() {
+        Bundle bundle = this.getArguments();
+        if (bundle != null){
+            patientID = bundle.getString("patientId", "");
+        }
+
+        username = (TextView) view.findViewById(R.id.patient_profile_username);
+        focusedOn = (TextView) view.findViewById(R.id.patient_profile_focus);
+        backButton = (ImageView) view.findViewById(R.id.patient_profile_backButton);
+        viewJournal = (Button) view.findViewById(R.id.patient_view_journal_button);
+        moodProgressPercent = (TextView) view.findViewById(R.id.patient_mood_progress_percent);
+        moodProgressMessage = (TextView) view.findViewById(R.id.patient_mood_progress_message);
+        journalProgressPercent = (TextView) view.findViewById(R.id.patient_journal_progress_percent);
+        journalProgressMessage = (TextView) view.findViewById(R.id.patient_journal_progress_message);
+        moodProgressChart = (ProgressBar) view.findViewById(R.id.patient_mood_progress);
+        journalProgressChart = (ProgressBar) view.findViewById(R.id.patient_journal_progress);
+        assessmentRecyclerView = (RecyclerView) view.findViewById(R.id.patient_profile_assessment_recyclerView);
+
+        viewJournal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new JournalFragment();
+                Fragment fragment = new PatientJournal();
+                Bundle bundle = new Bundle();
+                bundle.putString("patientId", patientID);
+                fragment.setArguments(bundle);
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.main_fragmentLayout, fragment );
                 transaction.commit();
             }
         });
 
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new EditTherapistProfile();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.main_fragmentLayout, fragment );
-                transaction.commit();
-            }
-        });
-
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Paper.book().destroy();
-                Intent logoutIntent= new Intent(getActivity(), LoginActivity.class);
-                startActivity(logoutIntent);
-            }
-        });
-
-        therapistDashboardButton.setOnClickListener(new View.OnClickListener() {
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Fragment fragment = new therapistDashboard();
@@ -129,15 +96,36 @@ public class TherapistProfileFragment extends Fragment {
             }
         });
 
-        username.setText(Prevalent.currentOnlineUser.getUsername());
-        String category = getCategoryName(Prevalent.currentOnlineUser.getCategory());
-        focusedOn.setText(Prevalent.currentOnlineUser.getPhoneNo()+ "\n" +"Focused on " + category);
+        loadPatientDetails();
 
         moodProgressBar();
         journalProgressBar();
         loadAssessmentResults();
 
-        return rootView;
+        return view;
+    }
+
+    private void loadPatientDetails() {
+
+        final DatabaseReference patientRef = FirebaseDatabase.getInstance().getReference()
+                .child("Users").child(patientID);
+
+        patientRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                patientName = snapshot.child("username").getValue().toString();
+                patientCategory = snapshot.child("category").getValue().toString();
+
+                username.setText(patientName);
+                String categoryName = getCategoryName(patientCategory);
+                focusedOn.setText(patientID + "\nFocused on: " + categoryName);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private String getCategoryName(String category) {
@@ -164,9 +152,8 @@ public class TherapistProfileFragment extends Fragment {
 
     private void moodProgressBar(){
         DatabaseReference moodRef = FirebaseDatabase.getInstance().getReference()
-                .child("Mood_Tracker").child(Prevalent.currentOnlineUser.getPhoneNo());
+                .child("Mood_Tracker").child(patientID);
 
-        Log.d("UNIQUENAME", "onDataChange: " + moodRef);
         moodRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -183,7 +170,6 @@ public class TherapistProfileFragment extends Fragment {
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
-
 
                     String finalDay = dayFormat.format(eachDate);
                     Calendar calObj = Calendar.getInstance();
@@ -211,7 +197,7 @@ public class TherapistProfileFragment extends Fragment {
 
     private void journalProgressBar(){
         DatabaseReference moodRef = FirebaseDatabase.getInstance().getReference()
-                .child("Journals").child(Prevalent.currentOnlineUser.getPhoneNo());
+                .child("Journals").child(patientID);
 
         moodRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -259,7 +245,7 @@ public class TherapistProfileFragment extends Fragment {
 
         assessmentsList = new ArrayList<>();
         final DatabaseReference assessmentRef = FirebaseDatabase.getInstance().getReference()
-                .child("Assessment").child(Prevalent.currentOnlineUser.getPhoneNo());
+                .child("Assessment").child(patientID);
 
         assessmentRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -284,5 +270,4 @@ public class TherapistProfileFragment extends Fragment {
             }
         });
     }
-
 }

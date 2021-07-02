@@ -21,16 +21,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/bci1_coverImage"
-            android:layout_width="0dp"
-            android:layout_height="390dp"
-            android:layout_marginTop="36dp"
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youtube_player_view_bce"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:videoId="1Dv-ldGLnIY"
+            app:autoPlay="true"
+            app:showFullScreenButton="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bci1_message1"
-            app:srcCompat="@drawable/meditate_2" />
+            app:layout_constraintTop_toBottomOf="@+id/bci1_message1"/>
 
         <TextView
             android:id="@+id/bci1_message1"
@@ -47,18 +51,19 @@
 
         <TextView
             android:id="@+id/bci1_message2"
-            android:layout_width="338dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="25dp"
             android:fontFamily="@font/alegreya_sans"
-            android:gravity="center"
             android:text="@string/bci1_message2"
             android:textColor="@color/ni_blue"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bci1_coverImage" />
+            app:layout_constraintTop_toBottomOf="@+id/youtube_player_view_bce" />
 
         <TextView
             android:id="@+id/bci2_message1"

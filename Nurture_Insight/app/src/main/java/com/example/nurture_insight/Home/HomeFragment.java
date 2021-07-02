@@ -423,9 +423,8 @@ public class HomeFragment extends Fragment {
         });
         dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int buttonId) {
-                Log.d("UNIQUENAME", "sosEmergency: " + phoneNo);
                     SmsManager smsManager = SmsManager.getDefault();
-                    smsManager.sendTextMessage(phoneNo, "", "Hey! I am " + userName + " (" + phoneNo + ") " + getResources().getString(R.string.SosMessage2), null, null);
+                    smsManager.sendTextMessage(Prevalent.currentOnlineUser.getPhoneNo(), "", "Hey! I am " + userName + " (" + phoneNo + ") " + getResources().getString(R.string.SosMessage2), null, null);
 
             }
         });

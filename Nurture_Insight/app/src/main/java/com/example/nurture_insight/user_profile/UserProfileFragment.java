@@ -2,6 +2,7 @@ package com.example.nurture_insight.user_profile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -264,6 +265,7 @@ public class UserProfileFragment extends Fragment {
                 double res = (counter / 31.0f) * 100;
                 int progress = (int) res;
                 moodProgressChart.setProgress(progress);
+                moodProgressChart.animate();
                 moodProgressPercent.setText(progress+"%");
                 moodProgressMessage.setText("Mood Tracked for " + counter + " days in this month");
             }
@@ -310,6 +312,7 @@ public class UserProfileFragment extends Fragment {
                 double res = (counter / 31.0f) * 100;
                 int progress = (int) res;
                 journalProgressChart.setProgress(progress);
+                journalProgressChart.animate();
                 journalProgressPercent.setText(progress+"%");
                 journalProgressMessage.setText("You wrote Journal for "+ counter + " days in this month");
             }

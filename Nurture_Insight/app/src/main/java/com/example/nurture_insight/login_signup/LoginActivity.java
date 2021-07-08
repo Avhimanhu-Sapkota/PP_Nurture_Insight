@@ -190,9 +190,6 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onVerificationFailed(@NonNull FirebaseException e) {
-                /*progressBar.setVisibility(View.GONE);
-                secretCodeSenderBtn.setVisibility(View.VISIBLE);
-                Toast.makeText(MultiLoginOption.this, e.getMessage(), Toast.LENGTH_SHORT).show();*/
                     }
 
                     @Override

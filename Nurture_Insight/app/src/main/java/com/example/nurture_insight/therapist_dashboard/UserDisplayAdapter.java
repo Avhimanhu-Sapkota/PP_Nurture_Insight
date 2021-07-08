@@ -1,6 +1,7 @@
 package com.example.nurture_insight.therapist_dashboard;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -41,6 +42,9 @@ public class UserDisplayAdapter extends RecyclerView.Adapter<UserDisplayAdapter.
 
     ArrayList<Users> users;
     Context context;
+    String phoneNo;
+
+    ProgressDialog loading;
 
     public UserDisplayAdapter (Context context, ArrayList<Users> users){
         this.context = context;
@@ -88,8 +92,17 @@ public class UserDisplayAdapter extends RecyclerView.Adapter<UserDisplayAdapter.
 
     private void addUserAsPatient(DatabaseReference userRef) {
 
-        HashMap<String, Object> userMap = new HashMap<>();
-        userMap.put("therapistID", Prevalent.currentOnlineUser.getPhoneNo());
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                phoneNo = snapshot.child("phoneNo").getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         AlertDialog dialog = new AlertDialog.Builder(context).create();
         dialog.setTitle(context.getResources().getString(R.string.therapist_dashboard_add_user));
@@ -102,35 +115,13 @@ public class UserDisplayAdapter extends RecyclerView.Adapter<UserDisplayAdapter.
         });
         dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int buttonId) {
-                userRef.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            new AlertDialog.Builder(context)
-                                    .setTitle(context.getResources().getString(R.string.therapist_dashboard_add_user))
-                                    .setMessage(context.getResources().getString(R.string.tdAddUser_success))
-                                    .setNegativeButton(android.R.string.yes, null)
-                                    .setIcon(android.R.drawable.ic_dialog_alert)
-                                    .show();
+                loading = new ProgressDialog(context);
+                loading.setTitle("Nurture Insight - User Verification");
+                loading.setMessage(context.getString(R.string.signUp_loading_message));
+                loading.setCanceledOnTouchOutside(false);
+                loading.show();
 
-                            Fragment fragment =  new therapistDashboard();
-
-                            FragmentTransaction transaction = ((AppCompatActivity)context).getSupportFragmentManager().beginTransaction();
-                            transaction.replace(R.id.main_fragmentLayout, fragment );
-                            transaction.commit();
-                        }
-                        else{
-                            new AlertDialog.Builder(context)
-                                    .setTitle(context.getResources().getString(R.string.therapist_dashboard_add_user))
-                                    .setMessage(context.getResources().getString(R.string.tdAddUser_failed))
-                                    .setNegativeButton(android.R.string.yes, null)
-                                    .setIcon(android.R.drawable.ic_dialog_alert)
-                                    .show();
-                        }
-                    }
-                });
-
-
+                sendOtpCode(phoneNo);
             }
         });
         dialog.setIcon(android.R.drawable.ic_dialog_alert);
@@ -138,6 +129,30 @@ public class UserDisplayAdapter extends RecyclerView.Adapter<UserDisplayAdapter.
 
     }
 
+
+    private void sendOtpCode(String phoneNo) {
+        PhoneAuthProvider.getInstance().verifyPhoneNumber("+977" + phoneNo, 60, TimeUnit.SECONDS,
+                (AppCompatActivity)context  , new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                    @Override
+                    public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+
+                    }
+
+                    @Override
+                    public void onVerificationFailed(@NonNull FirebaseException e) {
+                    }
+
+                    @Override
+                    public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+
+                        Intent intent = new Intent(context, otpActivity.class);
+                        intent.putExtra("phone_number", phoneNo);
+                        intent.putExtra("otp_code", s);
+                        intent.putExtra("from", "AddUser");
+                        context.startActivity(intent);
+                    }
+                });
+    }
 
     @Override
     public int getItemCount() {

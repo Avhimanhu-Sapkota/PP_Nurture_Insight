@@ -120,7 +120,7 @@ public class BrowseTherapistFragment extends Fragment {
                             };
                     recyclerView.setAdapter(adapter);
                     adapter.startListening();
-
+                    adapter.notifyDataSetChanged();
 
                 }
             }

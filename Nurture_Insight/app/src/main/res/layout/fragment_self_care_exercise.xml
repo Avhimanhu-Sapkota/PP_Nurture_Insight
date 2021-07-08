@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:videoId="1Dv-ldGLnIY"
-            app:autoPlay="true"
+            app:autoPlay="false"
             app:showFullScreenButton="true" />
 
     <LinearLayout

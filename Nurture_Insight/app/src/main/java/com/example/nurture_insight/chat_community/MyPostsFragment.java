@@ -3,11 +3,13 @@ package com.example.nurture_insight.chat_community;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -83,20 +85,29 @@ public class MyPostsFragment extends Fragment {
                                 new FirebaseRecyclerAdapter<Chat_Message, ChatMessageViewHolder>(options) {
                                     @Override
                                     protected void onBindViewHolder(@NonNull ChatMessageViewHolder holder, int position, @NonNull Chat_Message model) {
-
                                         String chatDate = model.getMessageTime() +" "+ model.getMessageDate();
                                         holder.chatMessage.setText(model.getMessage());
                                         holder.chatMessageDate.setText(chatDate);
-
 
                                         if(model.getAnonymousStatus().equals("true")){
                                             holder.chatMessageUsername.setText(getResources().getString(R.string.anonymous));
                                         }
                                         else{
                                             holder.chatMessageUsername.setText(model.getUsername());
-
                                         }
 
+                                        holder.chatMessageCard.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                String chatID = model.getMessageDate()+model.getMessageTime();
+                                                Fragment fragment = new ViewChatPosts();
+                                                Bundle bundle = new Bundle();
+                                                bundle.putString("chatID", chatID);
+                                                fragment.setArguments(bundle);
+                                                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                                                activity.getSupportFragmentManager().beginTransaction().replace(R.id.main_fragmentLayout, fragment).addToBackStack(null).commit();
+                                            }
+                                        });
                                     }
 
                                     @NonNull
@@ -109,6 +120,8 @@ public class MyPostsFragment extends Fragment {
                                         return holder;
                                     }
                                 };
+
+
 
 
                         new ItemTouchHelper(

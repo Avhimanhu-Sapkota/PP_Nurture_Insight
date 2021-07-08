@@ -4,7 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.nurture_insight.Home.HomeFragment;
@@ -14,6 +17,7 @@ import com.example.nurture_insight.assessment.Self_care_assessment;
 import com.example.nurture_insight.assessment.weekly_assessment;
 import com.example.nurture_insight.chat_community.ChatCommunityFragment;
 import com.example.nurture_insight.habit_tracker.habit_tracker_home;
+import com.example.nurture_insight.therapist_dashboard.therapistDashboard;
 import com.example.nurture_insight.therapist_profile.TherapistProfileFragment;
 import com.example.nurture_insight.user_profile.UserProfileFragment;
 import com.google.firebase.database.DataSnapshot;
@@ -53,6 +57,11 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
         Date d = new Date();
         dayOfTheWeek = sdf.format(d);
+
+
+        if(getIntent().getStringExtra("status") !=null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragmentLayout, new therapistDashboard()).commit();
+        }
 
         if(Prevalent.currentOnlineUser.getCategory().equals("default")){
             getSupportFragmentManager().beginTransaction().replace(R.id.main_fragmentLayout, new Self_care_assessment()).commit();
@@ -108,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, itemIndex + " " + itemName, Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     private void checkAssessment() {
@@ -132,9 +142,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-//    @Override
-//    protected void onSaveInstanceState(Bundle outState) {
-//        super.onSaveInstanceState(outState);
-//        navigationView.onSaveInstanceState(outState);
-//    }
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
+    }
 }

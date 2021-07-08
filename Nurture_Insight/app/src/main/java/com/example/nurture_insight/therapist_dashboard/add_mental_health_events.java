@@ -167,6 +167,7 @@ public class add_mental_health_events extends Fragment {
             eventMap.put("time", pickedTimeStr);
             eventMap.put("conductor", Prevalent.currentOnlineUser.getUsername());
             eventMap.put("contact", Prevalent.currentOnlineUser.getPhoneNo());
+            eventMap.put("eventStatus", "notCompleted");
 
             String saveCurrentDate, saveCurrentTime;
             Calendar calForDate = Calendar.getInstance();

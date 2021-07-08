@@ -2,18 +2,23 @@ package com.example.nurture_insight.chat_community;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nurture_insight.Interface.ItemClickListener;
 import com.example.nurture_insight.Model.Chat_Message;
 import com.example.nurture_insight.Prevalent.Prevalent;
 import com.example.nurture_insight.R;
+import com.example.nurture_insight.therapist_dashboard.EventDetailsFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -50,8 +55,8 @@ public class chatAdapter extends RecyclerView.Adapter<chatAdapter.ChatMessageVie
     @Override
     public void onBindViewHolder(@NonNull ChatMessageViewHolder holder, int position) {
         Chat_Message chatMessage = chatMessageList.get(position);
-
-        holder.chatMessageDate.setText(chatMessage.getMessageDate() + " " + chatMessage.getMessageTime());
+        String chatID = chatMessage.getChatID();
+        holder.chatMessageDate.setText(chatMessage.getMessageDate() + " at " + chatMessage.getMessageTime());
         holder.chatMessage.setText(chatMessage.getMessage());
         holder.chatMessageUsername.setText(chatMessage.getUsername());
 
@@ -61,6 +66,19 @@ public class chatAdapter extends RecyclerView.Adapter<chatAdapter.ChatMessageVie
         else{
             holder.chatMessageUsername.setText(chatMessage.getUsername());
         }
+
+        holder.each_chat_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new ViewChatPosts();
+                Bundle bundle = new Bundle();
+                bundle.putString("chatID", chatID);
+                fragment.setArguments(bundle);
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.main_fragmentLayout, fragment).addToBackStack(null).commit();
+
+            }
+        });
 
     }
 
@@ -140,6 +158,7 @@ public class chatAdapter extends RecyclerView.Adapter<chatAdapter.ChatMessageVie
 
         public TextView chatMessage, chatMessageDate, chatMessageUsername;
         public ItemClickListener listener;
+        public CardView each_chat_card;
 
         public ChatMessageViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -147,7 +166,7 @@ public class chatAdapter extends RecyclerView.Adapter<chatAdapter.ChatMessageVie
             chatMessage = (TextView) itemView.findViewById(R.id.chat_message);
             chatMessageDate = (TextView) itemView.findViewById(R.id.chat_message_date);
             chatMessageUsername = (TextView) itemView.findViewById(R.id.chat_username);
-
+            each_chat_card = (CardView) itemView.findViewById(R.id.each_chat_card);
         }
 
         public  void setItemClickListener(ItemClickListener listener){

@@ -1,6 +1,7 @@
 package com.example.nurture_insight.assessment;
 
 import android.app.AlertDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -40,6 +41,8 @@ public class weekly_assessment extends Fragment {
     RadioButton option1, option2, option3, option4, option5;
     int questionNo=0, assessmentScore=0;
     int [][] choseAnswer = new int[5][2];
+    SharedPreferences sharedPreferences;
+    Boolean messageSent;
 
     @Nullable
     @Override
@@ -73,7 +76,6 @@ public class weekly_assessment extends Fragment {
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
         saveCurrentDate = currentDate.format(calForDate.getTime());
 
-        Log.d("UNIQUENAME", "onCreateView: DONE DONE" );
         questionList = getQuestions();
         displayQuestions();
 
@@ -109,6 +111,15 @@ public class weekly_assessment extends Fragment {
     }
 
     private void uploadAssessmentScore() {
+
+        if(assessmentScore<=8){
+            sharedPreferences = getContext().getSharedPreferences("AssessmentPref", getContext().MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("messageSent", false);
+            editor.apply();
+
+            }
+
         DatabaseReference assessmentRef = FirebaseDatabase.getInstance().getReference().child("Assessment")
                 .child(Prevalent.currentOnlineUser.getPhoneNo());
 

@@ -2,12 +2,13 @@ package com.example.nurture_insight.Model;
 
 public class Chat_Message {
     private String messageDate, messageTime, message, username;
-    private String anonymousStatus;
+    private String anonymousStatus, chatID;
 
     public Chat_Message() {
     }
 
-    public Chat_Message(String messageDate, String messageTime, String message, String username, String anonymousStatus) {
+    public Chat_Message(String chatID, String messageDate, String messageTime, String message, String username, String anonymousStatus) {
+        this.chatID = chatID;
         this.messageDate = messageDate;
         this.messageTime = messageTime;
         this.message = message;
@@ -53,5 +54,13 @@ public class Chat_Message {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getChatID() {
+        return chatID;
+    }
+
+    public void setChatID(String chatID) {
+        this.chatID = chatID;
     }
 }

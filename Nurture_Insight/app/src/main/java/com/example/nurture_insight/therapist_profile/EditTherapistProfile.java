@@ -215,7 +215,6 @@ public class EditTherapistProfile extends Fragment {
                                         }).show();
 
                                 Paper.book().destroy();
-
                                 Intent intent = new Intent(getContext(), LoginActivity.class);
                                 startActivity(intent);
 

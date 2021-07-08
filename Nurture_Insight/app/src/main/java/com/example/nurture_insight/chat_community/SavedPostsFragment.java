@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -104,8 +105,20 @@ public class SavedPostsFragment extends Fragment {
                                     }
                                     else{
                                         holder.chatMessageUsername.setText(model.getUsername());
-
                                     }
+
+                                    holder.chatMessageCard.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            String chatID = model.getMessageDate()+model.getMessageTime();
+                                            Fragment fragment = new ViewChatPosts();
+                                            Bundle bundle = new Bundle();
+                                            bundle.putString("chatID", chatID);
+                                            fragment.setArguments(bundle);
+                                            AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                                            activity.getSupportFragmentManager().beginTransaction().replace(R.id.main_fragmentLayout, fragment).addToBackStack(null).commit();
+                                        }
+                                    });
                                 }
                             };
 

@@ -183,6 +183,7 @@ public class PatientProfile extends Fragment {
                 double res = (counter / 31.0f) * 100;
                 int progress = (int) res;
                 moodProgressChart.setProgress(progress);
+                moodProgressChart.animate();
                 moodProgressPercent.setText(progress+"%");
                 moodProgressMessage.setText("Mood Tracked for " + counter + " days in this month");
             }
@@ -229,6 +230,7 @@ public class PatientProfile extends Fragment {
                 double res = (counter / 31.0f) * 100;
                 int progress = (int) res;
                 journalProgressChart.setProgress(progress);
+                journalProgressChart.animate();
                 journalProgressPercent.setText(progress+"%");
                 journalProgressMessage.setText("You wrote Journal for "+ counter + " days in this month");
             }

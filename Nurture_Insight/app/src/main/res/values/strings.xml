@@ -66,7 +66,7 @@
     <string name="anonymous">Posted Anonymously</string>
     <string name="chat_swipe_delete">Are you sure you want to delete this post?</string>
     <string name="chat_swipe_save">Are you sure you want to save this post?</string>
-    <string name="chat_MessageHint">Tap on the post and swipe right to save the post or swipe left to delete the post.</string>
+    <string name="chat_MessageHint">Tap on the post to view post and comments, swipe right to save the post or swipe left to delete the post. </string>
     <string name="savedPosts">View Saved Posts</string>
     <string name="myPosts">View My Posts</string>
     <string name="chat_SavedMessageHint">Tap on the post and swipe left to remove the post from your saved area.</string>
@@ -816,7 +816,7 @@
     <string name="therapist_dashboard_button"> Therapist Dashboard </string>
     <string name="therapist_dashboard_title"> Welcome to \nTherapist Dashboard </string>
     <string name="therapist_dashboard_add_user">Add a New Patient</string>
-    <string name="tdAddUser_message">Tap on the User\'s Info to add them as your Patient</string>
+    <string name="tdAddUser_message">Tap on the User\'s Info to add them as your Patient. \nYou will be asked to enter an OTP code which will be sent to the patient\'s phone.</string>
     <string name="tdAddUser_success"> Great! You have added this user as your patient. </string>
     <string name="tdAddUser_failed"> Sorry! There was a problem while adding this user as your patient. </string>
     <string name="tdAddUser_Question"> Do you want to add this user as your Patient? </string>
@@ -858,7 +858,7 @@
     <string name="assessment_title">Nurture Insight\'s\nMental Health Assessment</string>
     <string-array name="assessmentQuestionAnswers">
         <item> How are you feeling on the scale of 5 (with 1 being bad and 5 being amazing)?, 1, 2, 3, 4,5 </item>
-        <item> How confident have you felt in terms of your ability to sustain your relationships?, Not Confident at All, Somewhat confident, Satisfactory Confident, Very Confident, Extremely Confident</item>
+        <item> How confident have you felt in terms of your ability to sustain your relationships with the people around you?, Not Confident at All, Somewhat confident, Satisfactory Confident, Very Confident, Extremely Confident</item>
         <item> How hopeful are you about your future?, Not Hopeful at All, Somewhat Hopeful, Quite Hopeful, Very Hopeful, Extremely Hopeful</item>
         <item> How often are you interested and excited about your life?, Never, Sometimes, Quite Often, Most of the Time, Every time</item>
         <item> How satisfied are you with your Psychological Health?, Not Satisfied, Somewhat Satisfied, Quite Satisfied, Very Satisfied, Extremely Satisfied</item>

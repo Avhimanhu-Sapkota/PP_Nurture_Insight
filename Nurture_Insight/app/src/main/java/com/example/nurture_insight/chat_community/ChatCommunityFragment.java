@@ -79,7 +79,6 @@ public class ChatCommunityFragment extends Fragment {
             public void onClick(View v) {
                 Fragment fragment = null;
                 fragment = new MyPostsFragment();
-
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.main_fragmentLayout, fragment );
                 transaction.commit();
@@ -243,13 +242,14 @@ public class ChatCommunityFragment extends Fragment {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for (DataSnapshot finalSnapshot: snapshot.getChildren()){
+                                String chatID = finalSnapshot.getKey();
                                 String message = finalSnapshot.child("message").getValue(String.class);
                                 String messageDate = finalSnapshot.child("messageDate").getValue(String.class);
                                 String messageTime = finalSnapshot.child("messageTime").getValue(String.class);
                                 String anonymousStatus = finalSnapshot.child("anonymousStatus").getValue(String.class);
                                 String username = finalSnapshot.child("username").getValue(String.class);
 
-                                chatMessages.add(new Chat_Message(messageDate, messageTime, message, username, anonymousStatus));
+                                chatMessages.add(new Chat_Message(chatID, messageDate, messageTime, message, username, anonymousStatus));
                             }
                             adapter = new chatAdapter(chatMessages);
                             recyclerView.setAdapter(adapter);

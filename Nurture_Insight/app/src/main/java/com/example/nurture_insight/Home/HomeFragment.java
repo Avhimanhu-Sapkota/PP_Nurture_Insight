@@ -74,7 +74,7 @@ public class HomeFragment extends Fragment {
     String userMood, saveCurrentDate, dayOfTheWeek;
     CardView moodCard, moodHistoryCard;
     RecyclerView recyclerViewArticles, eventRecyclerView, packageListRecyclerView;
-    self_care_exercise_list_adapter scelAdapter;
+    public self_care_exercise_list_adapter scelAdapter;
     ArrayList<Articles> articles;
     public static ArrayList<events> eventsList;
     ArrayList<Self_care> self_care_arrayList;
@@ -89,7 +89,9 @@ public class HomeFragment extends Fragment {
     Integer[] imageViewList;
     private boolean permissionGranted;
     LinearLayout homeEventLinearLayout;
-
+    Boolean messageSent;
+    SharedPreferences messageSharedPref;
+    String userCategory;
 
     @Nullable
     @Override
@@ -120,9 +122,30 @@ public class HomeFragment extends Fragment {
         moodBackground = (ImageView) rootView.findViewById(R.id.main_card_imgView_bg);
         moodBackground.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
+
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("Users").child(Prevalent.currentOnlineUser.getPhoneNo());
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userCategory = snapshot.child("category").getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         Calendar calForDate = Calendar.getInstance();
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
         saveCurrentDate = currentDate.format(calForDate.getTime());
+
+        messageSharedPref = getContext().getSharedPreferences("AssessmentPref", getContext().MODE_PRIVATE);
+        messageSent = messageSharedPref.getBoolean("messageSent", true);
+        if (!messageSent){
+            SharedPreferences sosSharedPreferences = getContext().getSharedPreferences("phoneNo", getContext().MODE_PRIVATE);
+            sosEmergency(sosSharedPreferences);
+        }
 
         sosButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -324,6 +347,7 @@ public class HomeFragment extends Fragment {
         packageRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 for (DataSnapshot newSnap: snapshot.getChildren()){
                     String exerciseID = newSnap.getKey();
                     DatabaseReference exerciseRef = packageRef.child(exerciseID);
@@ -331,6 +355,7 @@ public class HomeFragment extends Fragment {
                     exerciseRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot newSnapshot) {
+
                             for (DataSnapshot finalSnap: newSnapshot.getChildren()){
                                 String eachID = finalSnap.getKey();
                                 DatabaseReference eachRef = exerciseRef.child(eachID);
@@ -338,19 +363,18 @@ public class HomeFragment extends Fragment {
                                 eachRef.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot eachSnapshot) {
-                                        if (eachSnapshot.child("category").getValue().toString().equals(Prevalent.currentOnlineUser.getCategory())){
-
+                                        if (eachSnapshot.child("category").getValue().toString().equals(userCategory)){
                                             Self_care model = new Self_care(eachRef);
                                             self_care_arrayList.add(model);
-
-                                            GridLayoutManager layoutManager1 =
-                                                    new GridLayoutManager(getActivity(), 2, GridLayoutManager.HORIZONTAL, false);
-
-                                            packageListRecyclerView.setLayoutManager(layoutManager1);
-                                            scelAdapter = new self_care_exercise_list_adapter(getContext(),self_care_arrayList, imageViewList);
-                                            packageListRecyclerView.setAdapter(scelAdapter);
-
                                         }
+                                        GridLayoutManager layoutManager1 =
+                                                new GridLayoutManager(getActivity(), 2, GridLayoutManager.HORIZONTAL, false);
+
+                                        packageListRecyclerView.setLayoutManager(layoutManager1);
+                                        scelAdapter = new self_care_exercise_list_adapter(getContext(),self_care_arrayList, imageViewList);
+                                        packageListRecyclerView.setAdapter(scelAdapter);
+                                        scelAdapter.notifyDataSetChanged();
+
                                     }
 
                                     @Override
@@ -359,6 +383,7 @@ public class HomeFragment extends Fragment {
                                     }
                                 });
                             }
+
                         }
 
                         @Override
@@ -367,7 +392,6 @@ public class HomeFragment extends Fragment {
                         }
                     });
                 }
-
             }
 
             @Override
@@ -375,6 +399,23 @@ public class HomeFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+
+        super.setUserVisibleHint(isVisibleToUser);
+
+        // Refresh tab data:
+
+        if (getFragmentManager() != null) {
+
+            getFragmentManager()
+                    .beginTransaction()
+                    .detach(this)
+                    .attach(this)
+                    .commit();
+        }
     }
 
     private void checkAssessment() {
@@ -411,6 +452,7 @@ public class HomeFragment extends Fragment {
         String phoneNo = sharedPreferences.getString("phoneNo", " ");
         String userName = Prevalent.currentOnlineUser.getUsername();
 
+        Log.d("UNIQUENAME", "sosEmergency: " + phoneNo);
 
         AlertDialog dialog = new AlertDialog.Builder(getContext()).create();
         dialog.setTitle(getResources().getString(R.string.sosSendTitle));
@@ -419,12 +461,20 @@ public class HomeFragment extends Fragment {
         dialog.setButton(DialogInterface.BUTTON_POSITIVE, "No", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int buttonId) {
 
+                SharedPreferences.Editor editor = messageSharedPref.edit();
+                editor.putBoolean("messageSent", true);
+                editor.apply();
             }
         });
         dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int buttonId) {
                     SmsManager smsManager = SmsManager.getDefault();
-                    smsManager.sendTextMessage(Prevalent.currentOnlineUser.getPhoneNo(), "", "Hey! I am " + userName + " (" + phoneNo + ") " + getResources().getString(R.string.SosMessage2), null, null);
+                    smsManager.sendTextMessage(phoneNo, "", "Hey! I am " + userName +
+                            " (" + Prevalent.currentOnlineUser.getPhoneNo() + ") " + getResources().getString(R.string.SosMessage2), null, null);
+
+                SharedPreferences.Editor editor = messageSharedPref.edit();
+                editor.putBoolean("messageSent", true);
+                editor.apply();
 
             }
         });

@@ -1,10 +1,12 @@
 package com.example.nurture_insight.application_introduction;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import com.example.nurture_insight.MainActivity;
@@ -31,6 +33,7 @@ public class WelcomeScreen extends AppCompatActivity {
             finish();
         }
 
+        handleNotificationData();
     }
 
     public boolean onTouchEvent(MotionEvent touchEvent) {
@@ -50,5 +53,25 @@ public class WelcomeScreen extends AppCompatActivity {
                 break;
         }
         return false;
+    }
+
+    private void handleNotificationData() {
+        Bundle bundle = getIntent().getExtras();
+        String desiredFrag;
+
+        if(bundle!=null){
+            desiredFrag = bundle.getString("intentName");
+            //fragment = (Fragment) Class.forName("com.example.nurture_insight.assessment." + ""+ desiredFrag).newInstance();
+        }
+        else{
+            desiredFrag = "HomeFragment";
+        }
+
+        SharedPreferences notificationPref = getSharedPreferences("notificationPref", MODE_PRIVATE);
+        SharedPreferences.Editor editor = notificationPref.edit();
+        editor.putString("reqFragment", desiredFrag);
+        editor.apply();
+        //getSupportFragmentManager().beginTransaction().replace(R.id.main_fragmentLayout, fragment).commit();
+
     }
 }

@@ -90,6 +90,7 @@ public class TherapistProfileFragment extends Fragment {
         journalProgressChart = (ProgressBar) rootView.findViewById(R.id.therapist_journal_progress);
         assessmentRecyclerView = (RecyclerView) rootView.findViewById(R.id.therapist_profile_assessment_recyclerView);
 
+
         write_journal_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -166,7 +167,6 @@ public class TherapistProfileFragment extends Fragment {
         DatabaseReference moodRef = FirebaseDatabase.getInstance().getReference()
                 .child("Mood_Tracker").child(Prevalent.currentOnlineUser.getPhoneNo());
 
-        Log.d("UNIQUENAME", "onDataChange: " + moodRef);
         moodRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -197,6 +197,7 @@ public class TherapistProfileFragment extends Fragment {
                 double res = (counter / 31.0f) * 100;
                 int progress = (int) res;
                 moodProgressChart.setProgress(progress);
+                moodProgressChart.animate();
                 moodProgressPercent.setText(progress+"%");
                 moodProgressMessage.setText("Mood Tracked for " + counter + " days in this month");
             }
@@ -243,8 +244,9 @@ public class TherapistProfileFragment extends Fragment {
                 double res = (counter / 31.0f) * 100;
                 int progress = (int) res;
                 journalProgressChart.setProgress(progress);
+                journalProgressChart.animate();
                 journalProgressPercent.setText(progress+"%");
-                journalProgressMessage.setText("You wrote Journal for "+ counter + " days in this month");
+                journalProgressMessage.setText("You wrote Journal for "+ counter + " days in t his month");
             }
 
             @Override

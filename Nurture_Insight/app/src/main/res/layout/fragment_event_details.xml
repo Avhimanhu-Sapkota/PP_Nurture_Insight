@@ -145,6 +145,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/eventDetails_host_contact" />
 
+
+
         <ImageView
             android:id="@+id/eventDetails_pageDivider"
             android:layout_width="0dp"

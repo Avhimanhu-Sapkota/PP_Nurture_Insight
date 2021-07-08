@@ -1,5 +1,6 @@
 package com.example.nurture_insight.therapist_dashboard;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ public class userDisplayForTherapist extends Fragment {
     RecyclerView.LayoutManager layoutManager;
     ArrayList<Users> newPatientsList;
     UserDisplayAdapter userDisplayAdapter;
+    ProgressDialog loading;
 
     @Nullable
     @Override
@@ -75,7 +77,6 @@ public class userDisplayForTherapist extends Fragment {
 
                     if(therapistID.equals("0000000000") && userType.equals("user")) {
                         String usersID = dataSnapshot.getKey();
-                        Log.d("UNIQUENAME", "onDataChange: " + therapistID + userType);
 
                         Users model = new Users(usersID);
                         newPatientsList.add(model);

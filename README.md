@@ -8,7 +8,7 @@
   <li>To develop an information portal which helps people to get insights into mental health issues and treatments, by ensuring flow of information.</li>
   <li>To design a platform which helps people to cope with mental health problems using Cognitive Behaviour Therapy (CBT), positive psychology, mindfulness and self-care activities.</li>
   <li>To create a technological platform where certified mental health professionals can connect to patients to monitor their mental state regularly.</li>
-  <li>•	To develop online community which helps in reducing mental health stigma by sharing personal opinions and peer success stories.<li>
+  <li>To develop online community which helps in reducing mental health stigma by sharing personal opinions and peer success stories.</li>
 </ul>
 
 <h2>Features of the Product</h2>
